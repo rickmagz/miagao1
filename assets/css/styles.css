@@ -1,0 +1,29 @@
+@media (max-width: 570px) {
+  #head-illustration {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  #sign-illustration {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  #masthead-illustration {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  #masthead {
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #entrep_banner {
+  }
+}
+
