@@ -53,13 +53,33 @@ include '../db.php';
             </div>
         </div>
     </section>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col"></div>
+
+    <section data-aos="fade-up"">
+        <div class=" container py-4 py-xl-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2><strong>Your Businesses</strong></h2>
             </div>
         </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
+            <div class="col-xl-3">
+                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                    <div class="card-body p-4">
+                        <p class="text-primary card-text mb-0">Article</p>
+                        <h4 class="card-title">Lorem libero donec</h4>
+                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                            <div>
+                                <p class="fw-bold mb-0">John Smith</p>
+                                <p class="text-muted mb-0">Erat netus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </section>
+
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>

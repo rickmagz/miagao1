@@ -53,7 +53,7 @@ include '../db.php';
             </div>
         </div>
     </section>
-    <section id="entrep_banner" class="py-4 py-xl-5">
+    <!-- <section id="entrep_banner" class="py-4 py-xl-5">
         <div class="container">
             <div class="text-white bg-dark border rounded border-0 p-4 p-md-5">
                 <h2 class="fw-bold text-white mb-3">Biben dum fringi dictum, augue purus</h2>
@@ -67,7 +67,7 @@ include '../db.php';
                 <div class="col"></div>
             </div>
         </div>
-    </section>
+    </section> -->
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>
