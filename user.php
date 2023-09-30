@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'db.php';
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -19,12 +23,12 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="assets/img/Miagao-logo.png" width="63" height="65"><img src="assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="business.html">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./user/business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href=".user/products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
-                            <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
+                            <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="logout.php">Log out</a></div>
                         </div>
                     </li>
                 </ul>
@@ -36,7 +40,7 @@
             <div class="row" data-aos="zoom-out">
                 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-5 col-xxl-6 offset-lg-1 offset-xxl-0 text-center text-md-start align-self-center">
                     <div class="text-center">
-                        <h1 class="display-4 fw-bold text-start mb-5" id="masthead-heading">Linking and<br>promoting businesses <br>with ease.<br><span class="text-uppercase underline">together</span>.</h1>
+                        <h1 class="display-5 fw-bold text-start mb-5" id="masthead-heading">Linking and<br>promoting businesses <br>with ease.<br><span class="text-uppercase underline">together</span>.</h1>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-7 col-lg-6 col-xl-6 mx-auto">

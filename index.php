@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -19,15 +22,15 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="assets/img/Miagao-logo.png" width="63" height="65"><img src="assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="business.html">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
                     <!-- <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
                         </div>
                     </li> -->
-                    <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.html">LOG IN</a><a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.html">SIGN UP</a>
+                    <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.php">LOG IN</a><a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.php">SIGN UP</a>
                 </ul>
             </div>
         </div>
@@ -121,7 +124,7 @@
                     <div class="col-md-6 d-flex flex-column justify-content-center">
                         <div class="text-white p-4 p-md-5">
                             <h2 class="fw-bold text-white mb-3">Find business recommendation<br><span class="underline" style="text-decoration: underline;">JUST FOR YOU</span></h2>
-                            <div class="my-3"><a class="btn btn-warning border rounded-pill me-2 mt-2" role="button" href="login.html">Log in</a><a class="btn btn-light border rounded-pill mt-2" role="button" href="signup.html">Sign up</a></div>
+                            <div class="my-3"><a class="btn btn-warning border rounded-pill me-2 mt-2" role="button" href="login.php">Log in</a><a class="btn btn-light border rounded-pill mt-2" role="button" href="signup.php">Sign up</a></div>
                         </div>
                     </div>
                     <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-contain pt-5 pt-md-0" src="assets/img/illustrations/web-development.svg"></div>
