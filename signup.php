@@ -1,4 +1,5 @@
 <?php
+include 'db.php';
 
 ?>
 <!DOCTYPE html>
@@ -21,15 +22,15 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="assets/img/Miagao-logo.png" width="63" height="65"><img src="assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="business.html">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
                     <!-- <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
                         </div>
                     </li> -->
-                    <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.html">LOG IN</a>
+                    <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.php">LOG IN</a>
                     <!-- <a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.html">SIGN UP</a> -->
                 </ul>
             </div>
@@ -37,32 +38,35 @@
     </nav>
     <section>
         <div class="container py-md-5">
-            <div class="row" >
+            <div class="row">
                 <div class="col-md-6 col-xl-5 text-center" id="sign-illustration"><img class="img-fluid w-100" src="assets/img/illustrations/register.svg"></div>
                 <div class="col-md-5 col-xl-7 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="underline pb-1"><strong>Sign up</strong></span></h2>
 
-                    <form action="signup.php" method="post">
+                    <form action="signup.php" method="post" id="signup">
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="mb-3"><input class="border rounded-pill form-control" type="text" name="firstname" placeholder="First Name" required=""></div>
-                                <div class="mb-3"><input class="border rounded-pill form-control" type="email" name="Email" placeholder="Email"></div>
+                                <div class="mb-3"><input class="border rounded-pill form-control" type="email" name="email" placeholder="Email" required></div>
                                 <div class="mb-3"></div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="mb-3"><input class="border rounded-pill form-control" type="text" name="lastname" placeholder="Last Name" required=""></div>
-                                <div class="mb-3"><input class="border rounded-pill shadow-sm form-control" type="password" name="password" placeholder="Password"></div>
+                                <div class="mb-3"><input class="border rounded-pill shadow-sm form-control" type="password" name="password" placeholder="Password" required></div>
                             </div>
                         </div>
                         <div class="mb-5" style="margin: 0px;">
                             <div class="row">
-                                <div class="col-xl-5"><button class="btn btn-primary border rounded-pill shadow" type="submit" style="margin-bottom: 10px;margin-right: 20px;">Create account</button><span>or</span></div>
+                                <div class="col-xl-5">
+                                    <button class="btn btn-primary border rounded-pill shadow" type="submit" style="margin-bottom: 10px; margin-right: 20px;" name="signup" form="signup">Create account</button>
+                                    <span>or</span>
+                                </div>
                                 <div class="col-xl-8"><button class="btn btn-primary border rounded-pill shadow d-xl-flex align-items-center align-content-center justify-content-xl-center align-items-xl-center" type="submit" style="color: var(--bs-btn-hover-border-color);background: var(--bs-btn-disabled-color);border-color: var(--bs-btn-active-border-color);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" class="justify-content-xl-center align-items-xl-center" style="font-size: 20px;">
                                             <path d="M6 12C6 15.3137 8.68629 18 12 18C14.6124 18 16.8349 16.3304 17.6586 14H12V10H21.8047V14H21.8C20.8734 18.5645 16.8379 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C15.445 2 18.4831 3.742 20.2815 6.39318L17.0039 8.68815C15.9296 7.06812 14.0895 6 12 6C8.68629 6 6 8.68629 6 12Z" fill="currentColor"></path>
                                         </svg>&nbsp;Sign up with Google</button></div>
                             </div>
                         </div>
-                        <p class="text-muted">Have an account? <a href="login.html">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
+                        <p class="text-muted">Have an account? <a href="login.php">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     <line x1="15" y1="16" x2="19" y2="12"></line>
@@ -73,6 +77,26 @@
             </div>
         </div>
     </section>
+    <?php
+    if (isset($_POST['signup'])) {
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $check_email = mysqli_query($cxn, "SELECT * FROM user WHERE email='$email'") or die("Error in query: $check_email." . mysqli_error($cxn));
+
+        if ($check_email->num_rows == 1) {
+            echo "<script type='text/javascript'> alert('Email already registered!'); location.href='signup.php'; </script>";
+        } else {
+            $signup = mysqli_query($cxn, "INSERT INTO user(user_id,first_name,last_name,email,password,status) VALUES('?','$firstname','$lastname','$email','$password','?')") or die("Error in query: $signup." . mysqli_error($cxn));
+        }
+
+        echo "<script type='text/javascript'> alert('Registration Successful! Click to log in.'); location.href = 'login.php'; </script>";
+    }
+
+    ?>
+
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>
