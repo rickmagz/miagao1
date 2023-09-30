@@ -1,6 +1,6 @@
 <?php
-    include './db.php';
-    session_start();
+include '../db.php';
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -25,8 +25,8 @@
                 <div class="card mb-5" style="background: var(--bs-card-cap-bg);border-style: none;">
                     <div class="card-body d-flex flex-column align-items-center" style="background: var(--bs-card-bg);border-radius: 24px;padding-bottom: 0px;padding-top: 36px;">
                         <div><img src="../assets/img/Miagao-logo.png" style="width: 100px;height: 100px;"><img src="../assets/img/DTI-LOGO.png" style="width: 100px;height: 100px;"><span style="font-size: 24px;color: var(--bs-blue);"><br><strong>Miagao One Negosyo Center</strong><br><strong>Administrators' Dashboard</strong></span></div>
-                        
-                        <form class="text-center" method="post" action="../admin/index.php" style="margin: 5px;">
+
+                        <form class="text-center" method="post" action="../admin/index.php" id="login" style="margin: 5px;">
                             <div class="row" style="padding-top: 28px;padding-bottom: 28px;">
                                 <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-sm-2 offset-md-2 offset-lg-2 offset-xl-2" style="padding-bottom: 12px;">
                                     <input class="form-control" type="email" name="email" placeholder="Email" autofocus="" required="">
@@ -35,9 +35,28 @@
                                     <input class="form-control" type="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-sm-3 offset-md-3 offset-lg-3 offset-xl-3 align-self-center" style="padding-top: 15px;">
-                                    <button class="btn btn-primary d-block w-100" type="submit">Login</button>
+                                    <button class="btn btn-primary d-block w-100" type="submit" name="login" form="login">Login</button>
                                 </div>
                             </div>
+
+                            <?php
+                            if (isset($_POST['login'])) {
+                                $email = $_POST['email'];
+                                $password = $_POST['password'];
+
+                                $login = mysqli_query($cxn, "SELECT * FROM admin WHERE email_add='$email' AND password='$password'");
+
+                                if (mysqli_num_rows($login) > 0) {
+                                    $l = mysqli_fetch_assoc($login);
+                                    $_SESSION['firstname'] = $l['first_name'];
+                                    $_SESSION['lastname'] = $l['last_name'];
+                                    $_SESSION['email'] = $l['email'];
+                                    header("Location: ./dashboard.php?=");
+                                } else {
+                                    echo '<script type="text/javascript"> alert("Invalid Credentials!")</script>';
+                                }
+                            }
+                            ?>
 
 
                             <p class="text-muted"><br><span style="color: rgb(0, 0, 0);">©&nbsp;Miagao One Negosyo Center 2023. All Rights Reserved.</span><br><br></p>

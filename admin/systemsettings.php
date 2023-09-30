@@ -9,7 +9,7 @@ include '../db.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Business List - Miagao One Negosyo Center</title>
+    <title>Admin System Settings - Miagao One Negosyo Center</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -24,7 +24,7 @@ include '../db.php';
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="./dashboard.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link " href="./business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="./products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
@@ -43,38 +43,5 @@ include '../db.php';
             </div>
         </div>
     </nav>
-    <section id="masthead">
-        <div class="container">
-            <div class="row">
-                <div class="col align-self-center">
-                    <h1 class="display-5 text-end">Administrators'<br>Business<br>Dashboard</h1>
-                </div>
-                <div class="col"><img src="../assets/img/illustrations/startup.svg"></div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col"></div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container py-4 py-lg-5">
-            <hr>
-            <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 Miagao Negosyo Center</p>
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><img src="../assets/img/Miagao-logo.png" width="63" height="65"></li>
-                    <li class="list-inline-item"><img src="../assets/img/DTI-LOGO.png" width="63" height="65"></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bs-init.js"></script>
-    <script src="../assets/js/main.js"></script>
-</body>
 
-</html>
+    
