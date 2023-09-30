@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -38,7 +41,8 @@
                 <div class="col-md-6 col-xl-5 text-center" id="sign-illustration"><img class="img-fluid w-100" src="assets/img/illustrations/register.svg"></div>
                 <div class="col-md-5 col-xl-7 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="underline pb-1"><strong>Sign up</strong></span></h2>
-                    <form method="post">
+
+                    <form action="signup.php" method="post">
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="mb-3"><input class="border rounded-pill form-control" type="text" name="firstname" placeholder="First Name" required=""></div>
