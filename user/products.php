@@ -8,7 +8,7 @@ include '../db.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Featured Businesses - Miagao Negosyo Center</title>
+    <title>Featured Products - Miagao Negosyo Center</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -24,8 +24,8 @@ include '../db.php';
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link " href="../user.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./business.php">Business</a></li>
-                    <li class="nav-item"><a class="nav-link " href="./products.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;">
@@ -41,30 +41,30 @@ include '../db.php';
         </div>
     </nav>
 
-    <section data-aos="fade-up"">
-        <div class=" container py-4 py-xl-5">
-        <div class="row mb-5">
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2><strong>Featured Businesses For You</strong></h2>
-                <p class="w-lg-50">Here the list of businesses based on your interests.</p>
+    <section data-aos="flip-down">
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Featured Products For You</h2>
+                    <p class="w-lg-50">Here the list of products based on your interests.</p>
+                </div>
             </div>
-        </div>
-        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
-            <div class="col-xl-3">
-                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                    <div class="card-body p-4">
-                        <p class="text-primary card-text mb-0">Article</p>
-                        <h4 class="card-title">Lorem libero donec</h4>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                            <div>
-                                <p class="fw-bold mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
+                <div class="col-xl-3">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                        <div class="card-body p-4">
+                            <p class="text-primary card-text mb-0">Article</p>
+                            <h4 class="card-title">Lorem libero donec</h4>
+                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                                <div>
+                                    <p class="fw-bold mb-0">John Smith</p>
+                                    <p class="text-muted mb-0">Erat netus</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 

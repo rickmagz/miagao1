@@ -23,9 +23,9 @@ include 'db.php';
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="assets/img/Miagao-logo.png" width="63" height="65"><img src="assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="user.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="user.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./user/business.php">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href=".user/products.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./user/products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="logout.php">Log out</a></div>
@@ -49,6 +49,8 @@ include 'db.php';
             </div>
         </div>
     </header>
+
+    <!-- featured products -->
     <section data-aos="flip-down">
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
@@ -72,51 +74,11 @@ include 'db.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <!-- featured businesses -->
     <section data-aos="fade-up" style="margin-top: -40px;">
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
@@ -140,51 +102,11 @@ include 'db.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <!-- recommendations -->
     <section data-aos="fade-up" style="margin-top: -40px;">
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
@@ -193,48 +115,6 @@ include 'db.php';
                 </div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="padding-top: 0px;margin-top: -48px;">
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4">
-                            <p class="text-primary card-text mb-0">Article</p>
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                                <div>
-                                    <p class="fw-bold mb-0">John Smith</p>
-                                    <p class="text-muted mb-0">Erat netus</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-xl-3">
                     <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
                         <div class="card-body p-4">
