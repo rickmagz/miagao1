@@ -92,7 +92,7 @@ include '../db.php';
                                                                     <path d="M2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-2 2h1v1H2v-1Zm2 0h1v1H4v-1Zm4-4h1v1H8V9Zm2 0h1v1h-1V9Zm-2 2h1v1H8v-1Zm2 0h1v1h-1v-1Zm2-2h1v1h-1V9Zm0 2h1v1h-1v-1ZM8 7h1v1H8V7Zm2 0h1v1h-1V7Zm2 0h1v1h-1V7ZM8 5h1v1H8V5Zm2 0h1v1h-1V5Zm2 0h1v1h-1V5Zm0-2h1v1h-1V3Z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/addbusiness.php" target="_blank" style="text-decoration: none;">
+                                                                <a href="../entrep/addbusiness.php" target="_self" style="text-decoration: none;">
                                                                     <h4>Business</h4>
                                                                 </a>
                                                             </div>
@@ -105,7 +105,7 @@ include '../db.php';
                                                                     <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/addproduct.php" target="_blank">
+                                                                <a href="../entrep/addproduct.php" target="_self">
                                                                     <h4>Product</h4>
                                                                 </a>
                                                             </div>
@@ -150,7 +150,7 @@ include '../db.php';
                                                                     <path d="M2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-2 2h1v1H2v-1Zm2 0h1v1H4v-1Zm4-4h1v1H8V9Zm2 0h1v1h-1V9Zm-2 2h1v1H8v-1Zm2 0h1v1h-1v-1Zm2-2h1v1h-1V9Zm0 2h1v1h-1v-1ZM8 7h1v1H8V7Zm2 0h1v1h-1V7Zm2 0h1v1h-1V7ZM8 5h1v1H8V5Zm2 0h1v1h-1V5Zm2 0h1v1h-1V5Zm0-2h1v1h-1V3Z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/editbusiness.php" target="_blank">
+                                                                <a href="../entrep/editbusiness.php" target="_self">
                                                                     <h4>Business</h4>
                                                                 </a>
                                                             </div>
@@ -163,7 +163,7 @@ include '../db.php';
                                                                     <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/editproduct.php" target="_blank">
+                                                                <a href="../entrep/editproduct.php" target="_self">
                                                                     <h4>Product</h4>
                                                                 </a>
                                                             </div>
@@ -207,7 +207,7 @@ include '../db.php';
                                                                     <path d="M2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-2 2h1v1H2v-1Zm2 0h1v1H4v-1Zm4-4h1v1H8V9Zm2 0h1v1h-1V9Zm-2 2h1v1H8v-1Zm2 0h1v1h-1v-1Zm2-2h1v1h-1V9Zm0 2h1v1h-1v-1ZM8 7h1v1H8V7Zm2 0h1v1h-1V7Zm2 0h1v1h-1V7ZM8 5h1v1H8V5Zm2 0h1v1h-1V5Zm2 0h1v1h-1V5Zm0-2h1v1h-1V3Z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/deletebusiness.php" target="_blank">
+                                                                <a href="../entrep/deletebusiness.php" target="_self">
                                                                     <h4>Business</h4>
                                                                 </a>
                                                             </div>
@@ -220,7 +220,7 @@ include '../db.php';
                                                                     <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/deleteproduct.php" target="_blank">
+                                                                <a href="../entrep/deleteproduct.php" target="_self">
                                                                     <h4>Product</h4>
                                                                 </a>
                                                             </div>
