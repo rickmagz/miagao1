@@ -50,6 +50,7 @@ include '../db.php';
 
                             if (mysqli_num_rows($login) > 0) {
                                 $l = mysqli_fetch_assoc($login);
+                                $_SESSION['entrep_id'] = $l['entrep_id'];
                                 $_SESSION['firstname'] = $l['first_name'];
                                 $_SESSION['lastname'] = $l['last_name'];
                                 $_SESSION['email'] = $l['email'];
