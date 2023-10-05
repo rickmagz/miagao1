@@ -47,10 +47,15 @@ include '../db.php';
     <section id="page-locator" style="margin-top: 20px;">
         <div class="container">
             <div class="row">
-                <div class="col"><a href="dashboard.php">Home &gt;</a><a href="#"> Add Business Product &gt;</a></div>
+                <div class="col">
+                    <a href="dashboard.php">Home &gt;</a>
+                    <a href="addbusiness.php">Add Business Profile &gt;</a>
+                    <a href="#"> Add Business Product &gt;</a>
+                </div>
             </div>
         </div>
     </section>
+
     <section id="main-form" style="margin-top: 20px;">
         <div class="container">
             <div id="addproduct-row" class="row">
@@ -60,20 +65,56 @@ include '../db.php';
                             <h3>Add Business Product</h3>
                             <form id="addproduct" action="addproduct.php" method="post" name="addproduct">
                                 <div class="row">
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="select-control mb-3"><select class="form-select" style="border-radius: 10px;" name="businessname" required>
-                                                <option value="12" selected>Select Business Name</option>
-                                            </select></div>
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-6">
+                                        <div class="select-control mb-3">
+                                            <select class="form-select" style="border-radius: 10px;" name="businessname" required autofocus>
+                                                <option disabled selected>Select Business Name</option>
+
+                                                <?php
+                                                $sel_business = mysqli_query($cxn, "SELECT business_id, business_name FROM business_list");
+
+                                                if ($sel_business->num_rows > 0) {
+                                                    while ($get_bus = $sel_business->fetch_assoc()) {
+                                                        echo "<option value='" . $get_bus['business_id'] . "'>" . $get_bus['business_name'] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "None listed at the moment.";
+                                                }
+
+
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" required style="border-radius: 10px;" name="productname" placeholder="Enter Product Name" /><label class="form-label">Enter Product Name</label></div>
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-6">
+                                        <div class="select-control mb-3"><select class="form-select" style="border-radius: 10px;" name="producttype" required autofocus>
+                                                <option disabled selected>Select Product Type</option>
+                                                <option value="electronics">Electronics</option>
+                                                <option value="clothing">Clothing</option>
+                                                <option value="food">Food</option>
+                                                <option value="furniture">Furniture</option>
+                                                <option value="appliances">Appliances</option>
+                                                <option value="cosmetics">Cosmetics</option>
+                                                <option value="books">Books</option>
+                                                <option value="toys">Toys</option>
+                                                <option value="jewelry">Jewelry</option>
+                                                <option value="sports">Sports Equipment</option>
+                                                <option value="music">Music Instruments</option>
+                                                <option value="health">Health and Wellness</option>
+                                                <option value="automotive">Automotive</option>
+                                                <option value="home-decor">Home Decor</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="number" placeholder="Enter Quantity" required style="border-radius: 10px;" name="productquantity" /><label class="form-label">Enter Quantity</label></div>
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-6 align-self-center">
+                                        <div class="form-floating mb-3"><input class="form-control" type="text" required style="border-radius: 10px;" name="productname" placeholder="Enter Product Name" /><label class="form-label">Product Name</label></div>
+                                    </div>
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-12 align-self-center">
+                                        <div class="form-floating mb-3"><textarea class="form-control" style="border-radius: 10px;min-height: 100px;" name="productdesc" placeholder="Product Description" spellcheck="true" required></textarea><label class="form-label">Product Description</label></div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -90,6 +131,26 @@ include '../db.php';
             </div>
         </div>
     </section>
+    <?php
+    if (isset($_POST['submit'])) {
+        $entrep_id = $_SESSION['entrep_id'];
+        $business_id = $_POST['businessname'];
+
+        function random_strings($length_of_string)
+        {
+            return substr(md5(time()), 0, $length_of_string);
+        }
+
+        $product_id = random_strings(10);
+        $product_name = $_POST['productname'];
+        $product_type = $_POST['producttype'];
+        $product_desc = $_POST['productdesc'];
+
+        $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,product_name,product_type,product_desc) VALUES('$product_id','$business_id','$product_name','$product_type','$product_desc')") or die("Error in query: $add_product." . mysqli_error($cxn));
+
+        echo "<script type='text/javascript'> alert('Product Added!'); location.href = 'addproduct.php'; </script>";
+    }
+    ?>
 
     <footer>
         <div class="container py-4 py-lg-5">

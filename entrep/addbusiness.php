@@ -47,8 +47,13 @@ include '../db.php';
     <section id="page-locator" style="margin-top: 20px;">
         <div class="container">
             <div class="row">
-                <div class="col"><a href="dashboard.php">Home &gt;</a><a href="#"> Add Business Profile &gt;</a></div>
+                <div class="col">
+                    <a href="dashboard.php">Home &gt;</a>
+                    <a href="#"> Add Business Profile &gt;</a>
+                    <a href="addproduct.php"> Add Business Product </a>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -62,26 +67,38 @@ include '../db.php';
                             <form id="addbusiness" action="addbusiness.php" method="post" name="addbusiness">
                                 <div class="row">
                                     <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessname" autofocus /><label class="form-label">Enter Business Name</label></div>
+                                        <div class="select-control mb-3">
+                                            <select class="form-select" style="border-radius: 10px;" name="businesstype" required autofocus>
+                                                <option disabled selected>Select Business Type</option>
+                                                <option value="Retail">Retail</option>
+                                                <option value="Food and Bevergae">Food and Beverage</option>
+                                                <option value="Agriculture and Farming">Agriculture and Farming</option>
+                                                <option value="Manufactiring">Manufactiring</option>
+                                                <option value="Services">Services</option>
+                                                <option value="Tourism">Tourism</option>
+                                                <option value="Construction">Construction</option>
+                                                <option value="Logistics">Logistics</option>
+                                                <option value="Technology">Technology</option>
+                                                <option value="Arts and Crafts">Arts and Crafts</option>
+                                                <option value="Energy and Utilities">Energy and Utilities</option>
+                                                <option value="Natural Resources">Natural Resources</option>
+                                                <option value="Healthcare">Healthcare</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessaddress" /><label class="form-label">Enter Business Address</label></div>
+                                        <div class="w-100"></div>
+                                    </div>
+                                    <div class="col-xxl-6 offset-xxl-0 align-self-center">
+                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessname" /><label class="form-label">Business Name</label></div>
+                                    </div>
+                                    <div class="col-xxl-6 align-self-center">
+                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessaddress" /><label class="form-label">Business Address</label></div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="ownername" /><label class="form-label">Enter Owners&#39; Name</label></div>
-                                    </div>
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="number" placeholder="Enter Business Name" required style="border-radius: 10px;" name="contactno" /><label class="form-label">Enter Business Contact Number</label></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="permitno" /><label class="form-label">Enter Business Permit Number</label></div>
-                                    </div>
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="email" placeholder="Enter Business Name" required style="border-radius: 10px;" name="email" /><label class="form-label">Enter Business E-Mail Address</label></div>
+                                    <div class="col-xxl-12 align-self-center">
+                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Description" required style="border-radius: 10px;" name="businessdesc" /><label class="form-label">Business Description</label></div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -98,6 +115,27 @@ include '../db.php';
             </div>
         </div>
     </section>
+
+    <?php
+    if (isset($_POST['submit'])) {
+        $business_type = $_POST['businesstype'];
+        $business_name = $_POST['businessname'];
+        $business_address = $_POST['businessaddress'];
+        $business_desc = $_POST['businessdesc'];
+
+        function random_strings($length_of_string)
+        {
+            return substr(md5(time()), 0, $length_of_string);
+        }
+
+        $business_id = random_strings(10);
+        $entrep_id = $_SESSION['entrep_id'];
+
+        $add_business = mysqli_query($cxn, "INSERT INTO business_list(business_id,entrep_id,business_name,business_type,business_address,business_desc) VALUES('$business_id','$entrep_id','$business_name','$business_type','$business_address','$business_desc')") or die("Error in query: $add_business." . mysqli_error($cxn));
+
+        echo "<script type='text/javascript'> alert('Business Registered!'); location.href = 'addbusiness.php'; </script>";
+    }
+    ?>
 
     <footer>
         <div class="container py-4 py-lg-5">
