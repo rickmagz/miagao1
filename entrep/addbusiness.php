@@ -48,8 +48,9 @@ include '../db.php';
         <div class="container">
             <div class="row">
                 <div class="col">
+                    <span>Link Map: </span>
                     <a href="dashboard.php">Home &gt;</a>
-                    <a href="#"> Add Business Profile &gt;</a>
+                    <a class="text-bg-primary border rounded-pill border-0" href="#"> Add Business Profile &gt;</a>
                     <a href="addproduct.php"> Add Business Product </a>
                 </div>
             </div>
