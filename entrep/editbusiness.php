@@ -49,7 +49,11 @@ $entrep_id = $_SESSION['entrep_id'];
     <section id="page-locator" style="margin-top: 20px;">
         <div class="container">
             <div class="row">
-                <div class="col"><a href="dashboard.php">Home &gt;</a><a class="text-bg-primary border rounded-pill border-0" href="#">Choose Business Profile &emsp13;</a></div>
+                <div class="col">
+                    <a href="dashboard.php">Home &gt;</a>
+                    <a class="text-bg-primary border rounded-pill border-0" href="#">Choose Business Profile &gt; &emsp13;</a>
+                    <a href="editproduct.php">Choose Product Profile &emsp13;</a>
+                </div>
             </div>
         </div>
     </section>
@@ -60,7 +64,7 @@ $entrep_id = $_SESSION['entrep_id'];
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
                         <div id="editproduct_cardbody" class="card-body">
-                            <h3>Click on one to modify.</h3>
+                            <h3>Choose one to modify.</h3>
 
                             <div class="row row-cols-5">
                                 <?php
