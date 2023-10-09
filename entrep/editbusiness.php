@@ -74,7 +74,7 @@ $entrep_id = $_SESSION['entrep_id'];
                                         $business_list++;
 
                                 ?>
-                                        <div class="col text-center mb-3">
+                                        <div class="col-6 col-sm-4 col-lg-3 col-xl-3 col-xxl-3 text-center mb-3 align-self-stretch">
                                             <a class="btn btn-outline-primary w-100 h-100" type="button" style="border-radius: 10px;" href="editbusinessinfo.php?id=<?php echo $_SESSION['bus_id']; ?>">
                                                 <?php echo $business_name; ?>
                                             </a>
