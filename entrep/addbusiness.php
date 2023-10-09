@@ -47,14 +47,8 @@ include '../db.php';
     <section id="page-locator" style="margin-top: 20px;">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <span>Link Map: </span>
-                    <a href="dashboard.php">Home &gt;</a>
-                    <a class="text-bg-primary border rounded-pill border-0" href="#"> Add Business Profile &gt;</a>
-                    <a href="addproduct.php"> Add Business Product </a>
-                </div>
+                <div class="col"><a href="dashboard.php">Home &gt;</a><a class="text-bg-primary" href="#" style="border-radius: 10px;"> Add Business Information &gt;</a><a href="addproduct.php" style="border-radius: 10px;"> Add Product Information &gt;</a></div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -67,9 +61,9 @@ include '../db.php';
                             <h3>Add Business Profile</h3>
                             <form id="addbusiness" action="addbusiness.php" method="post" name="addbusiness">
                                 <div class="row">
-                                    <div class="col-xxl-6 align-self-center">
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center">
                                         <div class="select-control mb-3">
-                                            <select class="form-select" style="border-radius: 10px;" name="businesstype" required autofocus>
+                                            <select class="form-select" style="border-radius: 10px;" name="businesstype" autofocus required>
                                                 <option disabled selected>Select Business Type</option>
                                                 <option value="Retail">Retail</option>
                                                 <option value="Food and Bevergae">Food and Beverage</option>
@@ -90,16 +84,19 @@ include '../db.php';
                                     <div class="col-xxl-6 align-self-center">
                                         <div class="w-100"></div>
                                     </div>
-                                    <div class="col-xxl-6 offset-xxl-0 align-self-center">
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
                                         <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessname" /><label class="form-label">Business Name</label></div>
                                     </div>
-                                    <div class="col-xxl-6 align-self-center">
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center">
                                         <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessaddress" /><label class="form-label">Business Address</label></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xxl-12 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Description" required style="border-radius: 10px;" name="businessdesc" /><label class="form-label">Business Description</label></div>
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" style="border-radius: 10px;min-height: 100px;" name="businessdesc" placeholder="Business Description" spellcheck="true" required></textarea>
+                                            <label class="form-label">Business Description</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
