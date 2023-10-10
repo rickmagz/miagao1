@@ -48,10 +48,9 @@ include '../db.php';
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <span>Link Map: </span>
                     <a href="dashboard.php">Home &gt;</a>
                     <a href="addbusiness.php">Add Business Profile &gt;</a>
-                    <a class="text-bg-primary rounded-pill border border-0" href="#"> Add Business Product &gt;</a>
+                    <a class="text-bg-primary rounded-pill border border-0" href="#"> Add Product Information &gt;</a>
                 </div>
             </div>
         </div>
@@ -92,20 +91,20 @@ include '../db.php';
                                     <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-6">
                                         <div class="select-control mb-3"><select class="form-select" style="border-radius: 10px;" name="producttype" required autofocus>
                                                 <option disabled selected>Select Product Type</option>
-                                                <option value="electronics">Electronics</option>
-                                                <option value="clothing">Clothing</option>
-                                                <option value="food">Food</option>
-                                                <option value="furniture">Furniture</option>
-                                                <option value="appliances">Appliances</option>
-                                                <option value="cosmetics">Cosmetics</option>
-                                                <option value="books">Books</option>
-                                                <option value="toys">Toys</option>
-                                                <option value="jewelry">Jewelry</option>
-                                                <option value="sports">Sports Equipment</option>
-                                                <option value="music">Music Instruments</option>
-                                                <option value="health">Health and Wellness</option>
-                                                <option value="automotive">Automotive</option>
-                                                <option value="home-decor">Home Decor</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Clothing">Clothing</option>
+                                                <option value="Food">Food</option>
+                                                <option value="Furniture">Furniture</option>
+                                                <option value="Appliances">Appliances</option>
+                                                <option value="Cosmetics">Cosmetics</option>
+                                                <option value="Books">Books</option>
+                                                <option value="Toys">Toys</option>
+                                                <option value="Jewelry">Jewelry</option>
+                                                <option value="Sports">Sports Equipment</option>
+                                                <option value="Music">Music Instruments</option>
+                                                <option value="Health">Health and Wellness</option>
+                                                <option value="Automotive">Automotive</option>
+                                                <option value="Home-decor">Home Decor</option>
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +120,7 @@ include '../db.php';
                                 <div class="row">
                                     <div class="col-xxl-6 align-self-center">
                                         <div class="form-floating mb-3">
-                                            <div class="btn-group btn-group-sm" role="group"><button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="addproduct">Save</button><button class="btn btn-outline-primary" type="reset" style="border-radius: 10px;">Clear Form</button></div>
+                                            <div class="btn-group btn-group-sm" role="group"><button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="addproduct">Save</button><a class="btn btn-outline-primary" href="dashboard.php" style="border-radius: 10px;">Back to home</a></div>
                                         </div>
                                     </div>
                                 </div>
