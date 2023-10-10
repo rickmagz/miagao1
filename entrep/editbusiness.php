@@ -25,7 +25,7 @@ $entrep_id = $_SESSION['entrep_id'];
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="./dashboard.php"><img src="../assets/img/Miagao-logo.png" width="63" height="65"><img src="../assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="./dashboard.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./dashboard.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link " href="./business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="./products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
