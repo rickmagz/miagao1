@@ -64,7 +64,7 @@ $entrep_id = $_SESSION['entrep_id'];
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
                         <div id="editproduct_cardbody" class="card-body">
-                            <h3>Choose one to modify.</h3>
+                            <h3>Choose business to modify.</h3>
 
                             <div class="row row-cols-5">
                                 <?php
