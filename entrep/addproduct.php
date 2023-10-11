@@ -146,7 +146,7 @@ include '../db.php';
         $product_type = $_POST['producttype'];
         $product_desc = $_POST['productdesc'];
 
-        $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,product_name,product_type,product_desc) VALUES('$product_id','$business_id','$product_name','$product_type','$product_desc')") or die("Error in query: $add_product." . mysqli_error($cxn));
+        $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,entrep_id,product_name,product_type,product_desc) VALUES('$product_id','$business_id','$entrep_id','$product_name','$product_type','$product_desc')") or die("Error in query: $add_product." . mysqli_error($cxn));
 
         echo "<script type='text/javascript'> alert('Product Added!'); location.href = 'addproduct.php'; </script>";
     }
