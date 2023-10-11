@@ -3,9 +3,7 @@ session_start();
 include '../db.php';
 
 $entrep_id = $_SESSION['entrep_id'];
-
-//get products
-
+$product_id = $_GET['id'];
 
 ?>
 <!DOCTYPE html>
@@ -63,36 +61,49 @@ $entrep_id = $_SESSION['entrep_id'];
 
     <section id="main-section" style="margin-top: 20px;">
         <div class="container">
-            <div id="editproduct-row" class="row">
+            <div class="row">
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
-                        <div id="editproduct_cardbody" class="card-body">
-                            <h3>Choose a product to delete</h3>
-
+                        <div class="card-body">
+                            <h2>Delete product?</h2>
                             <div class="row row-cols-5">
-                                <?php
-                                $product_list = 0;
-                                $get_product = mysqli_query($cxn, "SELECT * FROM product_list WHERE entrep_id = $entrep_id");
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+                                    <form id="deleteproduct" action="confirmdeleteproduct.php" method="post" name="deleteproduct">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-start align-self-center">
 
-                                if ($get_product->num_rows > 0) {
-                                    while ($p = mysqli_fetch_assoc($get_product)) {
-                                        $product_name = $p['product_name'];
-                                        $_SESSION['product_id'] = $p['product_id'];
-                                        $product_list++;
+                                                <?php
+                                                $get_product = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id='$product_id'");
 
-                                ?>
-                                        <div class="col-6 col-sm-4 col-lg-3 col-xl-3 col-xxl-3 text-center mb-3 align-self-stretch">
-                                            <a class="btn btn-outline-primary w-100 h-100" type="button" style="border-radius: 10px;" href="deleteproductinfo.php?id=<?php echo $_SESSION['product_id']; ?>">
-                                                <?php echo $product_name; ?>
-                                            </a>
+                                                if ($get_product->num_rows > 0) {
+                                                    while ($p = mysqli_fetch_assoc($get_product)) {
+                                                        $product_id = $p['product_id'];
+                                                        $product_name = $p['product_name'];
+                                                        $product_type = $p['product_type'];
+                                                        $product_desc = $p['product_desc'];
+                                                ?>
+                                                        Product ID: <?php echo $product_id; ?> <br />
+                                                        Product Name: <?php echo $product_name; ?> <br />
+                                                        Product Type: <?php echo $product_type; ?> <br />
+                                                        Product Description: <?php echo $product_desc; ?> <br />
+                                                        <input type="hidden" name="productid" value="<?php echo $product_id; ?>">
+
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+
+                                            </div>
                                         </div>
-                                <?php
-                                    }
-                                } else {
-                                    echo "<div class='col text-center mb-3'>No products listed.</div>";
-                                }
-                                ?>
-
+                                        <div class="row mt-3">
+                                            <div class="col-xxl-6 align-self-center">
+                                                <div class="text-start form-floating mb-3">
+                                                    <div class="btn-group btn-group-sm" role="group"><button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="deleteproduct">Yes, delete.</button><a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="deletebusiness.php">Cancel</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,7 +111,6 @@ $entrep_id = $_SESSION['entrep_id'];
             </div>
         </div>
     </section>
-
 
 
     <footer>
