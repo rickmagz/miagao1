@@ -18,7 +18,7 @@ if ($get_product_info->num_rows > 0) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Business Information - <?php echo $b['business_name']; ?> - Miagao Negosyo Center</title>
+    <title>Product Information - <?php echo $p['product_name']; ?> - Miagao Negosyo Center</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -51,7 +51,7 @@ if ($get_product_info->num_rows > 0) {
             <div class="row">
                 <div class="col">
                     <a href="browse.php">Home &gt;</a>
-                    <a href="business.php">Business &gt;</a>
+                    <a href="products.php">Products &gt;</a>
                     <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14;Product Information &emsp13;</a>
                 </div>
             </div>
