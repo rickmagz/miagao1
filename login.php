@@ -26,12 +26,6 @@ include 'db.php';
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
-                    <!-- <li class="nav-item fw-bold d-flex align-items-center">
-                        <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
-                            <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
-                        </div>
-                    </li> -->
-                    <!-- <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.html">LOG IN</a> -->
                     <a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.php">SIGN UP</a>
                 </ul>
             </div>
@@ -84,10 +78,11 @@ include 'db.php';
 
         if (mysqli_num_rows($login) > 0) {
             $l = mysqli_fetch_assoc($login);
+            $_SESSION['user_id'] = $l['user_id'];
             $_SESSION['firstname'] = $l['first_name'];
             $_SESSION['lastname'] = $l['last_name'];
             $_SESSION['email'] = $l['email'];
-            echo '<script type="text/javascript">alert("Welcome!"); location.href = "user.php"; </script>';
+            echo '<script type="text/javascript">location.href = "user/browse.php"; </script>';
         } else {
             echo '<script type="text/javascript"> alert("Invalid Credentials!")</script>';
         }
