@@ -51,7 +51,7 @@ if ($get_business_info->num_rows > 0) {
             <div class="row">
                 <div class="col">
                     <a href="browse.php">Home &gt;</a>
-                    <a href="products.php">Products &gt;</a>
+                    <a href="business.php">Business &gt;</a>
                     <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14;Business Information &emsp13;</a>
                 </div>
             </div>
