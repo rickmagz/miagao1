@@ -34,8 +34,8 @@ if ($get_product_info->num_rows > 0) {
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="./browse.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./business.php">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./products.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link " href="./business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="../assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong></a><a class="dropdown-item" href="./accountsettings.php">Account Settings</a><a class="dropdown-item" href="../logout.php">Log out</a></div>
