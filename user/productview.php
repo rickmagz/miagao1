@@ -6,9 +6,30 @@ $user_id = $_SESSION['user_id'];
 $id = $_GET['id'];
 
 $get_product_info = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id='$id'");
-
 if ($get_product_info->num_rows > 0) {
     $p = mysqli_fetch_assoc($get_product_info);
+}
+
+$get_business_info = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id='{$p['business_id']}'");
+if ($get_business_info->num_rows > 0) {
+    $b = mysqli_fetch_assoc($get_business_info);
+}
+
+// Check if the user already liked the product
+$if_liked = mysqli_query($cxn, "SELECT * FROM user_product_reactions WHERE userID = '{$_SESSION['user_id']}' AND productID = '$id'");
+
+if (mysqli_num_rows($if_liked) == 1) {
+    $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="removefave.php?id=' . $id . '">
+    <span>
+        Remove from Favorites
+    </span>
+</a>';
+} else {
+    $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="addfave.php?id=' . $id . '">
+    <span>
+        Add to Favorites
+    </span>
+</a>';
 }
 
 ?>
@@ -73,17 +94,10 @@ if ($get_product_info->num_rows > 0) {
                                                 <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/<?php echo $p['product_image']; ?>" alt="product_img" /></div>
                                                 <div id="business-info" class="col">
                                                     <h3><?php echo $p['product_name']; ?></h3>
-                                                    <h6 class="text-muted mb-2"><?php echo $p['product_type']; ?></h6>
+                                                    <h6 class="text-muted mb-2">by <?php echo $b['business_name']; ?></h6>
                                                     <p><?php echo $p['product_desc']; ?></p>
                                                     <div class="d-xl-flex justify-content-xl-start">
-                                                        <button class="btn btn-primary btn-sm border rounded-pill" type="button" id="likeButton" onclick="like()">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                                                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
-                                                            </svg>
-                                                            <span id="likeCount<?php echo $product_id; ?>">
-                                                                <?php echo $p['product_like']; ?>
-                                                            </span>
-                                                        </button>
+                                                        <?php echo $button_link; ?>
                                                         &emsp13;
                                                         <a class="btn btn-outline-primary btn-sm border rounded-pill" href="products.php">Back</a>
                                                     </div>
