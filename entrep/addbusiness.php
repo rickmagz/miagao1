@@ -121,12 +121,7 @@ include '../db.php';
         $business_address = $_POST['businessaddress'];
         $business_desc = $_POST['businessdesc'];
 
-        function random_strings($length_of_string)
-        {
-            return substr(md5(time()), 0, $length_of_string);
-        }
-
-        $business_id = random_strings(10);
+        $business_id = rand(1, 1234567890);
         $entrep_id = $_SESSION['entrep_id'];
 
         $add_business = mysqli_query($cxn, "INSERT INTO business_list(business_id,entrep_id,business_name,business_type,business_address,business_desc) VALUES('$business_id','$entrep_id','$business_name','$business_type','$business_address','$business_desc')") or die("Error in query: $add_business." . mysqli_error($cxn));

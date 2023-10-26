@@ -136,12 +136,7 @@ include '../db.php';
         $entrep_id = $_SESSION['entrep_id'];
         $business_id = $_POST['businessname'];
 
-        function random_strings($length_of_string)
-        {
-            return substr(md5(time()), 0, $length_of_string);
-        }
-
-        $product_id = random_strings(10);
+        $product_id = rand(1, 1234567890);
         $product_name = $_POST['productname'];
         $product_type = $_POST['producttype'];
         $product_desc = $_POST['productdesc'];
