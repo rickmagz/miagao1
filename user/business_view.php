@@ -5,10 +5,29 @@ include '../db.php';
 $user_id = $_SESSION['user_id'];
 $id = $_GET['id'];
 
+$busvisit_query = mysqli_query($cxn, "INSERT INTO user_business_reactions(userID,businessID,action) VALUES('$user_id','$id','VISIT'") or die("Error in query: $busvisit_query." . mysqli_error($cxn));
+
 $get_business_info = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id='$id'");
 
 if ($get_business_info->num_rows > 0) {
     $b = mysqli_fetch_assoc($get_business_info);
+}
+
+// check if user added to favorites
+$if_faved = mysqli_query($cxn, "SELECT * FROM user_business_reactions WHERE userID = '{$_SESSION['user_id']}' AND businessID = '$id' AND action='LIKED'");
+
+if ($if_faved->num_rows >= 1) {
+    $button = '<a class="btn btn-primary btn-sm border rounded-pill" href="removefavebusiness.php?id=' . $id . '">
+    <span>
+        Remove from Favorites
+    </span>
+</a>';
+} else {
+    $button = '<a class="btn btn-primary btn-sm border rounded-pill" href="addfavebusiness.php?id=' . $id . '">
+    <span>
+        Add to Favorites
+    </span>
+</a>';
 }
 
 ?>
@@ -86,14 +105,7 @@ if ($get_business_info->num_rows > 0) {
                                                     <h6 class="text-muted mb-2"><?php echo $b['business_type']; ?></h6>
                                                     <p><?php echo $b['business_desc']; ?></p>
                                                     <div class="d-xl-flex justify-content-xl-start">
-                                                        <button class="btn btn-primary btn-sm border rounded-pill" type="button" id="likeButton" onclick="like()">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                                                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
-                                                            </svg>
-                                                            <span id="likeCount<?php echo $busi_id; ?>">
-                                                                <?php echo $b['business_likes']; ?>
-                                                            </span>
-                                                        </button>
+                                                        <?php echo $button; ?>
                                                         &emsp13;
                                                         <a class="btn btn-outline-primary btn-sm border rounded-pill" href="business.php">Back</a>
                                                     </div>
@@ -121,14 +133,7 @@ if ($get_business_info->num_rows > 0) {
                                                                     <h6 class="text-muted card-subtitle mb-2"><?php echo $prod_name; ?></h6>
                                                                     <img class="rounded w-100" alt="Product Image" src="../assets/img/<?php echo $prod_img; ?>" />
                                                                     <div>
-                                                                        <button class="btn btn-primary btn-sm border rounded-pill" type="button" id="likeButton" onclick="like()">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                                                                                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
-                                                                            </svg>
-                                                                            <span id="likeCount<?php echo $prod_id; ?>">
-                                                                                <?php echo $prod_like; ?>
-                                                                            </span>
-                                                                        </button>
+
                                                                         <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
                                                                     </div>
                                                                 </div>
