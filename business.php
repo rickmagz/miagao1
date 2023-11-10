@@ -53,8 +53,8 @@
                 <div class="col-sm-6 mb-5"><img class="rounded img-fluid" src="assets/img/illustrations/ranking.svg"></div>
                 <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center mb-5">
                     <div>
-                        <h5 class="fs-3 fw-bold mb-4">User ratings</h5>
-                        <p class="text-muted mb-4">Get more prospects of businesses in our town based on ratings by our users..</p>
+                        <h5 class="fs-3 fw-bold mb-4">User favorites</h5>
+                        <p class="text-muted mb-4">Get more prospects of businesses in our town based on our users favorites..</p>
                     </div>
                 </div>
             </div>
