@@ -21,13 +21,13 @@ if ($get_business_info->num_rows > 0) {
 $if_liked = mysqli_query($cxn, "SELECT * FROM user_product_reactions WHERE userID = '{$_SESSION['user_id']}' AND productID = '$id' AND action='LIKED'");
 
 if (mysqli_num_rows($if_liked) >= 1) {
-    $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="removefave.php?id=' . $id . '">
+    $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="removefaveproduct.php?id=' . $id . '">
     <span>
         Remove from Favorites
     </span>
 </a>';
 } else {
-    $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="addfave.php?id=' . $id . '">
+    $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="addfaveproduct.php?id=' . $id . '">
     <span>
         Add to Favorites
     </span>
