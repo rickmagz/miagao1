@@ -64,7 +64,7 @@ $user_id = $_SESSION['user_id'];
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px">
                 <?php
                 $product_list = 0;
-                $get_products = mysqli_query($cxn, "SELECT * FROM product_list LIMIT 4");
+                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 4");
 
                 if ($get_products->num_rows > 0) {
                     while ($p = mysqli_fetch_assoc($get_products)) {
@@ -107,7 +107,7 @@ $user_id = $_SESSION['user_id'];
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <?php
                 $business_list = 0;
-                $get_business = mysqli_query($cxn, "SELECT * FROM business_list LIMIT 4");
+                $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand() LIMIT 4");
 
                 if ($get_business->num_rows > 0) {
                     while ($b = mysqli_fetch_assoc($get_business)) {
@@ -148,6 +148,10 @@ $user_id = $_SESSION['user_id'];
                 </div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
+                <!-- algorithm starts here -->
+
+
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card">
                         <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
