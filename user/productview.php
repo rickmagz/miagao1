@@ -5,6 +5,8 @@ include '../db.php';
 $user_id = $_SESSION['user_id'];
 $id = $_GET['id'];
 
+$visit_query = mysqli_query($cxn, "INSERT INTO user_product_reactions(userID,productID,action) VALUES('$user_id','$id','VISIT')") or die("Error in query: $visit_query." . mysqli_error($cxn));
+
 $get_product_info = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id='$id'");
 if ($get_product_info->num_rows > 0) {
     $p = mysqli_fetch_assoc($get_product_info);
@@ -16,7 +18,7 @@ if ($get_business_info->num_rows > 0) {
 }
 
 // Check if the user already liked the product
-$if_liked = mysqli_query($cxn, "SELECT * FROM user_product_reactions WHERE userID = '{$_SESSION['user_id']}' AND productID = '$id'");
+$if_liked = mysqli_query($cxn, "SELECT * FROM user_product_reactions WHERE userID = '{$_SESSION['user_id']}' AND productID = '$id' AND action='LIKED'");
 
 if (mysqli_num_rows($if_liked) == 1) {
     $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="removefave.php?id=' . $id . '">
@@ -31,6 +33,7 @@ if (mysqli_num_rows($if_liked) == 1) {
     </span>
 </a>';
 }
+
 
 ?>
 <!DOCTYPE html>
