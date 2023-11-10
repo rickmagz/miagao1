@@ -5,7 +5,7 @@ include '../db.php';
 $user_id = $_SESSION['user_id'];
 $id = $_GET['id'];
 
-$busvisit_query = mysqli_query($cxn, "INSERT INTO user_business_reactions(userID,businessID,action) VALUES('$user_id','$id','VISIT'") or die("Error in query: $busvisit_query." . mysqli_error($cxn));
+$busvisit_query = mysqli_query($cxn, "INSERT INTO user_business_reactions(userID,businessID,action) VALUES('$user_id','$id','VISIT')") or die("Error in query: $busvisit_query." . mysqli_error($cxn));
 
 $get_business_info = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id='$id'");
 
