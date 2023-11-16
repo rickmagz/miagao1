@@ -59,7 +59,7 @@ include '../db.php';
                     <div class="card" style="border-radius: 12px;">
                         <div id="addbusiness_form" class="card-body">
                             <h3>Add Business Profile</h3>
-                            <form id="addbusiness" action="addbusiness.php" method="post" name="addbusiness">
+                            <form id="addbusiness" action="addbusiness.php" method="post" name="addbusiness" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center">
                                         <div class="select-control mb-3">
@@ -99,6 +99,11 @@ include '../db.php';
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row" style="margin-bottom: 12px;">
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-12 align-self-center"><label class="form-label">Business Logo</label>
+                                        <input class="form-control" type="file" style="border-radius: 10px;" name="image" required />
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-xxl-6 align-self-center">
                                         <div class="form-floating mb-3">
@@ -115,18 +120,35 @@ include '../db.php';
     </section>
 
     <?php
+
+    $upload_folder = "../assets/img/business_img/";
+
     if (isset($_POST['submit'])) {
         $business_type = $_POST['businesstype'];
         $business_name = $_POST['businessname'];
         $business_address = $_POST['businessaddress'];
         $business_desc = $_POST['businessdesc'];
+        //$business_img = $_POST['businessimg'];
 
         $business_id = rand(1, 1234567890);
         $entrep_id = $_SESSION['entrep_id'];
 
-        $add_business = mysqli_query($cxn, "INSERT INTO business_list(business_id,entrep_id,business_name,business_type,business_address,business_desc) VALUES('$business_id','$entrep_id','$business_name','$business_type','$business_address','$business_desc')") or die("Error in query: $add_business." . mysqli_error($cxn));
+        $image = basename($_FILES["image"]["name"]);
+        $targetFileFolder = $upload_folder . $image;
+        $fileType = pathinfo($targetFileFolder, PATHINFO_EXTENSION);
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'JPG', 'JPEG', 'PNG');
 
-        echo "<script type='text/javascript'> alert('Business Registered!'); location.href = 'addbusiness.php'; </script>";
+        if (in_array($fileType, $allowTypes)) {
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFileFolder)) {
+                $add_business = mysqli_query($cxn, "INSERT INTO business_list(business_id,entrep_id,business_name,business_type,business_address,business_desc,business_image) VALUES('$business_id','$entrep_id','$business_name','$business_type','$business_address','$business_desc','$image')") or die("Error in query: $add_business." . mysqli_error($cxn));
+
+                echo "<script type='text/javascript'> alert('Business Registered!'); location.href = 'addbusiness.php'; </script>";
+            } else {
+                echo "<script type='text/javascript'> alert('File upload failed!'); location.href = 'addbusiness.php'; </script>";
+            }
+        } else {
+            echo "<script type='text/javascript'> alert('Invalid file type!'); location.href = 'addbusiness.php'; </script>";
+        }
     }
     ?>
 

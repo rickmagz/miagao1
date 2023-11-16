@@ -63,7 +63,7 @@ include '../db.php';
                     <div class="card" style="border-radius: 12px;">
                         <div id="addproduct_form" class="card-body">
                             <h3>Add Business Product</h3>
-                            <form id="addproduct" action="addproduct.php" method="post" name="addproduct">
+                            <form id="addproduct" action="addproduct.php" method="post" name="addproduct" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-6">
                                         <div class="select-control mb-3">
@@ -117,6 +117,11 @@ include '../db.php';
                                         <div class="form-floating mb-3"><textarea class="form-control" style="border-radius: 10px;min-height: 100px;" name="productdesc" placeholder="Product Description" spellcheck="true" required></textarea><label class="form-label">Product Description</label></div>
                                     </div>
                                 </div>
+                                <div class="row" style="margin-bottom: 12px;">
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-12 align-self-center"><label class="form-label">Product Image</label>
+                                        <input class="form-control" type="file" style="border-radius: 10px;" name="image" required />
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-xxl-6 align-self-center">
                                         <div class="form-floating mb-3">
@@ -132,6 +137,8 @@ include '../db.php';
         </div>
     </section>
     <?php
+    $upload_folder = "../assets/img/product_img/";
+
     if (isset($_POST['submit'])) {
         $entrep_id = $_SESSION['entrep_id'];
         $business_id = $_POST['businessname'];
@@ -141,9 +148,22 @@ include '../db.php';
         $product_type = $_POST['producttype'];
         $product_desc = $_POST['productdesc'];
 
-        $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,entrep_id,product_name,product_type,product_desc) VALUES('$product_id','$business_id','$entrep_id','$product_name','$product_type','$product_desc')") or die("Error in query: $add_product." . mysqli_error($cxn));
+        $image = basename($_FILES["image"]["name"]);
+        $targetFileFolder = $upload_folder . $image;
+        $fileType = pathinfo($targetFileFolder, PATHINFO_EXTENSION);
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'JPG', 'JPEG', 'PNG');
 
-        echo "<script type='text/javascript'> alert('Product Added!'); location.href = 'addproduct.php'; </script>";
+        if (in_array($fileType, $allowTypes)) {
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFileFolder)) {
+                $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,entrep_id,product_name,product_type,product_desc,product_image) VALUES('$product_id','$business_id','$entrep_id','$product_name','$product_type','$product_desc','$image')") or die("Error in query: $add_product." . mysqli_error($cxn));
+
+                echo "<script type='text/javascript'> alert('Product Added!'); location.href = 'addproduct.php'; </script>";
+            } else {
+                echo "<script type='text/javascript'> alert('File upload failed!'); location.href = 'addproduct.php'; </script>";
+            }
+        } else {
+            echo "<script type='text/javascript'> alert('Invalid file type!'); location.href = 'addproduct.php'; </script>";
+        }
     }
     ?>
 
