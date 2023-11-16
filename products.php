@@ -1,3 +1,7 @@
+<?php session_start();
+include 'db.php';
+
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -22,11 +26,7 @@
                     <li class="nav-item"><a class="nav-link " href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link active" href="products.php">Products</a></li>
-                    <!-- <li class="nav-item fw-bold d-flex align-items-center">
-                        <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
-                            <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
-                        </div>
-                    </li> -->
+
                     <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.php">LOG IN</a><a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.php">SIGN UP</a>
                 </ul>
             </div>
@@ -58,94 +58,45 @@
                     <p>We put our best foot forward with the power of technology to resurface our best catalogs of products based on how they leverage on the market.</p>
                 </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 order-first order-md-last">
                     <h1 style="text-align: center;font-weight: bold;">Featured Products</h1>
                 </div>
-            </div> -->
+            </div>
             <div class="row w-100">
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
-                        <div class="card-body text-center p-2">
-                            <h4 class="card-title">Hablon</h4><img class="w-100" src="https://theappletizer.files.wordpress.com/2015/09/20150802_145854.jpg" style="border-radius: 12px;" width="186" height="187" />
+                <?php
+                $product_list = 0;
+                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 4");
+
+                if ($get_products->num_rows > 0) {
+                    while ($p = mysqli_fetch_assoc($get_products)) {
+                        $prod_id = $p['product_id'];
+                        $prod_name = $p['product_name'];
+                        $prod_type = $p['product_type'];
+                        $prod_img = $p['product_image'];
+                        $prod_like = $p['product_like'];
+                        $product_list++;
+
+                ?>
+
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <div class="card">
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $prod_img; ?>" />
+                                <div class="card-body p-2 text-center">
+                                    <h6 class="card-title fw-bold"><?php echo $prod_name; ?></h6>
+                                    <p class="text-primary card-text mb-0"><?php echo $prod_type; ?></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
-                    <div class="card text-bg-light" style="border-radius: 10px;">
-                        <div class="card-body text-center p-2">
-                            <h4 class="card-title">Coffee</h4><img class="w-100" src="https://th.bing.com/th/id/OIP.5i_wgLndZ8uWI2ABp4ht9AHaHe?pid=ImgDet&amp;rs=1" style="border-radius: 12px;" width="186" height="187" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
-                    <div class="card text-bg-light" style="border-radius: 10px;">
-                        <div class="card-body text-center p-2">
-                            <h4 class="card-title">Bulb Onion</h4><img class="w-100" src="https://i.pinimg.com/originals/2f/45/b0/2f45b0c7dcebbdc6d3664d73169c699d.jpg" style="border-radius: 12px;" width="186" height="187" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
-                    <div class="card text-bg-light" style="border-radius: 10px;">
-                        <div class="card-body text-center p-2">
-                            <h4 class="card-title">Peanuts</h4><img class="w-100" src="https://th.bing.com/th/id/R.1e0938214f8277296bd73c861b350e75?rik=2vT4hD9K24ULiw&amp;riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fb%2fb1%2fDeep_Fried_Peanuts.jpg&amp;ehk=wP8JO3xKTLmVa5XVA33F%2fl1Y6LPctv0aUXpW89A5idU%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" style="border-radius: 12px;" width="186" height="187" />
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>
 
-    <section>
-        <div class="container py-4 py-xl-5">
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" data-aos="zoom-out">
-                <div class="col-sm-6 col-md-5 col-lg-5 col-xl-6 offset-md-1 offset-lg-1 offset-xl-0">
-                    <div class="card border-light border-1 d-flex justify-content-center p-4">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="bs-icon-lg bs-icon-rounded bs-icon-secondary d-inline-block mb-4 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-shopping-cart">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <circle cx="9" cy="19" r="2"></circle>
-                                        <circle cx="17" cy="19" r="2"></circle>
-                                        <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2"></path>
-                                    </svg></div>
-                                <h4 class="fw-bold">Consumer Products</h4>
-                                <p class="text-muted">See the products bought by consumers for ultimate daily consumption.</p><a class="fw-bold link-primary" href="#">Learn more&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right fs-3">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <line x1="15" y1="16" x2="19" y2="12"></line>
-                                        <line x1="15" y1="8" x2="19" y2="12"></line>
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 col-lg-5 col-xl-6 offset-xl-0">
-                    <div class="card border-light border-1 d-flex justify-content-center p-4">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <div class="bs-icon-lg bs-icon-rounded bs-icon-secondary d-inline-block mb-4 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-seeding">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M12 10a6 6 0 0 0 -6 -6h-3v2a6 6 0 0 0 6 6h3"></path>
-                                        <path d="M12 14a6 6 0 0 1 6 -6h3v1a6 6 0 0 1 -6 6h-3"></path>
-                                        <line x1="12" y1="20" x2="12" y2="10"></line>
-                                    </svg></div>
-                                <h4 class="fw-bold">Industrial Products</h4>
-                                <p class="text-muted">See the products designed to satisfy the needs and want of the consumer.</p><a class="fw-bold link-primary" href="#">Learn more&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right fs-3">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <line x1="15" y1="16" x2="19" y2="12"></line>
-                                        <line x1="15" y1="8" x2="19" y2="12"></line>
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+   
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>
