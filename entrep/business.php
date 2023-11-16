@@ -62,20 +62,36 @@ include '../db.php';
             </div>
         </div>
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
-            <div class="col-xl-3">
-                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                    <div class="card-body p-4">
-                        <p class="text-primary card-text mb-0">Article</p>
-                        <h4 class="card-title">Lorem libero donec</h4>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                            <div>
-                                <p class="fw-bold mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
+            <?php
+            $business_list = 0;
+            $get_business = mysqli_query($cxn, "SELECT * FROM business_list WHERE entrep_id = {$_SESSION['entrep_id']} ORDER BY business_name asc");
+
+            if ($get_business->num_rows > 0) {
+                while ($b = mysqli_fetch_assoc($get_business)) {
+                    $busi_id = $b['business_id'];
+                    $busi_name = $b['business_name'];
+                    $busi_type = $b['business_type'];
+                    $busi_add = $b['business_address'];
+                    $busi_img = $b['business_image'];
+                    $busi_like = $b['business_likes'];
+                    $business_list++;
+            ?>
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 h-100">
+                        <div class="card">
+                            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
+                            <div class="card-body p-2 text-center">
+                                <h6 class="card-title" style="font-weight: bold;"><?php echo $busi_name; ?></h6>
+                                <p class="text-primary mb-0"><?php echo $busi_type; ?></p>
+                            </div>
+                            <div class="card-footer text-body-secondary text-center">
+                                <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./business_view.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+            <?php
+                }
+            }
+            ?>
         </div>
         </div>
     </section>
