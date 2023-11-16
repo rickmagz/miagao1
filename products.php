@@ -38,7 +38,7 @@
                 <div class="col-md-5 col-lg-5 offset-md-1 offset-lg-1 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
                     <div style="max-width: 350px;">
                         <h1 class="display-6 fw-bold mb-4">Miagaowanon products in one&nbsp;<span class="underline">platform</span>.</h1>
-                        <p class="my-4">See what is popular in list of products and help us recommend it to others.</p><a class="btn btn-primary btn-lg border rounded-pill me-2" role="button" href="signup.php">Sign up</a><a class="btn btn-outline-primary btn-lg border rounded-pill" role="button" href="login.php">Log in</a>
+                        <p class="my-4">See what is popular in list of products and help us recommend it to others.</p><a class="btn btn-primary border rounded-pill me-2" role="button" href="signup.php">Sign up</a><a class="btn btn-outline-primary border rounded-pill" role="button" href="login.php">Log in</a>
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-5">
@@ -47,9 +47,10 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="container py-4 py-xl-5">
-            <div class="row mb-5" data-aos="zoom-out" data-aos-delay="150">
+
+    <section data-aos="fade-up">
+        <div class="container">
+            <div class="row" data-aos="zoom-out" data-aos-delay="150">
                 <div class="col-sm-6 col-md-5 col-lg-5 col-xl-5 offset-md-1 offset-lg-1">
                     <h3 class="display-6 fw-bold pb-4 mb-4">Featuring our products to be more&nbsp;<span class="underline">known.</span></h3>
                 </div>
@@ -57,6 +58,46 @@
                     <p>We put our best foot forward with the power of technology to resurface our best catalogs of products based on how they leverage on the market.</p>
                 </div>
             </div>
+            <!-- <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 order-first order-md-last">
+                    <h1 style="text-align: center;font-weight: bold;">Featured Products</h1>
+                </div>
+            </div> -->
+            <div class="row w-100">
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Hablon</h4><img class="w-100" src="https://theappletizer.files.wordpress.com/2015/09/20150802_145854.jpg" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
+                    <div class="card text-bg-light" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Coffee</h4><img class="w-100" src="https://th.bing.com/th/id/OIP.5i_wgLndZ8uWI2ABp4ht9AHaHe?pid=ImgDet&amp;rs=1" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
+                    <div class="card text-bg-light" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Bulb Onion</h4><img class="w-100" src="https://i.pinimg.com/originals/2f/45/b0/2f45b0c7dcebbdc6d3664d73169c699d.jpg" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
+                    <div class="card text-bg-light" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Peanuts</h4><img class="w-100" src="https://th.bing.com/th/id/R.1e0938214f8277296bd73c861b350e75?rik=2vT4hD9K24ULiw&amp;riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fb%2fb1%2fDeep_Fried_Peanuts.jpg&amp;ehk=wP8JO3xKTLmVa5XVA33F%2fl1Y6LPctv0aUXpW89A5idU%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container py-4 py-xl-5">
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" data-aos="zoom-out">
                 <div class="col-sm-6 col-md-5 col-lg-5 col-xl-6 offset-md-1 offset-lg-1 offset-xl-0">
                     <div class="card border-light border-1 d-flex justify-content-center p-4">
@@ -103,6 +144,8 @@
             </div>
         </div>
     </section>
+
+
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>

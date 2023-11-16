@@ -24,7 +24,9 @@ include '../db.php';
             <div class="col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-12 offset-xl-8" style="text-align: center;margin: 0px;">
                 <div class="card mb-5" style="background: var(--bs-card-cap-bg);border-style: none;">
                     <div class="card-body d-flex flex-column align-items-center" style="background: var(--bs-card-bg);border-radius: 24px;padding-bottom: 0px;padding-top: 36px;">
-                        <div><img src="../assets/img/Miagao-logo.png" style="width: 100px;height: 100px;"><img src="../assets/img/DTI-LOGO.png" style="width: 100px;height: 100px;"><span style="font-size: 24px;color: var(--bs-blue);"><br><strong>Miagao One Negosyo Center</strong><br><strong>Entrepreneur Dashboard</strong></span></div>
+                        <div>
+                            <img src="../assets/img/miagao_one.png" width="175" height="150" /><span style="font-size: 24px;color: var(--bs-blue);"><br><strong>ONe Miagao Negosyo</strong><br><strong>Entrepreneurs' Dashboard</strong></span>
+                        </div>
                         <form class="text-center" method="post" style="margin: 5px;" action="./index.php" id="login">
                             <div class="row" style="padding-top: 28px;padding-bottom: 28px;">
                                 <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-sm-2 offset-md-2 offset-lg-2 offset-xl-2" style="padding-bottom: 12px;">
@@ -38,7 +40,7 @@ include '../db.php';
                                     <button class="btn btn-primary d-block w-100" type="submit" name="login" form="login">Login</button>
                                 </div>
                             </div>
-                            <p class="text-muted"><br><span style="color: rgb(0, 0, 0);">©&nbsp;Miagao One Negosyo Center 2023. All Rights Reserved.</span><br><br></p>
+                            <p class="text-muted"><br><span style="color: rgb(0, 0, 0);">©&nbsp;One Miagao Negosyo 2023. All Rights Reserved.</span><br><br></p>
                         </form>
 
                         <?php

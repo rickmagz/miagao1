@@ -104,6 +104,7 @@
             </div>
         </div>
     </section>
+    
     <section data-aos="fade-up">
         <div class="container">
             <div class="row">
@@ -117,6 +118,87 @@
             </div>
         </div>
     </section>
+
+    <section class="m-5" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 order-first order-md-last">
+                    <h1 style="text-align: center;font-weight: bold;">Featured Products</h1>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Hablon</h4><img class="w-100" src="https://theappletizer.files.wordpress.com/2015/09/20150802_145854.jpg" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
+                    <div class="card text-bg-light" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Coffee</h4><img class="w-100" src="https://th.bing.com/th/id/OIP.5i_wgLndZ8uWI2ABp4ht9AHaHe?pid=ImgDet&amp;rs=1" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
+                    <div class="card text-bg-light" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Bulb Onion</h4><img class="w-100" src="https://i.pinimg.com/originals/2f/45/b0/2f45b0c7dcebbdc6d3664d73169c699d.jpg" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 h-100">
+                    <div class="card text-bg-light" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Peanuts</h4><img class="w-100" src="https://th.bing.com/th/id/R.1e0938214f8277296bd73c861b350e75?rik=2vT4hD9K24ULiw&amp;riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fb%2fb1%2fDeep_Fried_Peanuts.jpg&amp;ehk=wP8JO3xKTLmVa5XVA33F%2fl1Y6LPctv0aUXpW89A5idU%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="m-5" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 order-first order-md-last">
+                    <h1 style="text-align: center;font-weight: bold;">Featured Businesses</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Miagao Pasalubong Center</h4><img class="w-100" src="https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/334942779_1333266334135473_7743212193592254488_n.jpg?stp=cp6_dst-jpg&amp;_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=j3_wap-fIHwAX-70Zzn&amp;_nc_ht=scontent.fceb6-1.fna&amp;oh=00_AfCa5zlbf-W5I7bbiIG9bhP5bi_JHd1_Pg5N074UzZVWew&amp;oe=65565B55" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Indag-an Primary Multipurpose Cooperative</h4><img class="w-100" src="https://scontent.fceb6-1.fna.fbcdn.net/v/t1.6435-9/84075751_500571747264913_7650798855532838912_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=7a1959&amp;_nc_ohc=oLmP6H9e92QAX-rZ8kN&amp;_nc_oc=AQnSD3urGYVBiDVVkE4Py86DI2aosTgDw92eWAjjKiCHLirfjMb761wuyywcuvv7_Go&amp;_nc_ht=scontent.fceb6-1.fna&amp;oh=00_AfDoY9LrBXE-u0X-1Sdki3r1ZxBFlpLZ9yOdQiyhY5QZuQ&amp;oe=65790513" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title"><br />G&#39;Rose Ventures<br /><br /></h4><img class="w-100" src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.6435-9/37675264_128185914768562_8591296874021912576_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=be3454&amp;_nc_ohc=QS569sxPvRAAX_lVhBH&amp;_nc_ht=scontent.fmnl4-2.fna&amp;oh=00_AfDL9BcKHtdo1DxAt9HA9fYnAqtSN0iBaY86i5Uw2PjMAg&amp;oe=6578FF3D" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                        <div class="card-header"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Chemon&#39;s<br />Ongyod Coffee<br /><br /></h4><img class="w-100" src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t39.30808-6/277798554_349509407202825_935421950887041940_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=vjHqfDkiEl4AX9FCrnC&amp;_nc_ht=scontent.fmnl4-4.fna&amp;oh=00_AfD13oowPn4I5g6rn57uLMIXjPtcN0JcYMDZ3wq-IelhnA&amp;oe=655745DE" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section data-aos="fade-up" data-aos-delay="150" class="py-4 py-xl-5">
         <div class="container">
             <div class="bg-primary border rounded border-0 border-primary overflow-hidden">

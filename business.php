@@ -22,11 +22,6 @@
                     <li class="nav-item"><a class="nav-link " href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
-                    <!-- <li class="nav-item fw-bold d-flex align-items-center">
-                        <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
-                            <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
-                        </div>
-                    </li> -->
                     <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.php">LOG IN</a><a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.php">SIGN UP</a>
                 </ul>
             </div>
@@ -38,7 +33,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-5 offset-lg-1 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
                     <div style="max-width: 350px;">
                         <h1 class="display-5 fw-bold mb-4">Skyrocket your business with our&nbsp;<span class="underline">tools.</span></h1>
-                        <p class="text-muted my-4">With our tools powered by technology, we help your business stand above all else.<br><br></p><a class="btn btn-primary btn-lg me-2" role="button" href="signup.php" style="border-radius: 800px;">Sign up</a><a class="btn btn-outline-primary btn-lg" role="button" href="login.php" style="border-radius: 800px;">Log in</a>
+                        <p class="text-muted my-4">With our tools powered by technology, we help your business stand above all else.<br><br></p><a class="btn btn-primary me-2" role="button" href="signup.php" style="border-radius: 800px;">Sign up</a><a class="btn btn-outline-primary" role="button" href="login.php" style="border-radius: 800px;">Log in</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5" id="masthead-illustration">
@@ -52,7 +47,7 @@
             <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
                 <div class="col-sm-6 mb-5"><img class="rounded img-fluid" src="assets/img/illustrations/ranking.svg"></div>
                 <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center mb-5">
-                    <div>
+                    <div class="ms-md-3">
                         <h5 class="fs-3 fw-bold mb-4">User favorites</h5>
                         <p class="text-muted mb-4">Get more prospects of businesses in our town based on our users favorites..</p>
                     </div>
@@ -69,6 +64,48 @@
             </div>
         </div>
     </section>
+
+    <section data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 order-first order-md-last">
+                    <h1 style="text-align: center;font-weight: bold;">Featured Businesses</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Miagao Pasalubong Center</h4><img class="w-100" src="https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/334942779_1333266334135473_7743212193592254488_n.jpg?stp=cp6_dst-jpg&amp;_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=j3_wap-fIHwAX-70Zzn&amp;_nc_ht=scontent.fceb6-1.fna&amp;oh=00_AfCa5zlbf-W5I7bbiIG9bhP5bi_JHd1_Pg5N074UzZVWew&amp;oe=65565B55" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Indag-an Primary Multipurpose Cooperative</h4><img class="w-100" src="https://scontent.fceb6-1.fna.fbcdn.net/v/t1.6435-9/84075751_500571747264913_7650798855532838912_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=7a1959&amp;_nc_ohc=oLmP6H9e92QAX-rZ8kN&amp;_nc_oc=AQnSD3urGYVBiDVVkE4Py86DI2aosTgDw92eWAjjKiCHLirfjMb761wuyywcuvv7_Go&amp;_nc_ht=scontent.fceb6-1.fna&amp;oh=00_AfDoY9LrBXE-u0X-1Sdki3r1ZxBFlpLZ9yOdQiyhY5QZuQ&amp;oe=65790513" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title"><br />G&#39;Rose Ventures<br /><br /></h4><img class="w-100" src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.6435-9/37675264_128185914768562_8591296874021912576_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=be3454&amp;_nc_ohc=QS569sxPvRAAX_lVhBH&amp;_nc_ht=scontent.fmnl4-2.fna&amp;oh=00_AfDL9BcKHtdo1DxAt9HA9fYnAqtSN0iBaY86i5Uw2PjMAg&amp;oe=6578FF3D" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                        <div class="card-header"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="card text-bg-light h-100" style="border-radius: 10px;">
+                        <div class="card-body text-center p-2">
+                            <h4 class="card-title">Chemon&#39;s<br />Ongyod Coffee<br /><br /></h4><img class="w-100" src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t39.30808-6/277798554_349509407202825_935421950887041940_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=vjHqfDkiEl4AX9FCrnC&amp;_nc_ht=scontent.fmnl4-4.fna&amp;oh=00_AfD13oowPn4I5g6rn57uLMIXjPtcN0JcYMDZ3wq-IelhnA&amp;oe=655745DE" style="border-radius: 12px;" width="186" height="187" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>

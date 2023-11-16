@@ -48,18 +48,9 @@ include '../db.php';
         <div class="container">
             <div class="row">
                 <div class="col align-self-center">
-                    <h1 class="display-5 text-end">Welcome to<br><strong>Administrators'</strong><br><strong>Dashboard</strong></h1>
+                    <h1 class="text-center">Welcome to<br /><strong>Administrators&#39;</strong><br /><strong>Dashboard</strong></h1>
                 </div>
                 <div class="col"><img src="../assets/img/illustrations/presentation.svg"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="entrep_banner" class="py-4 py-xl-5">
-        <div class="container">
-            <div class="text-white bg-dark border rounded border-0 p-4 p-md-5">
-                <h2 class="fw-bold text-white mb-3">Biben dum fringi dictum, augue purus</h2>
-                <p class="mb-4">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
             </div>
         </div>
     </section>
@@ -71,7 +62,7 @@ include '../db.php';
             </div>
         </div>
     </section>
-    
+
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>
