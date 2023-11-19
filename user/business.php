@@ -20,7 +20,11 @@ include '../db.php';
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow navbar-shrink navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="../assets/img/Miagao-logo.png" width="63" height="65"><img src="../assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="browse.php">
+                <img src="../assets/img/miagao_one.png" width="85" height="70" /><span style="margin-left: 5px;">One Miagao<br />Negosyo</span>
+            </a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link " href="./browse.php">Home</a></li>
@@ -52,7 +56,7 @@ include '../db.php';
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <?php
                 $business_list = 0;
-                $get_business = mysqli_query($cxn, "SELECT * FROM business_list");
+                $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand()");
 
                 if ($get_business->num_rows > 0) {
                     while ($b = mysqli_fetch_assoc($get_business)) {
@@ -88,10 +92,10 @@ include '../db.php';
         <div class="container py-4 py-lg-5">
             <hr>
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 Miagao Negosyo Center</p>
+                <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /></p>
                 <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><img src="../assets/img/Miagao-logo.png" width="63" height="65"></li>
-                    <li class="list-inline-item"><img src="../assets/img/DTI-LOGO.png" width="63" height="65"></li>
+                    <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
+
                 </ul>
             </div>
         </div>

@@ -20,7 +20,9 @@ include 'db.php';
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow navbar-shrink navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="assets/img/Miagao-logo.png" width="63" height="65"><img src="assets/img/DTI-LOGO.png" width="67" height="64"><span style="margin-left: 5px;">Miagao <br>Negosyo Center</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="assets/img/miagao_one.png" width="85" height="70" /><span style="margin-left: 5px;">One Miagao<br />Negosyo</span></a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link " href="index.php">Home</a></li>
@@ -49,16 +51,16 @@ include 'db.php';
     <section>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
-                <div class="col-sm-6 mb-5"><img class="rounded img-fluid" src="assets/img/illustrations/ranking.svg"></div>
-                <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center mb-5">
+                <div class="col-sm-6"><img class="rounded img-fluid" src="assets/img/illustrations/ranking.svg"></div>
+                <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center ">
                     <div class="ms-md-3">
-                        <h5 class="fs-3 fw-bold mb-4">User favorites</h5>
-                        <p class="text-muted mb-4">Get more prospects of businesses in our town based on our users favorites..</p>
+                        <h5 class="fs-3 fw-bold">User favorites</h5>
+                        <p class="text-muted">Get more prospects of businesses in our town based on our users favorites..</p>
                     </div>
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
-                <div class="col-sm-6 order-md-last mb-5"><img class="rounded img-fluid" src="assets/img/illustrations/startup.svg"></div>
+                <div class="col-sm-6 order-md-last"><img class="rounded img-fluid" src="assets/img/illustrations/startup.svg"></div>
                 <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center mb-5">
                     <div class="ms-md-3">
                         <h5 class="fs-3 fw-bold mb-4">User recommendations</h5>
@@ -112,10 +114,9 @@ include 'db.php';
         <div class="container py-4 py-lg-5">
             <hr>
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 Miagao Negosyo Center<br /><a href="entrep/index.php">Entrepreneur</a>&emsp14;|&emsp14;<a href="admin/index.php">Admin</a></p>
+                <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /><a href="entrep/index.php">Entrepreneur</a>&emsp14;|&emsp14;<a href="admin/index.php">Admin</a></p>
                 <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><img src="assets/img/Miagao-logo.png" width="63" height="65"></li>
-                    <li class="list-inline-item"><img src="assets/img/DTI-LOGO.png" width="63" height="65"></li>
+                    <li class="list-inline-item"><img src="assets/img/miagao_one.png" width="85" height="70" /></li>
                 </ul>
             </div>
         </div>
