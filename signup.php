@@ -25,13 +25,7 @@ include 'db.php';
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
-                    <!-- <li class="nav-item fw-bold d-flex align-items-center">
-                        <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
-                            <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;"><a class="dropdown-item" href="#" style="display: flex;overflow: hidden;"><img width="30" height="30" src="assets/img/Screenshot_2021-01-28-04-41-56-92.jpg">&nbsp;<strong>User</strong></a><a class="dropdown-item" href="#">Account Settings</a><a class="dropdown-item" href="#">Log out</a></div>
-                        </div>
-                    </li> -->
                     <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.php">LOG IN</a>
-                    <!-- <a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.html">SIGN UP</a> -->
                 </ul>
             </div>
         </div>
@@ -70,6 +64,12 @@ include 'db.php';
                                     <line x1="15" y1="16" x2="19" y2="12"></line>
                                     <line x1="15" y1="8" x2="19" y2="12"></line>
                                 </svg></a>&nbsp;</p>
+                        <p class="text-muted">Sign up as <a href="entrep_signup.php">Entrepreneur&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <line x1="15" y1="16" x2="19" y2="12"></line>
+                                    <line x1="15" y1="8" x2="19" y2="12"></line>
+                                </svg></a>&nbsp;</p>
                     </form>
                 </div>
             </div>
@@ -101,7 +101,7 @@ include 'db.php';
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">
                 <p class="mb-0">Copyright © 2023 One Negosyo Miagao</p>
                 <ul class="list-inline mb-0">
-                <li class="list-inline-item"><img src="assets/img/miagao_one.png" width="85" height="70" /></li>
+                    <li class="list-inline-item"><img src="assets/img/miagao_one.png" width="85" height="70" /></li>
                 </ul>
             </div>
         </div>
