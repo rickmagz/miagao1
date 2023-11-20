@@ -92,6 +92,8 @@ include '../db.php';
                     </div>
             <?php
                 }
+            } else {
+                echo "None at the moment.";
             }
             ?>
         </div>
