@@ -30,15 +30,21 @@ include '../db.php';
                         <form class="text-center" method="post" style="margin: 5px;" action="./index.php" id="login">
                             <div class="row" style="padding-top: 28px;padding-bottom: 28px;">
                                 <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-sm-2 offset-md-2 offset-lg-2 offset-xl-2" style="padding-bottom: 12px;">
-                                    <input class="form-control" type="email" name="email" placeholder="Email" autofocus="" required="">
+                                    <input class="form-control" type="email" name="email" placeholder="Email" autofocus="" required="" style="border-radius:10px;">
                                 </div>
                                 <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-sm-2 offset-md-2 offset-lg-2 offset-xl-2">
-                                    <input class="form-control" type="password" name="password" placeholder="Password">
+                                    <input class="form-control" type="password" name="password" placeholder="Password" style="border-radius:10px;">
                                 </div>
 
                                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-sm-3 offset-md-3 offset-lg-3 offset-xl-3 align-self-center" style="padding-top: 15px;">
-                                    <button class="btn btn-primary d-block w-100" type="submit" name="login" form="login">Login</button>
+                                    <button class="btn btn-primary w-50" type="submit" name="login" form="login" style="border-radius:10px;">Login</button>
+
                                 </div>
+
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-sm-3 offset-md-3 offset-lg-3 offset-xl-3 align-self-center">
+                                <a class="btn btn-outline-primary" href="../index.php" style="border-radius:10px;">Back to home</a>
+
                             </div>
                             <p class="text-muted"><br><span style="color: rgb(0, 0, 0);">©&nbsp;One Miagao Negosyo 2023. All Rights Reserved.</span><br><br></p>
                         </form>
