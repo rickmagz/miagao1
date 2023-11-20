@@ -102,10 +102,10 @@ include '../db.php';
         <div class="container py-4 py-lg-5">
             <hr />
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 Miagao Negosyo Center</p>
+                <p class="mb-0">Copyright © 2023 One Negosyo Miagao</p>
                 <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><img src="../assets/img/Miagao-logo.png" width="63" height="65" /></li>
-                    <li class="list-inline-item"><img src="../assets/img/DTI-LOGO.png" width="63" height="65" /></li>
+                    <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
+
                 </ul>
             </div>
         </div>
