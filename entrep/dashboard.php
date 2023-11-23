@@ -2,6 +2,30 @@
 session_start();
 include '../db.php';
 
+//check if entrep is approved
+$approve_query = mysqli_query($cxn, "SELECT * FROM entrep WHERE entrep_id = {$_SESSION['entrep_id']} AND status='APPROVED'");
+if (mysqli_num_rows($approve_query) == 1) {
+    $add = '<a href="#" data-bs-target="#add-modal" data-bs-toggle="modal">Get started <svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+</svg></a>';
+    $modify = '<a href="#" data-bs-target="#modify-modal" data-bs-toggle="modal">Get started <svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+    </svg></a>';
+    $delete = ' <a href="#" data-bs-target="#delete-modal" data-bs-toggle="modal">Get Started<svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
+</svg></a>';
+} else {
+    $add = '<button type="button" class="btn btn-sm btn-danger" style="border-radius:10px;" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+    <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+  </svg> WAIT FOR APPROVAL</button>';
+    $modify = '<button type="button" class="btn btn-sm btn-danger" style="border-radius:10px;" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+    <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+  </svg> WAIT FOR APPROVAL</button>';
+    $delete = '<button type="button" class="btn btn-sm btn-danger" style="border-radius:10px;" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+    <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+  </svg> WAIT FOR APPROVAL</button>';
+}
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -9,7 +33,7 @@ include '../db.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Entrepreneurs' Homepage - Miagao One Negosyo Center</title>
+    <title>Entrepreneurs' Homepage - One Negosyo Miagao</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -38,7 +62,6 @@ include '../db.php';
                                     &nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong>
                                 </a>
                                 <a class="dropdown-item" href="./accountsettings.php">Account Settings</a>
-                                <a class="dropdown-item" href="./systemsettings.php">System Settings</a>
                                 <a class="dropdown-item" href="../logout.php">Log out</a>
                             </div>
                         </div>
@@ -75,9 +98,9 @@ include '../db.php';
                             </svg></div>
                         <div class="px-3">
                             <h4>Add your business/product</h4>
-                            <p>Showcase your business/product in able to recommend and featured to all our users.<br /><br /></p><a href="#" data-bs-target="#add-modal" data-bs-toggle="modal">Get started <svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                </svg></a>
+                            <p>Showcase your business/product in able to recommend and featured to all our users.<br /><br /></p>
+
+                            <?php echo $add; ?>
 
                             <!-- add-modal -->
                             <div id="add-modal" class="modal fade" role="dialog" tabindex="-1">
@@ -133,9 +156,9 @@ include '../db.php';
                             </svg></div>
                         <div class="px-3">
                             <h4>Modify your business/product</h4>
-                            <p>Modify your business/product intuitive details to enable users up to date.<br /><br /></p><a href="#" data-bs-target="#modify-modal" data-bs-toggle="modal">Get started <svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                </svg></a>
+                            <p>Modify your business/product intuitive details to enable users up to date.<br /><br /></p>
+
+                            <?php echo $modify; ?>
 
                             <!-- modify-modal -->
                             <div id="modify-modal" class="modal fade" role="dialog" tabindex="-1">
@@ -190,9 +213,9 @@ include '../db.php';
                             </svg></div>
                         <div class="px-3">
                             <h4>Delete your business/product</h4>
-                            <p>Not all business/product deserve to stay, just keep your business neat and clean.<br /><br /></p><a href="#" data-bs-target="#delete-modal" data-bs-toggle="modal">Get Started<svg class="bi bi-arrow-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                </svg></a>
+                            <p>Not all business/product deserve to stay, just keep your business neat and clean.<br /><br /></p>
+
+                            <?php echo $delete; ?>
 
                             <!-- delete modal -->
                             <div id="delete-modal" class="modal fade" role="dialog" tabindex="-1">

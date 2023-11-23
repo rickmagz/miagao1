@@ -2,6 +2,43 @@
 session_start();
 include '../db.php';
 
+//get total number of users
+$stmt = $cxn->prepare("SELECT * FROM user");
+$stmt->execute();
+$user_reg = $stmt->get_result();
+$total_users = $user_reg->num_rows;
+
+//get total number of business favorites
+$stmt = $cxn->prepare("SELECT * FROM user_business_reactions WHERE action='LIKED'");
+$stmt->execute();
+$user_business_visit = $stmt->get_result();
+$total_business_visit = $user_business_visit->num_rows;
+
+//get total number of product favorites
+$stmt = $cxn->prepare("SELECT * FROM user_product_reactions WHERE action='LIKED'");
+$stmt->execute();
+$user_product_fave = $stmt->get_result();
+$total_product_fave = $user_product_fave->num_rows;
+
+//get total of approved entrep
+$stmt = $cxn->prepare("SELECT * FROM entrep WHERE status='APPROVED'");
+$stmt->execute();
+$approve_entrep = $stmt->get_result();
+$total_approve_entrep = $approve_entrep->num_rows;
+
+//get total of pending entrep
+$stmt = $cxn->prepare("SELECT * FROM entrep WHERE status='PENDING'");
+$stmt->execute();
+$pending_entrep = $stmt->get_result();
+$total_pending_entrep = $pending_entrep->num_rows;
+
+//get total profile visits
+$stmt = $cxn->prepare("SELECT * FROM entrep WHERE profile_visits >= 1");
+$stmt->execute();
+$visits = $stmt->get_result();
+$total_visits = $visits->num_rows;
+
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -59,7 +96,7 @@ include '../db.php';
         </div>
     </section>
 
-    <section class="m-5">
+    <section>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -72,33 +109,34 @@ include '../db.php';
                 </div>
             </div>
             <div class="row">
-                <div class="col-xxl-4 offset-xxl-0" style="text-align: center;">
+                <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-1 offset-xxl-0" style="text-align: center;margin-left: 0px;">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-header">
-                            <h5 class="mb-0"><strong>Registration</strong></h5>
+                            <h5 class="mb-0"><strong>Registered</strong></h5>
                         </div>
                         <div class="card-body">
-                            <h1 class="display-1">10</h1>
+                            <h1 class="display-1"><?php echo $total_users; ?></h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-4 offset-xxl-0" style="text-align: center;">
+
+                <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-1 offset-xxl-0" style="text-align: center;margin-left: 0px;">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-header">
-                            <h5 class="mb-0"><strong>Visits</strong></h5>
+                            <h5 class="mb-0"><strong>Business Favorites</strong></h5>
                         </div>
                         <div class="card-body">
-                            <h1 class="display-1">20</h1>
+                            <h1 class="display-1"><?php echo $total_business_visit; ?></h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-4 offset-xxl-0" style="text-align: center;">
+                <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-1 offset-xxl-0" style="text-align: center;margin-left: 0px;">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-header">
-                            <h5 class="mb-0"><strong>Favorites</strong></h5>
+                            <h5 class="mb-0"><strong>Product Favorites</strong></h5>
                         </div>
                         <div class="card-body">
-                            <h1 class="display-1">5</h1>
+                            <h1 class="display-1"><?php echo $total_product_fave; ?></h1>
                         </div>
                     </div>
                 </div>
@@ -110,36 +148,37 @@ include '../db.php';
                 </div>
             </div>
             <div class="row">
-                <div class="col-xxl-4 offset-xxl-0" style="text-align: center;">
+                <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-1 offset-xxl-0" style="text-align: center;margin-left: 0px;">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-header">
-                            <h5 class="mb-0"><strong>Registration</strong></h5>
+                            <h5 class="mb-0"><strong>Approved</strong></h5>
                         </div>
                         <div class="card-body">
-                            <h1 class="display-1">5</h1>
+                            <h1 class="display-1"><?php echo $total_approve_entrep; ?></h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-4 offset-xxl-0" style="text-align: center;">
+                <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-1 offset-xxl-0" style="text-align: center;margin-left: 0px;">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-header">
+                            <h5 class="mb-0"><strong>Pending</strong></h5>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="display-1"><?php echo $total_pending_entrep; ?></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-1 offset-xxl-0" style="text-align: center;margin-left: 0px;">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-header">
                             <h5 class="mb-0"><strong>Profile Visits</strong></h5>
                         </div>
                         <div class="card-body">
-                            <h1 class="display-1">12</h1>
+                            <h1 class="display-1"><?php echo $total_visits; ?></h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-4 offset-xxl-0" style="text-align: center;">
-                    <div class="card" style="border-radius: 10px;">
-                        <div class="card-header">
-                            <h5 class="mb-0"><strong>Product Favorites</strong></h5>
-                        </div>
-                        <div class="card-body">
-                            <h1 class="display-1">5</h1>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -150,17 +189,44 @@ include '../db.php';
                 <div class="col-xl-12">
                     <h2>New Entrepreneur Request</h2>
                 </div>
-                <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-4 m-2" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                <?php
+                //get pending requests
+                $pending = 0;
+                $get_pending = mysqli_query($cxn, "SELECT * FROM entrep WHERE status='PENDING' ORDER BY added ASC LIMIT 3");
+                if (mysqli_num_rows($get_pending) > 0) {
+                    while ($pn = mysqli_fetch_array($get_pending)) {
+
+                ?>
+                        <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-4 m-2" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                            <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
+                                <div class="bs-icon-md bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center me-4 d-inline-block bs-icon xl"><svg class="bi bi-bell" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"></path>
+                                    </svg></div>
+                                <div>
+                                    <h4><?php echo $pn['first_name']; ?> <?php echo $pn['last_name']; ?></h4>
+                                    <p><?php echo $pn['added']; ?></p>
+                                    <a class="btn btn-primary btn-sm" style="border-radius: 10px;" href="./functions/accept.php?id=<?php echo $pn['entrep_id']; ?>">Accept</a>
+                                    <a class="btn btn-outline-danger btn-sm mx-2" style="border-radius: 10px;" href="./functions/decline.php?id=<?php echo $pn['entrep_id']; ?>">Decline</a>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                        $pending++;
+                    }
+                } else {
+                    echo '<div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-4 m-2" style="background: var(--bs-secondary-bg);border-radius: 10px;">
                     <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
                         <div class="bs-icon-md bs-icon-circle bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center me-4 d-inline-block bs-icon xl"><svg class="bi bi-bell" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"></path>
                             </svg></div>
-                        <div>
-                            <h4>Brgy. Cagbang Pottery</h4>
-                            <p>October 11, 2023 | 09: 40: 39  AM </p><button class="btn btn-primary btn-sm" type="submit" style="border-radius: 10px;">Accept</button><button class="btn btn-outline-danger btn-sm mx-2" type="submit" style="border-radius: 10px;">Decline</button>
+                        <div class="text-center">
+                            <h4>No pending requests.</h4>
                         </div>
                     </div>
-                </div>
+                </div>';
+                }
+                ?>
+
             </div>
         </div>
     </section>
@@ -179,40 +245,39 @@ include '../db.php';
                             <thead>
                                 <tr class="table-light">
                                     <th>Name of Business</th>
-                                    <th>Name of Entrepreneur</th>
+                                    <th>Business Type</th>
                                     <th>Registration Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Spinner&#39;s Herbal Products and Wellness Center</td>
-                                    <td>Ligaya Spinner</td>
-                                    <td>September 22, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Indag-an Primary Multipurpose Cooperative</td>
-                                    <td>Anilene Tejing</td>
-                                    <td>August 27, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Chemon&#39;s Ongyod Coffee Manufacturing</td>
-                                    <td>Ramon Farofil</td>
-                                    <td>July 20, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Cagbang Pottery</td>
-                                    <td>Guia Ferrer</td>
-                                    <td>July 19, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Rofelie&#39;s Delicacies</td>
-                                    <td>Rofelie Acosta</td>
-                                    <td>July 15, 2023</td>
-                                </tr>
+                                <?php
+                                //get list of business
+                                $blist = 0;
+                                $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY added ASC LIMIT 5");
+                                if (mysqli_num_rows($get_business) > 0) {
+                                    while ($b = mysqli_fetch_array($get_business)) {
+
+                                ?>
+                                        <tr>
+                                            <td><?php echo $b['business_name']; ?></td>
+                                            <td><?php echo $b['business_type']; ?></td>
+                                            <td><?php echo $b['added']; ?></td>
+                                        </tr>
+                                <?php
+
+                                        $blist++;
+                                    }
+                                } else {
+                                    echo "
+                                            <td colspan='3' class='text-center'> None at the moment</td>";
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
-                    <p class="text-center">See More</p>
+                    <p class="text-center"><a href="./business.php">
+                            See More</a></p>
+
                 </div>
                 <div class="col-xxl-12">
                     <h3>Registered Products</h3>
@@ -221,40 +286,79 @@ include '../db.php';
                             <thead>
                                 <tr class="table-light">
                                     <th>Name of Product</th>
-                                    <th>Name of Business</th>
+                                    <th>Product Type</th>
                                     <th>Date Added</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Herbal Products</td>
-                                    <td>Spinner&#39;s Herbal Products and Wellness Center</td>
-                                    <td>September 22, 2023</td>
+                                    <?php
+                                    //get list of products
+                                    $plist = 0;
+                                    $get_product = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY added ASC LIMIT 5");
+                                    if (mysqli_num_rows($get_product) > 0) {
+                                        while ($p = mysqli_fetch_array($get_product)) {
+                                            $added = $p['added'];
+
+
+
+
+                                    ?>
+                                            <td><?php echo $p['product_name']; ?></td>
+                                            <td><?php echo $p['product_type']; ?></td>
+                                            <td><?php echo $added; ?></td>
                                 </tr>
-                                <tr>
-                                    <td>Hablon</td>
-                                    <td>Indag-an Primary Multipurpose Cooperative</td>
-                                    <td>August 27, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Coffee</td>
-                                    <td>Chemon&#39;s Ongyod Coffee Manufacturing</td>
-                                    <td>July 20, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Pottery</td>
-                                    <td>Cagbang Pottery</td>
-                                    <td>July 19, 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Peanut Candy</td>
-                                    <td>Rofelie&#39;s Delicacies</td>
-                                    <td>July 15, 2023</td>
-                                </tr>
+                        <?php
+                                            $plist++;
+                                        }
+                                    } else {
+                                        echo "
+                                                <td colspan='3' class='text-center'> None at the moment</td>";
+                                    }
+                        ?>
                             </tbody>
                         </table>
                     </div>
-                    <p class="text-center">See More</p>
+                    <p class="text-center"><a href="./products.php">See More</a></p>
+                </div>
+                <div class="col-xxl-12">
+                    <h3>Registered Entrepreneurs</h3>
+                    <div>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr class="table-light">
+                                    <th>Entrepreneur ID</th>
+                                    <th>Name of Entrepreneur</th>
+                                    <th>Date Added</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <?php
+                                    //get list of entrepreneurs
+                                    $elist = 0;
+                                    $get_entrep = mysqli_query($cxn, "SELECT * FROM entrep WHERE status='APPROVED' ORDER BY added ASC LIMIT 5");
+                                    if (mysqli_num_rows($get_entrep) > 0) {
+                                        while ($e = mysqli_fetch_array($get_entrep)) {
+
+
+                                    ?>
+                                            <td><?php echo $e['entrep_id']; ?></td>
+                                            <td><?php echo $e['first_name']; ?> <?php echo $e['last_name']; ?></td>
+                                            <td><?php echo $e['added']; ?></td>
+                                </tr>
+                        <?php
+                                            $elist++;
+                                        }
+                                    } else {
+                                        echo "
+                                                <td colspan='4' class='text-center'> None at the moment</td>";
+                                    }
+                        ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-center"><a href="./entrep.php">See More</a></p>
                 </div>
             </div>
         </div>

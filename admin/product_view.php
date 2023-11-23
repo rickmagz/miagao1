@@ -2,10 +2,17 @@
 session_start();
 include '../db.php';
 
-$entrep_id = $_SESSION['entrep_id'];
+$id = $_GET['id'];
 
-//get products
+$get_product_info = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id='$id'");
+if ($get_product_info->num_rows > 0) {
+    $p = mysqli_fetch_assoc($get_product_info);
+}
 
+$get_business_info = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id='{$p['business_id']}'");
+if ($get_business_info->num_rows > 0) {
+    $b = mysqli_fetch_assoc($get_business_info);
+}
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +21,7 @@ $entrep_id = $_SESSION['entrep_id'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Choose Business Profile - Entrepreneurs' Dashboard - Miagao One Negosyo Center</title>
+    <title>Product List - Miagao One Negosyo Center</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -25,11 +32,9 @@ $entrep_id = $_SESSION['entrep_id'];
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow navbar-shrink navbar-light" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="../assets/img/miagao_one.png" width="85" height="70" /><span style="margin-left: 5px;">One Miagao<br />Negosyo</span>
-            </a>
-            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link " href="./dashboard.php">Home</a></li>
@@ -43,6 +48,7 @@ $entrep_id = $_SESSION['entrep_id'];
                                     &nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong>
                                 </a>
                                 <a class="dropdown-item" href="./accountsettings.php">Account Settings</a>
+                                <a class="dropdown-item" href="./systemsettings.php">System Settings</a>
                                 <a class="dropdown-item" href="../logout.php">Log out</a>
                             </div>
                         </div>
@@ -52,13 +58,14 @@ $entrep_id = $_SESSION['entrep_id'];
         </div>
     </nav>
 
+
     <section id="page-locator" style="margin-top: 20px;">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <a href="dashboard.php">Home &gt;</a>
-                    <a href="editbusiness.php">Choose Business Profile &gt;</a>
-                    <a class="text-bg-primary border rounded-pill border-0" href="#">Choose Product Profile &emsp13;</a>
+                    <a href="products.php">Products &gt;</a>
+                    <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14;Product Information &emsp13;</a>
                 </div>
             </div>
         </div>
@@ -70,32 +77,24 @@ $entrep_id = $_SESSION['entrep_id'];
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
                         <div id="editproduct_cardbody" class="card-body">
-                            <h3>Choose product to modify.</h3>
-
+                            <h3>Product Information</h3>
                             <div class="row row-cols-5">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                    <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
+                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                                            <div class="row">
+                                                <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/<?php echo $p['product_image']; ?>" alt="product_img" /></div>
+                                                <div id="business-info" class="col">
+                                                    <h3><?php echo $p['product_name']; ?></h3>
+                                                    <h6 class="text-muted mb-2">by <?php echo $b['business_name']; ?></h6>
+                                                    <p><?php echo $p['product_desc']; ?></p>
 
-                                <?php
-                                $product_list = 0;
-                                $get_product = mysqli_query($cxn, "SELECT * FROM product_list WHERE entrep_id = $entrep_id");
+                                                </div>
 
-                                if ($get_product->num_rows > 0) {
-                                    while ($p = mysqli_fetch_assoc($get_product)) {
-                                        $product_name = $p['product_name'];
-                                        $product_id = $p['product_id'];
-                                        $product_list++;
-                                ?>
-                                        <div class="col-6 col-sm-4 col-lg-3 col-xl-3 col-xxl-3 text-center mb-3 align-self-stretch d-flex justify-content-center">
-                                            <a class="btn btn-outline-primary w-100 h-100" type="button" style="border-radius: 10px;" href="editproductinfo.php?id=<?php echo $product_id; ?>">
-                                                <?php echo $product_name; ?>
-                                            </a>
+                                            </div>
                                         </div>
-                                <?php
-                                    }
-                                } else {
-                                    echo "<div class='col text-center mb-3'>No products yet.</div>";
-                                }
-                                ?>
-
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,12 +104,11 @@ $entrep_id = $_SESSION['entrep_id'];
     </section>
 
 
-
     <footer>
         <div class="container py-4 py-lg-5">
-            <hr />
+            <hr>
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 One Negosyo Miagao</p>
+                <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /></p>
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
 
@@ -119,8 +117,11 @@ $entrep_id = $_SESSION['entrep_id'];
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
     <script src="../assets/js/main.js"></script>
+
 </body>
 
 </html>

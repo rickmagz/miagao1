@@ -31,7 +31,7 @@ include 'db.php';
                     <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
-                   
+
                     <a class="btn btn-primary border rounded-pill shadow" role="button" href="login.php">LOG IN</a><a class="btn btn-secondary border rounded-pill shadow" role="button" href="signup.php">SIGN UP</a>
                 </ul>
             </div>
@@ -167,7 +167,7 @@ include 'db.php';
                     <h1 style="text-align: center;font-weight: bold;">Featured Businesses</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row w-100">
                 <?php
                 $business_list = 0;
                 $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand() LIMIT 4");
@@ -221,7 +221,7 @@ include 'db.php';
                 <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /><a href="entrep/index.php">Entrepreneur</a>&emsp14;|&emsp14;<a href="admin/index.php">Admin</a></p>
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item"><img src="assets/img/miagao_one.png" width="85" height="70" /></li>
-                    
+
                 </ul>
             </div>
         </div>

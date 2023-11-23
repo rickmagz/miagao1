@@ -78,7 +78,7 @@ include 'db.php';
                     <h1 style="text-align: center;font-weight: bold;">Featured Businesses</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row w-100">
                 <?php
                 $business_list = 0;
                 $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand() LIMIT 4");

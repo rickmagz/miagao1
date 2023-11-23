@@ -55,13 +55,52 @@ include '../db.php';
             </div>
         </div>
     </section>
+
+
+
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col"></div>
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">List of Products </h2>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
+                <?php
+                $product_list = 0;
+                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand()");
+
+                if ($get_products->num_rows > 0) {
+                    while ($p = mysqli_fetch_assoc($get_products)) {
+                        $prod_id = $p['product_id'];
+                        $prod_name = $p['product_name'];
+                        $prod_type = $p['product_type'];
+                        $prod_img = $p['product_image'];
+                        $prod_like = $p['product_like'];
+                        $product_list++;
+
+                ?>
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <div class="card">
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $prod_img; ?>" />
+                                <div class="card-body p-2 text-center">
+                                    <p class="text-primary card-text mb-0"><?php echo $prod_type; ?></p>
+                                    <h5 class="card-title"><?php echo $prod_name; ?></h5>
+                                </div>
+                                <div class="card-footer text-body-secondary text-center">
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./product_view.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>
+
+
     <footer>
         <div class="container py-4 py-lg-5">
             <hr>

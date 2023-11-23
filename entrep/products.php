@@ -9,7 +9,7 @@ include '../db.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Entrepreneurs' Product List - Miagao One Negosyo Center</title>
+    <title>Product List - Entrepreneurs' Homepage - One Negosyo Miagao</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -20,9 +20,11 @@ include '../db.php';
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow navbar-shrink navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="../assets/img/miagao_one.png" width="85" height="70" /><span style="margin-left: 5px;">One Miagao<br />Negosyo</span>
-            </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            </a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link " href="./dashboard.php">Home</a></li>
@@ -36,7 +38,6 @@ include '../db.php';
                                     &nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong>
                                 </a>
                                 <a class="dropdown-item" href="./accountsettings.php">Account Settings</a>
-                                <a class="dropdown-item" href="./systemsettings.php">System Settings</a>
                                 <a class="dropdown-item" href="../logout.php">Log out</a>
                             </div>
                         </div>

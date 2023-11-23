@@ -46,6 +46,8 @@ include '../db.php';
             </div>
         </div>
     </nav>
+
+    
     <section id="masthead">
         <div class="container">
             <div class="row">
@@ -57,9 +59,43 @@ include '../db.php';
         </div>
     </section>
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col"></div>
+        <div class=" container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2><strong>List of Businesses</strong></h2>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
+                <?php
+                $business_list = 0;
+                $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand()");
+
+                if ($get_business->num_rows > 0) {
+                    while ($b = mysqli_fetch_assoc($get_business)) {
+                        $busi_id = $b['business_id'];
+                        $busi_name = $b['business_name'];
+                        $busi_type = $b['business_type'];
+                        $busi_add = $b['business_address'];
+                        $busi_img = $b['business_image'];
+                        $busi_like = $b['business_likes'];
+                        $business_list++;
+                ?>
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <div class="card">
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
+                                <div class="card-body p-2 text-center">
+                                    <p class="text-primary card-text mb-0"><?php echo $busi_type; ?></p>
+                                    <h5 class="card-title"><?php echo $busi_name; ?></h5>
+                                </div>
+                                <div class="card-footer text-body-secondary text-center">
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./business_view.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>

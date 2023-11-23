@@ -35,10 +35,15 @@ include 'db.php';
             <div class="row">
                 <div class="col-md-6 col-xl-5 text-center" id="sign-illustration"><img class="img-fluid w-100" src="assets/img/illustrations/register.svg"></div>
                 <div class="col-md-5 col-xl-7 text-center text-md-start">
-                    <h2 class="display-6 fw-bold mb-5"><span class="underline pb-1"><strong>Entrepreneur<br />REGISTRATION</strong></span></h2>
+                    <h2 class="display-6 fw-bold mb-4"><span class="underline pb-1"><strong>Entrepreneur<br />REGISTRATION</strong></span></h2>
 
-                    <form action="entrep_signup.php" method="post" id="entrep_signup">
+                    <form action="entrep_signup.php" method="post" id="entrep_signup" enctype="multipart/form-data">
                         <div class="row">
+                            <div class="col-xl-12">
+                                <label class="form-label">Profile Image</label>
+                                <div class="mb-3"><input class="border rounded-pill form-control" type="file" name="image" required=""></div>
+
+                            </div>
                             <div class="col-xl-6">
                                 <div class="mb-3"><input class="border rounded-pill form-control" type="text" name="firstname" placeholder="First Name" required=""></div>
                                 <div class="mb-3"><input class="border rounded-pill form-control" type="text" name="lastname" placeholder="Last Name" required=""></div>
@@ -52,7 +57,7 @@ include 'db.php';
                         <div class="mb-5" style="margin: 0px;">
                             <div class="row">
                                 <div class="col-xl-5">
-                                    <button class="btn btn-primary border rounded-pill shadow" type="submit" style="margin-bottom: 10px; margin-right: 20px;" name="signup" form="entrep_signup">Create account</button>
+                                    <button class="btn btn-primary border rounded-pill shadow" type="submit" style="margin-bottom: 10px; margin-right: 20px;" name="entrep_signup" form="entrep_signup">Create account</button>
 
                                 </div>
 
@@ -76,24 +81,42 @@ include 'db.php';
         </div>
     </section>
     <?php
-    if (isset($_POST['signup'])) {
+
+
+
+    if (isset($_POST['entrep_signup'])) {
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $entrep_id = rand(00000000, 99999999);
+        $upload_folder = "./assets/img/entrep_img/";
 
-        $check_email = mysqli_query($cxn, "SELECT * FROM entrep WHERE email_add='$email'") or die("Error in query: $check_email." . mysqli_error($cxn));
+        $check_email = mysqli_query($cxn, "SELECT * FROM entrep WHERE email_add='$email'");
 
-        if ($check_email->num_rows == 1) {
+        if ($check_email->num_rows > 0) {
             echo "<script type='text/javascript'> alert('Email already registered!'); location.href='signup.php'; </script>";
         } else {
-            $signup = mysqli_query($cxn, "INSERT INTO entrep(entrep_id,first_name,last_name,email_add,password,status) VALUES('$entrep_id','$firstname','$lastname','$email','$password','PENDING')") or die("Error in query: $signup " . mysqli_error($cxn));
-        }
+            $image = basename($_FILES["image"]["name"]);
+            $targetFileFolder = $upload_folder . $image;
+            $fileType = pathinfo($targetFileFolder, PATHINFO_EXTENSION);
+            $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'JPG', 'JPEG', 'PNG');
 
-        echo "<script type='text/javascript'> alert('Registration Successful! Click to log in.'); location.href = 'entrep/index.php'; </script>";
+            if (in_array($fileType, $allowTypes)) {
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFileFolder)) {
+                    $entrep_signup = mysqli_query($cxn, "INSERT INTO entrep(first_name,last_name,email_add,password,status,image) VALUES('$firstname','$lastname','$email','$password','PENDING','$image')") or die("Error in query: $entrep_signup " . mysqli_error($cxn));
+
+                    echo "<script type='text/javascript'> alert('Registration Successful! Click to log in.'); location.href = 'entrep/index.php'; </script>";
+                } else {
+                    echo "<script type='text/javascript'> alert('File upload failed!'); location.href = 'entrep_signup.php'; </script>";
+                }
+            } else {
+                echo "<script type='text/javascript'> alert('Invalid file type!'); location.href = 'entrep_signup.php'; </script>";
+            }
+        }
     }
+
+
 
     ?>
 

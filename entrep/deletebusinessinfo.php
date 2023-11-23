@@ -23,14 +23,16 @@ $busi_id = $_GET['id'];
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top shadow navbar-shrink navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="../assets/img/miagao_one.png" width="85" height="70" /><span style="margin-left: 5px;">One Miagao<br />Negosyo</span>
-            </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            </a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="./dashboard.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link " href="./business.php">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./products.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link " href="./dashboard.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./business.php">Business</a></li>
+                    <li class="nav-item"><a class="nav-link " href="./products.php">Products</a></li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;">
@@ -39,7 +41,6 @@ $busi_id = $_GET['id'];
                                     &nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong>
                                 </a>
                                 <a class="dropdown-item" href="./accountsettings.php">Account Settings</a>
-                                <a class="dropdown-item" href="./systemsettings.php">System Settings</a>
                                 <a class="dropdown-item" href="../logout.php">Log out</a>
                             </div>
                         </div>
