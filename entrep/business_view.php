@@ -94,6 +94,8 @@ if ($get_business_info->num_rows > 0) {
                                                     <h3><?php echo $b['business_name']; ?></h3>
                                                     <h6 class="text-muted mb-2"><?php echo $b['business_type']; ?></h6>
                                                     <p><?php echo $b['business_desc']; ?></p>
+                                                    <p>Address: <?php echo $b['business_address']; ?></p>
+                                                    <!-- <p>Contact Number: </p> -->
 
                                                 </div>
                                             </div>
