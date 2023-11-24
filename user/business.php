@@ -70,7 +70,7 @@ include '../db.php';
                 ?>
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
                             <div class="card">
-                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/business_img/<?php echo $busi_img; ?>" />
                                 <div class="card-body p-2 text-center">
                                     <p class="text-primary card-text mb-0"><?php echo $busi_type; ?></p>
                                     <h5 class="card-title"><?php echo $busi_name; ?></h5>

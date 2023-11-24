@@ -133,7 +133,7 @@ if ($if_faved->num_rows >= 1) {
                                                             <div class="card" style="border-radius: 10px;">
                                                                 <div class="card-body text-center">
                                                                     <h6 class="text-muted card-subtitle mb-2"><?php echo $prod_name; ?></h6>
-                                                                    <img class="rounded w-100" alt="Product Image" src="../assets/img/<?php echo $prod_img; ?>" />
+                                                                    <img class="rounded w-100" alt="Product Image" src="../assets/img/business_img/<?php echo $prod_img; ?>" />
                                                                     <div>
 
                                                                         <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>

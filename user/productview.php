@@ -96,7 +96,7 @@ if (mysqli_num_rows($if_liked) >= 1) {
                                     <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
                                         <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
                                             <div class="row">
-                                                <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/<?php echo $p['product_image']; ?>" alt="product_img" /></div>
+                                                <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/product_img/<?php echo $p['product_image']; ?>" alt="product_img" /></div>
                                                 <div id="business-info" class="col">
                                                     <h3><?php echo $p['product_name']; ?></h3>
                                                     <h6 class="text-muted mb-2">by <?php echo $b['business_name']; ?></h6>
