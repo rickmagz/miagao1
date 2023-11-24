@@ -10,6 +10,13 @@ if ($get_business_info->num_rows > 0) {
     $b = mysqli_fetch_assoc($get_business_info);
 }
 
+//get total of pending entrep
+$stmt = $cxn->prepare("SELECT * FROM entrep WHERE status='PENDING'");
+$stmt->execute();
+$pending_entrep = $stmt->get_result();
+$total_pending_entrep = $pending_entrep->num_rows;
+
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -37,6 +44,12 @@ if ($get_business_info->num_rows > 0) {
                     <li class="nav-item"><a class="nav-link" href="./dashboard.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="./business.php">Business</a></li>
                     <li class="nav-item"><a class="nav-link" href="./products.php">Products</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active bg-light" href="./notifications.php" style="border-radius: 10px; margin-right: 10px;">
+                            Notifications&emsp13;<span class="badge rounded-pill text-bg-danger">
+                                <?php echo $total_pending_entrep; ?></span>
+                        </a>
+                    </li>
                     <li class="nav-item fw-bold d-flex align-items-center">
                         <div class="nav-item dropdown bg-primary border rounded-pill border-primary shadow d-flex align-items-center" style="padding-left: 14px;padding-right: 14px;"><a class="dropdown-toggle link-light" aria-expanded="false" data-bs-toggle="dropdown" href="#">Menu</a>
                             <div class="dropdown-menu text-break border rounded" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;margin-top: 0px;padding-top: 8px;padding-bottom: 8px;">
@@ -119,7 +132,7 @@ if ($get_business_info->num_rows > 0) {
                                                                     <img class="rounded w-100" alt="Product Image" src="../assets/img/<?php echo $prod_img; ?>" />
                                                                     <div>
 
-                                                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
+                                                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./product_view.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
