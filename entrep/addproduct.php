@@ -74,7 +74,7 @@ include '../db.php';
                                                 <option disabled selected>Select Business Name</option>
 
                                                 <?php
-                                                $sel_business = mysqli_query($cxn, "SELECT business_id, business_name FROM business_list");
+                                                $sel_business = mysqli_query($cxn, "SELECT business_id, business_name FROM business_list WHERE entrep_id = {$_SESSION['entrep_id']}");
 
                                                 if ($sel_business->num_rows > 0) {
                                                     while ($get_bus = $sel_business->fetch_assoc()) {
