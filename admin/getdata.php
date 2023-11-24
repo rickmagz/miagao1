@@ -86,16 +86,16 @@ $date = date('m/d/Y h:i:s A');
             </div>
             <div class="text-left mb-2">
                 <span>Data Update: <?php echo $date; ?></span><br />
-                <button class="btn btn-dark btn-sm" onclick="printDiv()" id="printbtn">Print Data</button>
+                <button class="btn btn-outline-dark btn-sm" onclick="printDiv()" id="printbtn" style="border-radius: 5px;">Print Data</button>
             </div>
             <div>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th colspan="4">Registered Users</th>
+                            <th class="table-secondary" colspan="4">Registered Users</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-light">
                         <tr>
                             <th>User ID</th>
                             <th>Full Name</th>
@@ -136,10 +136,10 @@ $date = date('m/d/Y h:i:s A');
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th colspan="4">Registered Entrepreneurs</th>
+                            <th class="table-secondary" colspan="4">Registered Entrepreneurs</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-light">
                         <tr>
                             <th>Entrepreneur ID</th>
                             <th>Full Name</th>
@@ -180,10 +180,10 @@ $date = date('m/d/Y h:i:s A');
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th colspan="5">Registered Business</th>
+                            <th class="table-secondary" colspan="5">Registered Business</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-light">
                         <tr>
                             <th>Business ID</th>
                             <th>Business Name</th>
@@ -228,10 +228,10 @@ $date = date('m/d/Y h:i:s A');
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th colspan="4">Registered Products</th>
+                            <th class="table-secondary" colspan="4">Registered Products</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-light">
                         <tr>
                             <th>Product ID</th>
                             <th>Product Name</th>
