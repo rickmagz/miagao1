@@ -58,7 +58,7 @@ $total_pending_entrep = $pending_entrep->num_rows;
                                     &nbsp;<strong><?php echo $_SESSION['firstname']; ?></strong>
                                 </a>
                                 <a class="dropdown-item" href="./accountsettings.php">Account Settings</a>
-                                <a class="dropdown-item" href="./systemsettings.php">System Settings</a>
+                                <a class="dropdown-item" href="./getdata.php">Download system data</a>
                                 <a class="dropdown-item" href="../logout.php">Log out</a>
                             </div>
                         </div>
