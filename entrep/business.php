@@ -7,7 +7,7 @@ include '../db.php';
 <html data-bs-theme="light" lang="en">
 
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Business List - Entrepreneurs' Homepage - One Negosyo Miagao</title>
     <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
@@ -81,7 +81,7 @@ include '../db.php';
             ?>
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 h-100">
                         <div class="card">
-                            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
+                            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/business_img/<?php echo $busi_img; ?>" />
                             <div class="card-body p-2 text-center">
                                 <h6 class="card-title" style="font-weight: bold;"><?php echo $busi_name; ?></h6>
                                 <p class="text-primary mb-0"><?php echo $busi_type; ?></p>

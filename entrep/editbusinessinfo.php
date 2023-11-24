@@ -86,7 +86,9 @@ $id = $_GET['id'];
                                             <div class="row">
                                                 <input type="hidden" name="business_id" value="<?php echo $busi_id; ?>">
                                                 <div class="col-md-6 col-lg-6 col-xl-5 col-xxl-6 text-start align-self-center">
-                                                    <div class="select-control mb-3"><label class="form-label">Current business type: <?php echo $busi_type; ?></label><select class="form-select" style="border-radius: 10px;" name="businesstype" autofocus required>
+                                                    <div class="select-control mb-3">
+                                                        <label class="form-label">Current business type: <?php echo $busi_type; ?></label>
+                                                        <select class="form-select" style="border-radius: 10px;" name="businesstype" autofocus required>
                                                             <option disabled selected>Select Business Type</option>
                                                             <option value="Retail">Retail</option>
                                                             <option value="Food and Bevergae">Food and Beverage</option>
@@ -101,7 +103,8 @@ $id = $_GET['id'];
                                                             <option value="Energy and Utilities">Energy and Utilities</option>
                                                             <option value="Natural Resources">Natural Resources</option>
                                                             <option value="Healthcare">Healthcare</option>
-                                                        </select></div>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="col-xxl-6 align-self-center">
                                                     <div class="w-100"></div>

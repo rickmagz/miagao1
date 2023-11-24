@@ -12,5 +12,5 @@ if (isset($_POST['submit'])) {
 
     $update_busi_info = mysqli_query($cxn, "UPDATE business_list SET business_name='$newbusi_name', business_type='$newbusi_type',business_desc='$newbusi_desc',business_address='$newbusi_addr' WHERE business_id = '$business_id'") or die("Error in query: $update_busi_info." . mysqli_error($cxn));
 
-    // echo "<script type='text/javascript'> alert('Business profile modified.'); location.href = 'editbusiness.php'; </script>";
+    echo "<script type='text/javascript'> alert('Business profile modified.'); location.href = 'editbusiness.php'; </script>";
 }
