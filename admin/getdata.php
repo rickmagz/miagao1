@@ -32,6 +32,14 @@ $date = date('m/d/Y h:i:s A');
             display: none;
         }
 
+        footer {
+            display: none;
+        }
+
+        #mainNav {
+            display: none;
+        }
+
     }
 </style>
 
@@ -74,7 +82,7 @@ $date = date('m/d/Y h:i:s A');
     <div class="container py-3 py-xl-5" id="print">
         <div class="row">
             <div class="col-xl-12">
-                <h2>System Data</h2>
+                <h2>One Miagao Negosyo System Data</h2>
             </div>
             <div class="text-left mb-2">
                 <span>Data Update: <?php echo $date; ?></span><br />
