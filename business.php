@@ -48,29 +48,6 @@ include 'db.php';
             </div>
         </div>
     </section>
-    <section>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
-                <div class="col-sm-6"><img class="rounded img-fluid" src="assets/img/illustrations/ranking.svg"></div>
-                <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center ">
-                    <div class="ms-md-3">
-                        <h5 class="fs-3 fw-bold">User favorites</h5>
-                        <p class="text-muted">Get more prospects of businesses in our town based on our users favorites..</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
-                <div class="col-sm-6 order-md-last"><img class="rounded img-fluid" src="assets/img/illustrations/startup.svg"></div>
-                <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center mb-5">
-                    <div class="ms-md-3">
-                        <h5 class="fs-3 fw-bold mb-4">User recommendations</h5>
-                        <p class="text-muted mb-4">See what the latest technology has to offer whether our local products or local enterprises.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section data-aos="fade-up">
         <div class="container">
             <div class="row">
@@ -95,7 +72,7 @@ include 'db.php';
                 ?>
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 h-100">
                             <div class="card">
-                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/business_img/<?php echo $busi_img; ?>" />
                                 <div class="card-body p-2 text-center">
                                     <h6 class="card-title" style="font-weight: bold;"><?php echo $busi_name; ?></h6>
                                     <p class="text-primary mb-0"><?php echo $busi_type; ?></p>
@@ -109,6 +86,30 @@ include 'db.php';
             </div>
         </div>
     </section>
+    <section>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
+                <div class="col-sm-6"><img class="rounded img-fluid" src="assets/img/illustrations/ranking.svg"></div>
+                <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center ">
+                    <div class="ms-md-3">
+                        <h5 class="fs-3 fw-bold">User favorites</h5>
+                        <p class="text-muted">Get more prospects of businesses in our town based on our users favorites..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 mx-auto" data-aos="fade-up" data-aos-delay="50" style="max-width: 900px;">
+                <div class="col-sm-6 order-md-last"><img class="rounded img-fluid" src="assets/img/illustrations/startup.svg"></div>
+                <div class="col-sm-6 d-md-flex align-items-md-end align-items-lg-center mb-5">
+                    <div class="ms-md-3">
+                        <h5 class="fs-3 fw-bold mb-4">User recommendations</h5>
+                        <p class="text-muted mb-4">See what the latest technology has to offer whether our local products or local enterprises.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <footer>
         <div class="container py-4 py-lg-5">

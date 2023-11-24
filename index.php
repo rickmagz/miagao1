@@ -51,75 +51,6 @@ include 'db.php';
             </div>
         </div>
     </header>
-    <section data-aos="flip-down">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-lg-4 offset-lg-0">
-                    <div class="card border-light border-1 p-4">
-                        <div class="card-body text-center">
-                            <div class="bs-icon-lg bs-icon-rounded bs-icon-secondary d-inline-block mb-4 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-player-play">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M7 4v16l13 -8z"></path>
-                                </svg></div>
-                            <div>
-                                <h5 class="fw-bold">Start a Business</h5>
-                                <p class="text-muted">Know what you need to jumpstart your own business.<br></p><a class="btn btn-sm px-0" role="button" href="startbusiness.html">Learn More&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
-                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                    </svg><br></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-4 offset-lg-0">
-                    <div class="card border-light border-1 d-flex justify-content-center p-4">
-                        <div class="card-body text-center">
-                            <div class="bs-icon-lg bs-icon-rounded bs-icon-secondary d-inline-block mb-4 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-registered">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="12" cy="12" r="9"></circle>
-                                    <path d="M9 16v-8h4a2 2 0 0 1 0 4h-4m3 0l3 4"></path>
-                                </svg></div>
-                            <div>
-                                <h5 class="fw-bold">Register your Business</h5>
-                                <p class="text-muted">All the info you need to set-up your business formally</p><a class="btn btn-sm px-0" role="button" href="registerbusiness.html">Learn More&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
-                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                    </svg><br></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-4">
-                    <div class="card border-light border-1 d-flex justify-content-center p-4">
-                        <div class="card-body text-center">
-                            <div class="bs-icon-lg bs-icon-rounded bs-icon-secondary d-inline-block mb-4 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-activity">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
-                                </svg></div>
-                            <div>
-                                <h5 class="fw-bold">Grow your business</h5>
-                                <p class="text-muted">Get the latest news, trends and tips on your industry.</p><a class="btn btn-sm px-0" role="button" href="growbusiness.html">Learn More&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
-                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                                    </svg><br></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section data-aos="fade-up">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-lg-5 offset-lg-1">
-                    <h3 class="display-6 fw-bold pb-md-4">Make your business&nbsp;<span class="underline">GROW</span></h3>
-                    <p class="text-muted mb-4">Having established your business, your primary concern is now viability and sustainability. The Negosyo Center gathers and provides opportunities for businesses to grow by providing an avenue to connect buyers and suppliers hasten the business fulfilment process.<br></p><a class="btn btn-primary btn-sm" role="button" style="border-radius: 10px;" href="https://dtinegosyocenter.online/grow-your-business/2">FInd Resources</a>
-                </div>
-                <div class="col-md-6 col-lg-5 col-xl-5 order-first order-md-last">
-                    <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="assets/img/illustrations/teamwork.svg"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="m-5" data-aos="fade-up">
         <div class="container">
@@ -146,7 +77,7 @@ include 'db.php';
 
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
                             <div class="card">
-                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $prod_img; ?>" />
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/product_img/<?php echo $prod_img; ?>" />
                                 <div class="card-body p-2 text-center">
                                     <h6 class="card-title fw-bold"><?php echo $prod_name; ?></h6>
                                     <p class="text-primary card-text mb-0"><?php echo $prod_type; ?></p>
@@ -184,7 +115,7 @@ include 'db.php';
                 ?>
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 h-100">
                             <div class="card">
-                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/product_img/<?php echo $busi_img; ?>" />
                                 <div class="card-body p-2 text-center">
                                     <h6 class="card-title" style="font-weight: bold;"><?php echo $busi_name; ?></h6>
                                     <p class="text-primary mb-0"><?php echo $busi_type; ?></p>
