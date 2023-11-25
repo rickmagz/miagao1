@@ -5,7 +5,7 @@ include '../db.php';
 $user_id = $_SESSION['user_id'];
 $id = $_GET['id'];
 
-$busvisit_query = mysqli_query($cxn, "INSERT INTO user_business_reactions(userID,businessID,action) VALUES('$user_id','$id','VISIT')") or die("Error in query: $busvisit_query." . mysqli_error($cxn));
+$busvisit_query = mysqli_query($cxn, "INSERT INTO user_business_visits(userID,businessID,actions) VALUES('$user_id','$id','VISIT')") or die("Error in query: $busvisit_query." . mysqli_error($cxn));
 
 $get_business_info = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id='$id'");
 
@@ -14,7 +14,7 @@ if ($get_business_info->num_rows > 0) {
 }
 
 // check if user added to favorites
-$if_faved = mysqli_query($cxn, "SELECT * FROM user_business_reactions WHERE userID = '{$_SESSION['user_id']}' AND businessID = '$id' AND action='LIKED'");
+$if_faved = mysqli_query($cxn, "SELECT * FROM user_business_faves WHERE userID = '{$_SESSION['user_id']}' AND businessID = '$id' AND action='LIKED'");
 
 if ($if_faved->num_rows >= 1) {
     $button = '<a class="btn btn-primary btn-sm border rounded-pill" href="removefavebusiness.php?id=' . $id . '">
