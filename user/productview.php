@@ -5,7 +5,7 @@ include '../db.php';
 $user_id = $_SESSION['user_id'];
 $id = $_GET['id'];
 
-$visit_query = mysqli_query($cxn, "INSERT INTO user_product_reactions(userID,productID,action) VALUES('$user_id','$id','VISIT')") or die("Error in query: $visit_query." . mysqli_error($cxn));
+$visit_query = mysqli_query($cxn, "INSERT INTO user_product_visits(userID,productID,action) VALUES('$user_id','$id','VISIT')") or die("Error in query: $visit_query." . mysqli_error($cxn));
 
 $get_product_info = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id='$id'");
 if ($get_product_info->num_rows > 0) {
@@ -18,7 +18,7 @@ if ($get_business_info->num_rows > 0) {
 }
 
 // Check if the user already liked the product
-$if_liked = mysqli_query($cxn, "SELECT * FROM user_product_reactions WHERE userID = '{$_SESSION['user_id']}' AND productID = '$id' AND action='LIKED'");
+$if_liked = mysqli_query($cxn, "SELECT * FROM user_product_faves WHERE userID = '{$_SESSION['user_id']}' AND productID = '$id' AND action='LIKED'");
 
 if (mysqli_num_rows($if_liked) >= 1) {
     $button_link = ' <a class="btn btn-primary btn-sm border rounded-pill" href="removefaveproduct.php?id=' . $id . '">
@@ -96,7 +96,9 @@ if (mysqli_num_rows($if_liked) >= 1) {
                                     <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
                                         <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
                                             <div class="row">
-                                                <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/product_img/<?php echo $p['product_image']; ?>" alt="product_img" /></div>
+                                                <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center">
+                                                    <img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/product_img/<?php echo $p['product_image']; ?>" alt="product_img" />
+                                                </div>
                                                 <div id="business-info" class="col">
                                                     <h3><?php echo $p['product_name']; ?></h3>
                                                     <h6 class="text-muted mb-2">by <?php echo $b['business_name']; ?></h6>
@@ -111,13 +113,77 @@ if (mysqli_num_rows($if_liked) >= 1) {
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- user feedback -->
+                                    <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
+                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                                            <h5>User's feedback</h5>
+                                            <div class="row" style="border-radius: 10px;background: var(--bs-light-bg-subtle);border-color: var(--bs-body-bg);">
+                                                <div class="col">
+                                                    <?php
+                                                    $feedback = 0;
+                                                    $user = 0;
+                                                    $get_feedback = mysqli_query($cxn, "SELECT * FROM user_product_feedback");
+
+                                                    if (mysqli_num_rows($get_feedback) > 0) {
+                                                        while ($f = mysqli_fetch_assoc($get_feedback)) {
+                                                            $userID = $f['userID'];
+                                                            $fback = $f['feedback'];
+
+                                                            $get_user = mysqli_query($cxn, "SELECT first_name, last_name,image FROM user WHERE user_id='$userID'");
+                                                            if (mysqli_num_rows($get_user) > 0) {
+                                                                $u = mysqli_fetch_assoc($get_user);
+                                                            }
+
+                                                    ?>
+                                                            <div class="row">
+                                                                <div class="col-3 col-sm-2 col-md-1 col-lg-1 col-xl-1 col-xxl-1 offset-xxl-0 d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center">
+                                                                    <img class="rounded-circle " width="65" height="65" src="../assets/img/user_img/<?php echo $u['image']; ?>" alt="user_image" />
+                                                                </div>
+                                                                <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 col-xxl-10 offset-xxl-0">
+                                                                    <div class="mt-3">
+                                                                        <h5><?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?></h5>
+                                                                        <p><?php echo $f['feedback']; ?></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                    <?php
+
+
+                                                        }
+                                                        $feedback++;
+                                                    }
+
+
+                                                    ?>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- feedback section -->
+                                    <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
+                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                                            <h5>Leave feedback</h5>
+                                            <div class="row">
+                                                <form action="postfeedback.php?id=<?php echo $id; ?>" method="post" id="feedback">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 80px; border-radius:10px;" name="comment"></textarea>
+                                                        <label for="floatingTextarea2">Comments</label>
+                                                    </div>
+                                                    <div>
+                                                        <button class="btn btn-sm btn-primary mt-2" type="submit" style="border-radius:12px;" name="post_comment">Post comment</button>
+                                                    </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 
