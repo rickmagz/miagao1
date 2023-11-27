@@ -88,6 +88,7 @@ include '../db.php';
         </div>
     </section>
 
+
     <!-- recommendations -->
     <section data-aos="fade-up" style="margin-top: -40px;">
         <div class="container py-4 py-xl-5">
@@ -97,87 +98,106 @@ include '../db.php';
                 </div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
-                <!-- algorithm starts here -->
                 <?php
                 $user_id = $_SESSION['user_id'];
 
-                //all business visited by the current user
-                $business_visitedItems = array();
-                $business_visitQuery = "SELECT businessID FROM user_business_visits WHERE userID = '$user_id'";
+                // Check if there are any visited businesses for the current user
+                $business_visitQuery = "SELECT COUNT(*) FROM user_business_visits WHERE userID = '$user_id'";
                 $business_visitResult = mysqli_query($cxn, $business_visitQuery);
-                while ($business_visitedRow = mysqli_fetch_assoc($business_visitResult)) {
-                    $business_visitedItems[] = $business_visitedRow['businessID'];
-                }
+                $business_visitCount = mysqli_fetch_row($business_visitResult)[0];
 
-                //all faved business by the current user
-                $business_faveItems = array();
-                $business_faveQuery = "SELECT businessID FROM user_business_faves WHERE userID = '$user_id'";
+                // Check if there are any favorited businesses for the current user
+                $business_faveQuery = "SELECT COUNT(*) FROM user_business_faves WHERE userID = '$user_id'";
                 $business_faveResult = mysqli_query($cxn, $business_faveQuery);
-                while ($business_faveRow = mysqli_fetch_assoc($business_faveResult)) {
-                    $business_faveItems[] = $business_faveRow['businessID'];
-                }
+                $business_faveCount = mysqli_fetch_row($business_faveResult)[0];
 
-                //Get all businesses that the current user has not visited or liked
-                $unseenBusiness = array();
-                $unseenBusiness_query = "SELECT business_id FROM business_list WHERE business_id NOT IN(" . implode(',', $business_visitedItems) . ") AND business_id NOT IN (" . implode(',', $business_faveItems) . ")";
-                $unseenBusiness_result = mysqli_query($cxn, $unseenBusiness_query);
-                while ($unseenBusiness_row = mysqli_fetch_assoc($unseenBusiness_result)) {
-                    $unseenBusinessItems[] = $unseenBusiness_row['business_id'];
-                }
+                // Proceed with the recommendation logic if both visited and favorited businesses exist
+                if ($business_visitCount > 0 && $business_faveCount > 0) {
 
-                //Calculation of similarity score of businesses between the current user and other users
-                $business_similarityScore = array();
-                foreach ($unseenBusinessItems as $unseenBusinessID) {
-                    $business_similarityScore[$unseenBusinessID] = 1;
 
-                    //get all users who have visited or faved the unseen business
-                    $business_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_business_visits WHERE businessID = $unseenBusinessID UNION SELECT userID FROM user_business_faves WHERE businessID = $unseenBusinessID");
-                    while ($similarBusiness_userRow = mysqli_fetch_assoc($business_similarUsersQuery)) {
-                        $similarBusiness_userID = $similarBusiness_userRow['userID'];
+                ?>
+                    <!-- algorithm starts here -->
+                    <?php
 
-                        //Check if current user has visited or faved the same business as the similar user, then increment the similarity score
-                        if ($user_id != $similarBusiness_userID) {
-                            $similarBusiness_query = mysqli_query($cxn, "SELECT businessID FROM user_business_visits WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_visits WHERE userID = $similarBusiness_userID) UNION SELECT businessID from user_business_faves WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_faves WHERE userID = $similarBusiness_userID)");
-                            $num_SimilarBusinessItems = mysqli_num_rows($similarBusiness_query);
+                    //all business visited by the current user
+                    $business_visitedItems = array();
+                    $business_visitQuery = "SELECT businessID FROM user_business_visits WHERE userID = '$user_id'";
+                    $business_visitResult = mysqli_query($cxn, $business_visitQuery);
+                    while ($business_visitedRow = mysqli_fetch_assoc($business_visitResult)) {
+                        $business_visitedItems[] = $business_visitedRow['businessID'];
+                    }
 
-                            $business_similarityScore[$unseenBusinessID] += $num_SimilarBusinessItems;
+                    //all faved business by the current user
+                    $business_faveItems = array();
+                    $business_faveQuery = "SELECT businessID FROM user_business_faves WHERE userID = '$user_id'";
+                    $business_faveResult = mysqli_query($cxn, $business_faveQuery);
+                    while ($business_faveRow = mysqli_fetch_assoc($business_faveResult)) {
+                        $business_faveItems[] = $business_faveRow['businessID'];
+                    }
+
+
+                    //Get all businesses that the current user has not visited or liked
+                    $unseenBusiness = array();
+                    $unseenBusiness_query = "SELECT business_id FROM business_list WHERE business_id NOT IN(" . implode(',', $business_visitedItems) . ") AND business_id NOT IN (" . implode(',', $business_faveItems) . ")";
+                    $unseenBusiness_result = mysqli_query($cxn, $unseenBusiness_query);
+                    while ($unseenBusiness_row = mysqli_fetch_assoc($unseenBusiness_result)) {
+                        $unseenBusinessItems[] = $unseenBusiness_row['business_id'];
+                    }
+
+                    //Calculation of similarity score of businesses between the current user and other users
+                    $business_similarityScore = array();
+                    foreach ($unseenBusinessItems as $unseenBusinessID) {
+                        $business_similarityScore[$unseenBusinessID] = 1;
+
+                        //get all users who have visited or faved the unseen business
+                        $business_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_business_visits WHERE businessID = $unseenBusinessID UNION SELECT userID FROM user_business_faves WHERE businessID = $unseenBusinessID");
+                        while ($similarBusiness_userRow = mysqli_fetch_assoc($business_similarUsersQuery)) {
+                            $similarBusiness_userID = $similarBusiness_userRow['userID'];
+
+                            //Check if current user has visited or faved the same business as the similar user, then increment the similarity score
+                            if ($user_id != $similarBusiness_userID) {
+                                $similarBusiness_query = mysqli_query($cxn, "SELECT businessID FROM user_business_visits WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_visits WHERE userID = $similarBusiness_userID) UNION SELECT businessID from user_business_faves WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_faves WHERE userID = $similarBusiness_userID)");
+                                $num_SimilarBusinessItems = mysqli_num_rows($similarBusiness_query);
+
+                                $business_similarityScore[$unseenBusinessID] += $num_SimilarBusinessItems;
+                            }
                         }
                     }
-                }
 
-                //Sort the similarity scores in descending order
-                arsort($business_similarityScore);
+                    //Sort the similarity scores in descending order
+                    arsort($business_similarityScore);
 
-                //Recommend the top unseen business with the highest similarity score
-                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 1, 10);
+                    //Recommend the top unseen business with the highest similarity score
+                    $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 1, 10);
 
-                //                echo "Recommended Business: ";
-                foreach ($recommendedBusinessItems as $recommendedBusinessID) {
-                    //echo $recommendedBusinessID . ", ";
-                    $business = 0;
-                    $recommendBusiness = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id = '$recommendedBusinessID'");
-                    if (mysqli_num_rows($recommendBusiness) > 0) {
-                        while ($r = mysqli_fetch_assoc($recommendBusiness)) {
-                ?>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                                <div class="card">
-                                    <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $r['business_image']; ?>" />
-                                    <div class="card-body p-2 text-center">
-                                        <p class="text-primary card-text mb-0"><?php echo $r['business_type']; ?></p>
-                                        <h5 class="card-title"><?php echo $r['business_name']; ?></h5>
-                                    </div>
-                                    <div class="card-footer text-body-secondary text-center">
-                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewbusiness.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
+                    //                echo "Recommended Business: ";
+                    foreach ($recommendedBusinessItems as $recommendedBusinessID) {
+                        //echo $recommendedBusinessID . ", ";
+                        $business = 0;
+                        $recommendBusiness = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id = '$recommendedBusinessID'");
+                        if (mysqli_num_rows($recommendBusiness) > 0) {
+                            while ($r = mysqli_fetch_assoc($recommendBusiness)) {
+                    ?>
+                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                    <div class="card">
+                                        <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $r['business_image']; ?>" />
+                                        <div class="card-body p-2 text-center">
+                                            <p class="text-primary card-text mb-0"><?php echo $r['business_type']; ?></p>
+                                            <h5 class="card-title"><?php echo $r['business_name']; ?></h5>
+                                        </div>
+                                        <div class="card-footer text-body-secondary text-center">
+                                            <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewbusiness.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                 <?php
 
+                            }
+                            $business++;
                         }
-                        $business++;
-                    } else {
-                        echo ' <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3"><p class="text-center">No recommendations for now.</p></div>';
                     }
+                } else {
+                    echo ' <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3"><p class="text-center">No recommendations for now.</p></div>';
                 }
                 ?>
             </div>

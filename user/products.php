@@ -107,81 +107,92 @@ if ($get_product_info->num_rows > 0) {
                 <!-- algorithm starts here -->
                 <?php
 
-                //all product visited by current user
-                $product_visitedItems = array();
-                $product_visitQuery = mysqli_query($cxn, "SELECT productID FROM user_product_visits WHERE userID = '$user_id'");
-                while ($product_visitedRow = mysqli_fetch_assoc($product_visitQuery)) {
-                    $product_visitedItems[] = $product_visitedRow['productID'];
-                }
+                $product_visitQuery = "SELECT COUNT(*) FROM user_product_visits WHERE userID = '$user_id'";
+                $product_visitResult = mysqli_query($cxn, $product_visitQuery);
+                $product_visitCount = mysqli_fetch_row($product_visitResult)[0];
 
-                //all faved product by the current user
-                $product_faveItems = array();
-                $product_faveQuery = mysqli_query($cxn, "SELECT productID FROM user_product_faves WHERE userID = '$user_id'");
-                while ($product_faveRow = mysqli_fetch_assoc($product_faveQuery)) {
-                    $product_faveItems[] = $product_faveRow['productID'];
-                }
+                $product_faveQuery = "SELECT COUNT(*) FROM user_product_faves WHERE userID = '$user_id'";
+                $product_faveResult = mysqli_query($cxn, $product_faveQuery);
+                $product_faveCount = mysqli_fetch_row($product_faveResult)[0];
 
-                //all products not visited or liked by the current user
-                $unseenProducts = array();
-                $unseenProducts_query = mysqli_query($cxn, "SELECT product_id FROM product_list WHERE product_id NOT IN(" . implode(',', $product_visitedItems) . ") AND product_id NOT IN (" . implode(',', $product_faveItems) . ")");
-                while ($unseenProduct_row = mysqli_fetch_assoc($unseenProducts_query)) {
-                    $unseenProductItems[] = $unseenProduct_row['product_id'];
-                }
+                if ($product_visitCount > 0 && $product_faveCount > 0) {
 
-                //Calculation of similarity scores of products between the current user and other users
-                $product_similarityScore = array();
-                foreach ($unseenProductItems as $unseenProductID) {
-                    $product_similarityScore[$unseenProductID] = 0;
+                    //all product visited by current user
+                    $product_visitedItems = array();
+                    $product_visitQuery = mysqli_query($cxn, "SELECT productID FROM user_product_visits WHERE userID = '$user_id'");
+                    while ($product_visitedRow = mysqli_fetch_assoc($product_visitQuery)) {
+                        $product_visitedItems[] = $product_visitedRow['productID'];
+                    }
 
-                    //get all users who have visited or faved the unseen product
-                    $product_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_product_visits WHERE productID = $unseenProductID UNION SELECT userID FROM user_product_faves WHERE productID = $unseenProductID");
-                    while ($similarProduct_userRow = mysqli_fetch_assoc($product_similarUsersQuery)) {
-                        $similarProduct_userID = $similarProduct_userRow['userID'];
+                    //all faved product by the current user
+                    $product_faveItems = array();
+                    $product_faveQuery = mysqli_query($cxn, "SELECT productID FROM user_product_faves WHERE userID = '$user_id'");
+                    while ($product_faveRow = mysqli_fetch_assoc($product_faveQuery)) {
+                        $product_faveItems[] = $product_faveRow['productID'];
+                    }
 
-                        //Check if current user has visited or liked the same products as the similar user, then increment the similarity score
-                        if ($user_id != $similarProduct_userID) {
-                            $similarProduct_query = mysqli_query($cxn, "SELECT productID FROM user_product_visits WHERE userID = $user_id AND productID IN (SELECT productID FROM user_product_visits WHERE userID = $similarProduct_userID) UNION SELECT productID from user_product_faves WHERE userID = $user_id AND productID IN(SELECT productID FROM user_product_faves WHERE userID = $similarProduct_userID)");
-                            $num_SimilarProductsItems = mysqli_num_rows($similarProduct_query);
+                    //all products not visited or liked by the current user
+                    $unseenProducts = array();
+                    $unseenProducts_query = mysqli_query($cxn, "SELECT product_id FROM product_list WHERE product_id NOT IN(" . implode(',', $product_visitedItems) . ") AND product_id NOT IN (" . implode(',', $product_faveItems) . ")");
+                    while ($unseenProduct_row = mysqli_fetch_assoc($unseenProducts_query)) {
+                        $unseenProductItems[] = $unseenProduct_row['product_id'];
+                    }
 
-                            $product_similarityScore[$unseenProductID] += $num_SimilarProductsItems;
+                    //Calculation of similarity scores of products between the current user and other users
+                    $product_similarityScore = array();
+                    foreach ($unseenProductItems as $unseenProductID) {
+                        $product_similarityScore[$unseenProductID] = 0;
+
+                        //get all users who have visited or faved the unseen product
+                        $product_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_product_visits WHERE productID = $unseenProductID UNION SELECT userID FROM user_product_faves WHERE productID = $unseenProductID");
+                        while ($similarProduct_userRow = mysqli_fetch_assoc($product_similarUsersQuery)) {
+                            $similarProduct_userID = $similarProduct_userRow['userID'];
+
+                            //Check if current user has visited or liked the same products as the similar user, then increment the similarity score
+                            if ($user_id != $similarProduct_userID) {
+                                $similarProduct_query = mysqli_query($cxn, "SELECT productID FROM user_product_visits WHERE userID = $user_id AND productID IN (SELECT productID FROM user_product_visits WHERE userID = $similarProduct_userID) UNION SELECT productID from user_product_faves WHERE userID = $user_id AND productID IN(SELECT productID FROM user_product_faves WHERE userID = $similarProduct_userID)");
+                                $num_SimilarProductsItems = mysqli_num_rows($similarProduct_query);
+
+                                $product_similarityScore[$unseenProductID] += $num_SimilarProductsItems;
+                            }
                         }
                     }
-                }
 
-                //Sort the similariity scores in descending order
-                arsort($product_similarityScore);
+                    //Sort the similariity scores in descending order
+                    arsort($product_similarityScore);
 
-                //Recommend the top unseen products with the highest similarity scores
-                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 1, 10);
+                    //Recommend the top unseen products with the highest similarity scores
+                    $recommendedProductItems = array_slice(array_keys($product_similarityScore), 1, 10);
 
-                // echo "Recommended Products: ";
-                foreach ($recommendedProductItems as $recommendedProductID) {
-                    //echo $recommendedProductID . ", ";
+                    // echo "Recommended Products: ";
+                    foreach ($recommendedProductItems as $recommendedProductID) {
+                        //echo $recommendedProductID . ", ";
 
-                    $product = 0;
-                    $recommendProduct = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id = '$recommendedProductID'");
-                    if (mysqli_num_rows($recommendProduct) > 0) {
-                        while ($pr = mysqli_fetch_assoc($recommendProduct)) {
+                        $product = 0;
+                        $recommendProduct = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id = '$recommendedProductID'");
+                        if (mysqli_num_rows($recommendProduct) > 0) {
+                            while ($pr = mysqli_fetch_assoc($recommendProduct)) {
                 ?>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                                <div class="card">
-                                    <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/product_img/<?php echo $pr['product_image']; ?>" />
-                                    <div class="card-body p-2 text-center">
-                                        <p class="text-primary card-text mb-0"><?php echo $pr['product_type']; ?></p>
-                                        <h5 class="card-title"><?php echo $pr['product_name']; ?></h5>
-                                    </div>
-                                    <div class="card-footer text-body-secondary text-center">
-                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewproduct.php?id=<?php echo $pr['product_id']; ?>" target="_self">More Info</a>
+                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                    <div class="card">
+                                        <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/product_img/<?php echo $pr['product_image']; ?>" />
+                                        <div class="card-body p-2 text-center">
+                                            <p class="text-primary card-text mb-0"><?php echo $pr['product_type']; ?></p>
+                                            <h5 class="card-title"><?php echo $pr['product_name']; ?></h5>
+                                        </div>
+                                        <div class="card-footer text-body-secondary text-center">
+                                            <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewproduct.php?id=<?php echo $pr['product_id']; ?>" target="_self">More Info</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                 <?php
 
+                            }
+                            $product++;
                         }
-                        $product++;
-                    } else {
-                        echo ' <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3"><p class="text-center">No recommendations for now.</p></div>';
                     }
+                } else {
+                    echo ' <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3"><p class="text-center">No recommendations for now.</p></div>';
                 }
                 ?>
             </div>
