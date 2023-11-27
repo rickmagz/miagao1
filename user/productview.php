@@ -122,7 +122,7 @@ if (mysqli_num_rows($if_liked) >= 1) {
                                                     <?php
                                                     $feedback = 0;
                                                     $user = 0;
-                                                    $get_feedback = mysqli_query($cxn, "SELECT * FROM user_product_feedback");
+                                                    $get_feedback = mysqli_query($cxn, "SELECT * FROM user_product_feedback WHERE productID = '{$p['product_id']}'");
 
                                                     if (mysqli_num_rows($get_feedback) > 0) {
                                                         while ($f = mysqli_fetch_assoc($get_feedback)) {
@@ -152,6 +152,16 @@ if (mysqli_num_rows($if_liked) >= 1) {
 
                                                         }
                                                         $feedback++;
+                                                    } else {
+                                                        echo '
+                                                        <div class="row">
+                                                                <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 col-xxl-10 offset-xxl-0">
+                                                                    <div class="mt-3">
+                                                                        <h6>No feedback yet.</h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ';
                                                     }
 
 
