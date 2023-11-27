@@ -82,6 +82,9 @@ include 'db.php';
                                     <h6 class="card-title fw-bold"><?php echo $prod_name; ?></h6>
                                     <p class="text-primary card-text mb-0"><?php echo $prod_type; ?></p>
                                 </div>
+                                <div class="card-footer text-body-secondary text-center">
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
+                                </div>
                             </div>
                         </div>
                 <?php
@@ -119,6 +122,9 @@ include 'db.php';
                                 <div class="card-body p-2 text-center">
                                     <h6 class="card-title" style="font-weight: bold;"><?php echo $busi_name; ?></h6>
                                     <p class="text-primary mb-0"><?php echo $busi_type; ?></p>
+                                </div>
+                                <div class="card-footer text-body-secondary text-center">
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="businessview.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
                                 </div>
                             </div>
                         </div>

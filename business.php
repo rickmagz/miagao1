@@ -77,6 +77,10 @@ include 'db.php';
                                     <h6 class="card-title" style="font-weight: bold;"><?php echo $busi_name; ?></h6>
                                     <p class="text-primary mb-0"><?php echo $busi_type; ?></p>
                                 </div>
+                                <div class="card-footer text-body-secondary text-center">
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="businessview.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
+                                </div>
+
                             </div>
                         </div>
                 <?php

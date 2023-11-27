@@ -93,6 +93,8 @@ if (mysqli_num_rows($if_liked) >= 1) {
                             <h3>Product Information</h3>
                             <div class="row row-cols-5">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+
+                                
                                     <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
                                         <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
                                             <div class="row">
