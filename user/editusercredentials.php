@@ -3,9 +3,10 @@ session_start();
 include '../db.php';
 
 $user_id = $_SESSION['user_id'];
+$id = $_GET['id'];
 
 //get user info
-$get_user = mysqli_query($cxn, "SELECT * FROM user WHERE user_id = '$user_id'");
+$get_user = mysqli_query($cxn, "SELECT * FROM user WHERE user_id = '$id'");
 if (mysqli_num_rows($get_user) > 0) {
     $u = mysqli_fetch_assoc($get_user);
 }
@@ -16,8 +17,8 @@ if (mysqli_num_rows($get_user) > 0) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Account Settings - Miagao Negosyo Center</title>
-    <link rel="icon" type="image/png" sizes="310x310" href="assets/img/Miagao-logo.png">
+    <title>Edit Account Settings - One Miagao Negosyo</title>
+    <link rel="icon" type="image/png" sizes="310x310" href="../assets/img/Miagao-logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -51,7 +52,10 @@ if (mysqli_num_rows($get_user) > 0) {
             <div class="row">
                 <div class="col">
                     <a href="browse.php">Home &gt;</a>
-                    <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14; My Account &emsp14;</a>
+                    <a href="accountsettings.php">&emsp14;My Account &emsp14;&gt;</a>
+                    <a href="editaccountsettings.php?id=<?php echo $id; ?>">&emsp14;Edit Account Details &gt;&emsp14;</a>
+                    <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14;Edit Account Credentials &gt;&emsp14;</a>
+                    <a href="edituserpicture.php?id=<?php echo $user_id; ?>">&emsp14;Edit Account Picture &emsp14;</a>
                 </div>
             </div>
         </div>
@@ -63,36 +67,37 @@ if (mysqli_num_rows($get_user) > 0) {
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
                         <div id="editproduct_cardbody" class="card-body">
-                            <h3>My Account</h3>
+                            <h3>Edit Account Credentials</h3>
                             <div class="row row-cols-5">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                                    <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
-                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
-                                            <div class="row mt-2">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+                                    <form id="modpassword" action="savepassword.php" method="post" name="modpassword">
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                                <div class="form-floating mb-3"><input class="form-control" type="password" placeholder="Old Password" required style="border-radius: 10px;" name="oldpass" /><label class="form-label">Old Password</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="password" placeholder="New Password" required style="border-radius: 10px;" name="newpass" /><label class="form-label">New Password</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                                <div class="form-floating mb-3"><input class="form-control" type="password" placeholder="Repeat Password" required style="border-radius: 10px;" name="rpass" /><label class="form-label">Repeat Password</label></div>
+                                            </div>
+                                        </div>
 
-                                                    <div class="row">
-                                                        <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/user_img/<?php echo $u['image']; ?>" alt="Account_image" />
-
-                                                        </div>
-                                                        <div id="business-info" class="col offset-xl-0">
-                                                            <h3><?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?></h3>
-                                                            <h6 class="text-muted mb-2">USER ID: <?php echo $u['user_id']; ?></h6>
-                                                            <span>E-mail Address: <?php echo $u['email']; ?> <br /></span>
-                                                            <span>Date Registered: <?php echo $u['added']; ?></span>
-                                                            <div class="d-xl-flex justify-content-xl-start mt-2">
-                                                                <a class="btn btn-primary btn-sm" href="editaccountsettings.php?id=<?php echo $user_id; ?>" style="border-radius:20px;">Edit Account Details</a>&emsp14;
-                                                                <a class="btn btn-primary btn-sm" href="edituserpicture.php?id=<?php echo $user_id; ?>" style="border-radius:20px;">Change Account Image</a>
-
-                                                            </div>
-                                                        </div>
-
+                                        <div class="row">
+                                            <div class="col-xxl-6 align-self-center">
+                                                <div class="text-start form-floating mb-3">
+                                                    <div class="btn-group btn-group-sm" role="group">
+                                                        <button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="modpassword">Change Password</button>
+                                                        <a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="accountsettings.php">Cancel</a>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
