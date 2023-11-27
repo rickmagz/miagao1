@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../db.php';
+include 'db.php';
 
 $id = $_GET['id'];
 
@@ -94,7 +94,7 @@ $total_pending_entrep = $pending_entrep->num_rows;
 
                                             <div class="row">
                                                 <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center">
-                                                    <img alt="business_logo" class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/<?php echo $b['business_image']; ?>" />
+                                                    <img alt="business_logo" class="rounded w-100 d-block fit-cover card-img-top" src="../assets/img/business_img/<?php echo $b['business_image']; ?>" />
                                                 </div>
                                                 <div class="col" id="business_info">
                                                     <style>
@@ -129,7 +129,7 @@ $total_pending_entrep = $pending_entrep->num_rows;
                                                             <div class="card" style="border-radius: 10px;">
                                                                 <div class="card-body text-center">
                                                                     <h6 class="text-muted card-subtitle mb-2"><?php echo $prod_name; ?></h6>
-                                                                    <img class="rounded w-100" alt="Product Image" src="../assets/img/<?php echo $prod_img; ?>" />
+                                                                    <img class="rounded w-100" alt="Product Image" src="../assets/img/product_img/<?php echo $prod_img; ?>" />
                                                                     <div>
 
                                                                         <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./product_view.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
