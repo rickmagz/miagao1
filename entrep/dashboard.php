@@ -125,19 +125,30 @@ if (mysqli_num_rows($approve_query) == 1) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col">
+                                                    <?php
+                                                    $get_business = mysqli_query($cxn, "SELECT * FROM business_list WHERE entrep_id= {$_SESSION['entrep_id']}");
+                                                    if ($get_business->num_rows == 0) {
+                                                        $product_btn = '';
+                                                    } else {
+                                                        $product_btn = '
+                                                                    <div class="col">
                                                         <div class="text-center d-flex flex-column align-items-center align-items-xl-center">
                                                             <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon lg"><svg class="bi bi-tag" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
                                                                     <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"></path>
                                                                     <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"></path>
                                                                 </svg></div>
                                                             <div class="px-3">
-                                                                <a href="../entrep/addproduct.php" target="_self">
-                                                                    <h4>Product</h4>
-                                                                </a>
+                                                                    <a href="../entrep/addproduct.php" target="_self">
+                                                                        <h4>Product</h4>
+                                                                    </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                                    ';
+                                                    }
+
+                                                    echo $product_btn;
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
