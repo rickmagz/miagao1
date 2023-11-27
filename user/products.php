@@ -151,15 +151,15 @@ if ($get_product_info->num_rows > 0) {
                 //Sort the similariity scores in descending order
                 arsort($product_similarityScore);
 
-                //Recommend the top 10 unseen products with the highest similarity scores
-                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 0, 10);
+                //Recommend the top unseen products with the highest similarity scores
+                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 0, 25);
 
                 // echo "Recommended Products: ";
                 foreach ($recommendedProductItems as $recommendedProductID) {
                     //echo $recommendedProductID . ", ";
 
                     $product = 0;
-                    $recommendProduct = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id = '$recommendedProductID' ORDER BY rand() LIMIT 4");
+                    $recommendProduct = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id = '$recommendedProductID'");
                     if (mysqli_num_rows($recommendProduct) > 0) {
                         while ($pr = mysqli_fetch_assoc($recommendProduct)) {
                 ?>

@@ -99,8 +99,6 @@ include '../db.php';
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <!-- algorithm starts here -->
                 <?php
-                include '../db.php';
-
                 $user_id = $_SESSION['user_id'];
 
                 //all business visited by the current user
@@ -150,14 +148,14 @@ include '../db.php';
                 //Sort the similarity scores in descending order
                 arsort($business_similarityScore);
 
-                //Recommend the top 5 unseen business with the highest similarity score
-                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 0, 10);
+                //Recommend the top unseen business with the highest similarity score
+                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 0, 25);
 
                 //                echo "Recommended Business: ";
                 foreach ($recommendedBusinessItems as $recommendedBusinessID) {
                     //echo $recommendedBusinessID . ", ";
                     $business = 0;
-                    $recommendBusiness = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id = '$recommendedBusinessID' ORDER BY rand() LIMIT 4");
+                    $recommendBusiness = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id = '$recommendedBusinessID'");
                     if (mysqli_num_rows($recommendBusiness) > 0) {
                         while ($r = mysqli_fetch_assoc($recommendBusiness)) {
                 ?>
@@ -169,7 +167,7 @@ include '../db.php';
                                         <h5 class="card-title"><?php echo $r['business_name']; ?></h5>
                                     </div>
                                     <div class="card-footer text-body-secondary text-center">
-                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./businessview.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
+                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./business_view.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
                                     </div>
                                 </div>
                             </div>
