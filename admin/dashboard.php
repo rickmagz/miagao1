@@ -343,7 +343,7 @@ $total_visits = $visits->num_rows;
                                     <?php
                                     //get list of entrepreneurs
                                     $elist = 0;
-                                    $get_entrep = mysqli_query($cxn, "SELECT * FROM entrep WHERE status='APPROVED' ORDER BY added ASC LIMIT 5");
+                                    $get_entrep = mysqli_query($cxn, "SELECT * FROM entrep WHERE status='APPROVED'");
                                     if (mysqli_num_rows($get_entrep) > 0) {
                                         while ($e = mysqli_fetch_array($get_entrep)) {
 
@@ -364,7 +364,7 @@ $total_visits = $visits->num_rows;
                             </tbody>
                         </table>
                     </div>
-                    <p class="text-center"><a href="./entrep.php">See More</a></p>
+
                 </div>
             </div>
         </div>
