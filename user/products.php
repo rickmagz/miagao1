@@ -63,7 +63,7 @@ if ($get_product_info->num_rows > 0) {
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <?php
                 $product_list = 0;
-                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand()");
+                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 4");
 
                 if ($get_products->num_rows > 0) {
                     while ($p = mysqli_fetch_assoc($get_products)) {
@@ -73,8 +73,6 @@ if ($get_product_info->num_rows > 0) {
                         $prod_img = $p['product_image'];
                         $prod_like = $p['product_like'];
                         $product_list++;
-
-                        $random = rand(2, 2345678901);
 
                 ?>
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
@@ -96,6 +94,100 @@ if ($get_product_info->num_rows > 0) {
             </div>
         </div>
     </section>
+
+    <!-- recommendations -->
+    <section data-aos="fade-up" style="margin-top: -40px;">
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2><strong>Product Recommendations</strong></h2>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
+                <!-- algorithm starts here -->
+                <?php
+
+                //all product visited by current user
+                $product_visitedItems = array();
+                $product_visitQuery = mysqli_query($cxn, "SELECT productID FROM user_product_visits WHERE userID = '$user_id'");
+                while ($product_visitedRow = mysqli_fetch_assoc($product_visitQuery)) {
+                    $product_visitedItems[] = $product_visitedRow['productID'];
+                }
+
+                //all faved product by the current user
+                $product_faveItems = array();
+                $product_faveQuery = mysqli_query($cxn, "SELECT productID FROM user_product_faves WHERE userID = '$user_id'");
+                while ($product_faveRow = mysqli_fetch_assoc($product_faveQuery)) {
+                    $product_faveItems[] = $product_faveRow['productID'];
+                }
+
+                //all products not visited or liked by the current user
+                $unseenProducts = array();
+                $unseenProducts_query = mysqli_query($cxn, "SELECT product_id FROM product_list WHERE product_id NOT IN(" . implode(',', $product_visitedItems) . ") AND product_id NOT IN (" . implode(',', $product_faveItems) . ")");
+                while ($unseenProduct_row = mysqli_fetch_assoc($unseenProducts_query)) {
+                    $unseenProductItems[] = $unseenProduct_row['product_id'];
+                }
+
+                //Calculation of similarity scores of products between the current user and other users
+                $product_similarityScore = array();
+                foreach ($unseenProductItems as $unseenProductID) {
+                    $product_similarityScore[$unseenProductID] = 0;
+
+                    //get all users who have visited or faved the unseen product
+                    $product_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_product_visits WHERE productID = $unseenProductID UNION SELECT userID FROM user_product_faves WHERE productID = $unseenProductID");
+                    while ($similarProduct_userRow = mysqli_fetch_assoc($product_similarUsersQuery)) {
+                        $similarProduct_userID = $similarProduct_userRow['userID'];
+
+                        //Check if current user has visited or liked the same products as the similar user, then increment the similarity score
+                        if ($user_id != $similarProduct_userID) {
+                            $similarProduct_query = mysqli_query($cxn, "SELECT productID FROM user_product_visits WHERE userID = $user_id AND productID IN (SELECT productID FROM user_product_visits WHERE userID = $similarProduct_userID) UNION SELECT productID from user_product_faves WHERE userID = $user_id AND productID IN(SELECT productID FROM user_product_faves WHERE userID = $similarProduct_userID)");
+                            $num_SimilarProductsItems = mysqli_num_rows($similarProduct_query);
+
+                            $product_similarityScore[$unseenProductID] += $num_SimilarProductsItems;
+                        }
+                    }
+                }
+
+                //Sort the similariity scores in descending order
+                arsort($product_similarityScore);
+
+                //Recommend the top 10 unseen products with the highest similarity scores
+                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 0, 10);
+
+                // echo "Recommended Products: ";
+                foreach ($recommendedProductItems as $recommendedProductID) {
+                    //echo $recommendedProductID . ", ";
+
+                    $product = 0;
+                    $recommendProduct = mysqli_query($cxn, "SELECT * FROM product_list WHERE product_id = '$recommendedProductID' ORDER BY rand() LIMIT 4");
+                    if (mysqli_num_rows($recommendProduct) > 0) {
+                        while ($pr = mysqli_fetch_assoc($recommendProduct)) {
+                ?>
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                <div class="card">
+                                    <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $pr['product_image']; ?>" />
+                                    <div class="card-body p-2 text-center">
+                                        <p class="text-primary card-text mb-0"><?php echo $pr['product_type']; ?></p>
+                                        <h5 class="card-title"><?php echo $pr['product_name']; ?></h5>
+                                    </div>
+                                    <div class="card-footer text-body-secondary text-center">
+                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $pr['product_id']; ?>" target="_self">More Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                <?php
+
+                        }
+                        $product++;
+                    } else {
+                        echo ' <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3"><p class="text-center">No recommendations for now.</p></div>';
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+
 
     <footer>
         <div class="container py-4 py-lg-5">
