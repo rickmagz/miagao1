@@ -76,7 +76,7 @@ include '../db.php';
                                     <h5 class="card-title"><?php echo $busi_name; ?></h5>
                                 </div>
                                 <div class="card-footer text-body-secondary text-center">
-                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./business_view.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewbusiness.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +128,7 @@ include '../db.php';
                 //Calculation of similarity score of businesses between the current user and other users
                 $business_similarityScore = array();
                 foreach ($unseenBusinessItems as $unseenBusinessID) {
-                    $business_similarityScore[$unseenBusinessID] = 0;
+                    $business_similarityScore[$unseenBusinessID] = 1;
 
                     //get all users who have visited or faved the unseen business
                     $business_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_business_visits WHERE businessID = $unseenBusinessID UNION SELECT userID FROM user_business_faves WHERE businessID = $unseenBusinessID");
@@ -137,7 +137,7 @@ include '../db.php';
 
                         //Check if current user has visited or faved the same business as the similar user, then increment the similarity score
                         if ($user_id != $similarBusiness_userID) {
-                            $similarBusiness_query = mysqli_query($cxn, "SELECT businessID FROM user_business_visits WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_visits WHERE userID = $similarBusiness_userID) UNION SELECT businessID from user_business_faves WHERE userID = $user_id AND productID IN (SELECT businessID FROM user_business_faves WHERE userID = $similarBusiness_userID)");
+                            $similarBusiness_query = mysqli_query($cxn, "SELECT businessID FROM user_business_visits WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_visits WHERE userID = $similarBusiness_userID) UNION SELECT businessID from user_business_faves WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_faves WHERE userID = $similarBusiness_userID)");
                             $num_SimilarBusinessItems = mysqli_num_rows($similarBusiness_query);
 
                             $business_similarityScore[$unseenBusinessID] += $num_SimilarBusinessItems;
@@ -149,7 +149,7 @@ include '../db.php';
                 arsort($business_similarityScore);
 
                 //Recommend the top unseen business with the highest similarity score
-                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 0, 10);
+                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 1, 10);
 
                 //                echo "Recommended Business: ";
                 foreach ($recommendedBusinessItems as $recommendedBusinessID) {
@@ -167,7 +167,7 @@ include '../db.php';
                                         <h5 class="card-title"><?php echo $r['business_name']; ?></h5>
                                     </div>
                                     <div class="card-footer text-body-secondary text-center">
-                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./business_view.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
+                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewbusiness.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
                                     </div>
                                 </div>
                             </div>

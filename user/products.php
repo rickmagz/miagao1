@@ -83,7 +83,7 @@ if ($get_product_info->num_rows > 0) {
                                     <h5 class="card-title"><?php echo $prod_name; ?></h5>
                                 </div>
                                 <div class="card-footer text-body-secondary text-center">
-                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewproduct.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@ if ($get_product_info->num_rows > 0) {
                 arsort($product_similarityScore);
 
                 //Recommend the top unseen products with the highest similarity scores
-                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 0, 10);
+                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 1, 10);
 
                 // echo "Recommended Products: ";
                 foreach ($recommendedProductItems as $recommendedProductID) {
@@ -171,7 +171,7 @@ if ($get_product_info->num_rows > 0) {
                                         <h5 class="card-title"><?php echo $pr['product_name']; ?></h5>
                                     </div>
                                     <div class="card-footer text-body-secondary text-center">
-                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $pr['product_id']; ?>" target="_self">More Info</a>
+                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./viewproduct.php?id=<?php echo $pr['product_id']; ?>" target="_self">More Info</a>
                                     </div>
                                 </div>
                             </div>
