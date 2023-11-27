@@ -72,7 +72,7 @@ if (mysqli_num_rows($admin) > 0) {
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <a href="browse.php">Home &gt;</a>
+                    <a href="dashboard.php">Home &gt;</a>
                     <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14; My Account &emsp14;</a>
                 </div>
             </div>
