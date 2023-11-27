@@ -42,63 +42,6 @@ $user_id = $_SESSION['user_id'];
             </div>
         </div>
     </nav>
-    <header>
-        <div class="container pt-4 pt-xl-5">
-            <div class="row" data-aos="zoom-out">
-                <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-5 col-xxl-6 offset-lg-1 offset-xxl-0 text-center text-md-start align-self-center">
-                    <div class="text-center">
-                        <h1 class="display-5 fw-bold text-start mb-5" id="masthead-heading">Linking and<br>promoting businesses <br>with ease.<br><span class="text-uppercase underline">together</span>.</h1>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-7 col-lg-6 col-xl-6 mx-auto">
-                    <div class="text-center position-relative"><img class="img-fluid" src="../assets/img/illustrations/meeting.svg" style="width: 800px;"></div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- featured products -->
-    <section data-aos="flip-down">
-        <div class="container py-4 py-xl-5">
-            <div class="row mb-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2 class="fw-bold">Featured Products For You</h2>
-                </div>
-            </div>
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px">
-                <?php
-                $product_list = 0;
-                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 4");
-
-                if ($get_products->num_rows > 0) {
-                    while ($p = mysqli_fetch_assoc($get_products)) {
-                        $prod_id = $p['product_id'];
-                        $prod_name = $p['product_name'];
-                        $prod_type = $p['product_type'];
-                        $prod_img = $p['product_image'];
-                        $prod_like = $p['product_like'];
-                        $prod_dislike = $p['product_dislike'];
-                        $product_list++;
-                ?>
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                            <div class="card">
-                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/product_img/<?php echo $prod_img; ?>" />
-                                <div class="card-body p-2 text-center">
-                                    <p class="text-primary card-text mb-0"><?php echo $prod_type; ?></p>
-                                    <h5 class="card-title"><?php echo $prod_name; ?></h5>
-                                </div>
-                                <div class="card-footer text-body-secondary text-center">
-                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
-                                </div>
-                            </div>
-                        </div>
-                <?php
-                    }
-                }
-                ?>
-            </div>
-        </div>
-    </section>
 
     <!-- featured businesses -->
     <section data-aos="fade-up" style="margin-top: -40px;">
@@ -143,45 +86,177 @@ $user_id = $_SESSION['user_id'];
         </div>
     </section>
 
+
+    <!-- featured products -->
+    <section data-aos="flip-down">
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Featured Products For You</h2>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px">
+                <?php
+                $product_list = 0;
+                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 4");
+
+                if ($get_products->num_rows > 0) {
+                    while ($p = mysqli_fetch_assoc($get_products)) {
+                        $prod_id = $p['product_id'];
+                        $prod_name = $p['product_name'];
+                        $prod_type = $p['product_type'];
+                        $prod_img = $p['product_image'];
+                        $prod_like = $p['product_like'];
+                        $prod_dislike = $p['product_dislike'];
+                        $product_list++;
+                ?>
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <div class="card">
+                                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/product_img/<?php echo $prod_img; ?>" />
+                                <div class="card-body p-2 text-center">
+                                    <p class="text-primary card-text mb-0"><?php echo $prod_type; ?></p>
+                                    <h5 class="card-title"><?php echo $prod_name; ?></h5>
+                                </div>
+                                <div class="card-footer text-body-secondary text-center">
+                                    <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./productview.php?id=<?php echo $prod_id; ?>" target="_self">More Info</a>
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+
+
     <!-- recommendations -->
     <section data-aos="fade-up" style="margin-top: -40px;">
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2><strong>Recommendations For You</strong></h2>
+                    <h2><strong>Business Recommendations For You</strong></h2>
                 </div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <!-- algorithm starts here -->
+                <?php
+                include '../db.php';
+
+                $user_id = $_SESSION['user_id'];
+
+                //all business visited by the current user
+                $business_visitedItems = array();
+                $business_visitQuery = "SELECT businessID FROM user_business_visits WHERE userID = '$user_id'";
+                $business_visitResult = mysqli_query($cxn, $business_visitQuery);
+                while ($business_visitedRow = mysqli_fetch_assoc($business_visitResult)) {
+                    $business_visitedItems[] = $business_visitedRow['businessID'];
+                }
+
+                //all faved business by the current user
+                $business_faveItems = array();
+                $business_faveQuery = "SELECT businessID FROM user_business_faves WHERE userID = '$user_id'";
+                $business_faveResult = mysqli_query($cxn, $business_faveQuery);
+                while ($business_faveRow = mysqli_fetch_assoc($business_faveResult)) {
+                    $business_faveItems[] = $business_faveRow['businessID'];
+                }
+
+                //Get all businesses that the current user has not visited or liked
+                $unseenBusiness = array();
+                $unseenBusiness_query = "SELECT business_id FROM business_list WHERE business_id NOT IN(" . implode(',', $business_visitedItems) . ") AND business_id NOT IN (" . implode(',', $business_faveItems) . ")";
+                $unseenBusiness_result = mysqli_query($cxn, $unseenBusiness_query);
+                while ($unseenBusiness_row = mysqli_fetch_assoc($unseenBusiness_result)) {
+                    $unseenBusinessItems[] = $unseenBusiness_row['business_id'];
+                }
+
+                //Calculation of similarity score of businesses between the current user and other users
+                $business_similarityScore = array();
+                foreach ($unseenBusinessItems as $unseenBusinessID) {
+                    $business_similarityScore[$unseenBusinessID] = 0;
+
+                    //get all users who have visited or faved the unseen business
+                    $business_similarUsersQuery = mysqli_query($cxn, "SELECT userID FROM user_business_visits WHERE businessID = $unseenBusinessID UNION SELECT userID FROM user_business_faves WHERE businessID = $unseenBusinessID");
+                    while ($similarBusiness_userRow = mysqli_fetch_assoc($business_similarUsersQuery)) {
+                        $similarBusiness_userID = $similarBusiness_userRow['userID'];
+
+                        //Check if current user has visited or faved the same business as the similar user, then increment the similarity score
+                        if ($user_id != $similarBusiness_userID) {
+                            $similarBusiness_query = mysqli_query($cxn, "SELECT businessID FROM user_business_visits WHERE userID = $user_id AND businessID IN (SELECT businessID FROM user_business_visits WHERE userID = $similarBusiness_userID) UNION SELECT businessID from user_business_faves WHERE userID = $user_id AND productID IN (SELECT businessID FROM user_business_faves WHERE userID = $similarBusiness_userID)");
+                            $num_SimilarBusinessItems = mysqli_num_rows($similarBusiness_query);
+
+                            $business_similarityScore[$unseenBusinessID] += $num_SimilarBusinessItems;
+                        }
+                    }
+                }
+
+                //Sort the similarity scores in descending order
+                arsort($business_similarityScore);
+
+                //Recommend the top 5 unseen business with the highest similarity score
+                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 0, 10);
+
+                //                echo "Recommended Business: ";
+                foreach ($recommendedBusinessItems as $recommendedBusinessID) {
+                    //echo $recommendedBusinessID . ", ";
+                    $business = 0;
+                    $recommendBusiness = mysqli_query($cxn, "SELECT * FROM business_list WHERE business_id = '$recommendedBusinessID'");
+                    if (mysqli_num_rows($recommendBusiness) > 0) {
+                        while ($r = mysqli_fetch_assoc($recommendBusiness)) {
+                ?>
 
 
 
-                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                    <div class="card">
-                        <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $busi_img; ?>" />
-                        <div class="card-body p-2 text-center">
-                            <p class="text-primary card-text mb-0"><?php echo $busi_type; ?></p>
-                            <h5 class="card-title"><?php echo $busi_name; ?></h5>
-                        </div>
-                        <div class="card-footer text-body-secondary text-center">
-                            <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./businessview.php?id=<?php echo $busi_id; ?>" target="_self">More Info</a>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                <div class="card">
+                                    <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../assets/img/<?php echo $r['business_image']; ?>" />
+                                    <div class="card-body p-2 text-center">
+                                        <p class="text-primary card-text mb-0"><?php echo $r['business_type']; ?></p>
+                                        <h5 class="card-title"><?php echo $r['business_name']; ?></h5>
+                                    </div>
+                                    <div class="card-footer text-body-secondary text-center">
+                                        <a class="btn btn-outline-primary btn-sm border-primary rounded-pill mt-1" href="./businessview.php?id=<?php echo $r['business_id']; ?>" target="_self">More Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                <?php
+
+                        }
+                        $business++;
+                    }
+                }
+                ?>
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container py-4 py-lg-5">
-            <hr>
-            <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /></p>
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
 
-                </ul>
+
+    <!-- <header>
+        <div class="container pt-4 pt-xl-5">
+            <div class="row" data-aos="zoom-out">
+                <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-5 col-xxl-6 offset-lg-1 offset-xxl-0 text-center text-md-start align-self-center">
+                    <div class="text-center">
+                        <h1 class="display-5 fw-bold text-start mb-5" id="masthead-heading">Linking and<br>promoting businesses <br>with ease.<br><span class="text-uppercase underline">together</span>.</h1>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-7 col-lg-6 col-xl-6 mx-auto">
+                    <div class="text-center position-relative"><img class="img-fluid" src="../assets/img/illustrations/meeting.svg" style="width: 800px;"></div>
+                </div>
             </div>
         </div>
+    </header>
+
+    <footer> -->
+    <div class="container py-4 py-lg-5">
+        <hr>
+        <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+            <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /></p>
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
+
+            </ul>
+        </div>
+    </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
