@@ -152,7 +152,7 @@ if ($get_product_info->num_rows > 0) {
                 arsort($product_similarityScore);
 
                 //Recommend the top unseen products with the highest similarity scores
-                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 0, 25);
+                $recommendedProductItems = array_slice(array_keys($product_similarityScore), 0, 10);
 
                 // echo "Recommended Products: ";
                 foreach ($recommendedProductItems as $recommendedProductID) {

@@ -149,7 +149,7 @@ include '../db.php';
                 arsort($business_similarityScore);
 
                 //Recommend the top unseen business with the highest similarity score
-                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 0, 25);
+                $recommendedBusinessItems = array_slice(array_keys($business_similarityScore), 0, 10);
 
                 //                echo "Recommended Business: ";
                 foreach ($recommendedBusinessItems as $recommendedBusinessID) {
