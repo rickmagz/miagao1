@@ -72,8 +72,11 @@ if (mysqli_num_rows($admin) > 0) {
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <a href="browse.php">Home &gt;</a>
-                    <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14; My Account &emsp14;</a>
+                    <a href="dashboard.php">Home &gt;</a>
+                    <a href="accountsettings.php">&emsp14;My Account &emsp14;&gt;</a>
+                    <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14;Edit Account Details &gt;&emsp14;</a>
+                    <a href="editadmincredentials.php?id=<?php echo $admin_id; ?>">&emsp14;Edit Account Credentials &gt;&emsp14;</a>
+
                 </div>
             </div>
         </div>
@@ -85,35 +88,36 @@ if (mysqli_num_rows($admin) > 0) {
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
                         <div id="editproduct_cardbody" class="card-body">
-                            <h3>My Account</h3>
+                            <h3>Edit Account Details</h3>
                             <div class="row row-cols-5">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                                    <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
-                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
-                                            <div class="row mt-2">
-                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+                                    <form id="modaccount" action="saveaccountinfo.php" method="post" name="modaccount">
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                                <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="First Name" required style="border-radius: 10px;" name="firstname" value="<?php echo $a['first_name']; ?>" /><label class="form-label">First Name</label></div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                                <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Last Name" required style="border-radius: 10px;" name="lastname" value="<?php echo $a['last_name']; ?>" /><label class="form-label">Last Name</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                                <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Email Address" required style="border-radius: 10px;" name="email" value="<?php echo $a['email_add']; ?>" /><label class="form-label">E-mail Address</label></div>
+                                            </div>
+                                        </div>
 
-                                                    <div class="row">
-                                                        <div class="col-5 col-sm-3 col-md-3 col-lg-2 col-xl-3 d-xl-flex align-self-center m-auto justify-content-xl-center"><img class="rounded-circle w-100 d-block fit-cover card-img-top" src="../assets/img/Screenshot_2021-01-28-04-41-56-92.jpg" alt="Account_image" />
-
-                                                        </div>
-                                                        <div id="business-info" class="col offset-xl-0">
-                                                            <h3><?php echo $a['first_name']; ?> <?php echo $a['last_name']; ?></h3>
-                                                            <h6 class="text-muted mb-2">ADMIN ID: <?php echo $a['admin_id']; ?></h6>
-                                                            <span>E-mail Address: <?php echo $a['email_add']; ?> <br /></span>
-                                                            <span>Date Registered: <?php echo $a['added']; ?></span>
-                                                            <div class="d-xl-flex justify-content-xl-start mt-2">
-                                                                <a class="btn btn-primary btn-sm" href="editaccountsettings.php?id=<?php echo $admin_id; ?>" style="border-radius:20px;">Edit Account Details</a>&emsp14;
-
-                                                            </div>
-                                                        </div>
-
+                                        <div class="row">
+                                            <div class="col-xxl-6 align-self-center">
+                                                <div class="text-start form-floating mb-3">
+                                                    <div class="btn-group btn-group-sm" role="group">
+                                                        <button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="modaccount">Save</button>
+                                                        <!-- <a class="btn btn-outline-primary" role="button" style="border-radius: 10px; margin-right:8px;" href="deleteaccount.php?id=<?php echo $id; ?>">Delete Account</a> -->
+                                                        <a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="accountsettings.php">Cancel</a>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -124,6 +128,8 @@ if (mysqli_num_rows($admin) > 0) {
         </div>
         </div>
     </section>
+
+
 
 
 
