@@ -90,7 +90,7 @@ $total_pending_entrep = $pending_entrep->num_rows;
                 <div class="col">
                     <div class="card" style="border-radius: 12px;">
                         <div id="editproduct_cardbody" class="card-body">
-                            <h3>Product Information</h3>
+                            <h3>Delete this product?</h3>
                             <div class="row row-cols-5">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                                     <div class="card" style="border-radius: 10px;background: var(--bs-info-bg-subtle);border-color: var(--bs-body-bg);">
@@ -103,7 +103,8 @@ $total_pending_entrep = $pending_entrep->num_rows;
                                                     <p><?php echo $p['product_desc']; ?></p>
 
                                                     <div class="d-xl-flex justify-content-xl-start">
-                                                        <a class="btn btn-primary btn-sm border rounded-pill" href="deleteproduct.php?id=<?php echo $p['product_id']; ?>" target="_self">Delete Product</a>
+                                                        <a class="btn btn-primary btn-sm border rounded-pill" href="confirmdeleteproduct.php?id=<?php echo $p['product_id']; ?>" target="_self">Yes</a> &emsp14;
+                                                        <a class="btn btn-outline-primary btn-sm border rounded-pill" href="product_view.php?id=<?php echo $p['product_id']; ?>" target="_self">Cancel</a>
                                                     </div>
 
                                                 </div>
