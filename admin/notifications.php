@@ -9,13 +9,13 @@ $user_reg = $stmt->get_result();
 $total_users = $user_reg->num_rows;
 
 //get total number of business favorites
-$stmt = $cxn->prepare("SELECT * FROM user_business_reactions WHERE action='LIKED'");
+$stmt = $cxn->prepare("SELECT * FROM user_business_faves WHERE action='LIKED'");
 $stmt->execute();
 $user_business_visit = $stmt->get_result();
 $total_business_visit = $user_business_visit->num_rows;
 
 //get total number of product favorites
-$stmt = $cxn->prepare("SELECT * FROM user_product_reactions WHERE action='LIKED'");
+$stmt = $cxn->prepare("SELECT * FROM user_product_faves WHERE action='LIKED'");
 $stmt->execute();
 $user_product_fave = $stmt->get_result();
 $total_product_fave = $user_product_fave->num_rows;
