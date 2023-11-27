@@ -55,7 +55,7 @@ if (mysqli_num_rows($get_user) > 0) {
                     <a href="accountsettings.php">&emsp14;My Account &emsp14;&gt;</a>
                     <a href="editaccountsettings.php?id=<?php echo $id; ?>">&emsp14;Edit Account Details &gt;&emsp14;</a>
                     <a class="text-bg-primary border rounded-pill border-0" href="#">&emsp14;Edit Account Credentials &gt;&emsp14;</a>
-                    <a href="edituserpicture.php?id=<?php echo $user_id; ?>">&emsp14;Edit Account Picture &emsp14;</a>
+                    
                 </div>
             </div>
         </div>
