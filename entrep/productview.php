@@ -88,7 +88,86 @@ if ($get_business_info->num_rows > 0) {
                                                     <h3><?php echo $p['product_name']; ?></h3>
                                                     <h6 class="text-muted mb-2">by <?php echo $b['business_name']; ?></h6>
                                                     <p><?php echo $p['product_desc']; ?></p>
+                                                    <p><?php echo $p['product_specs']; ?></p>
 
+                                                    <div class="btn-group btn-group-sm" role="group"><a class="btn btn-primary" style="margin-right: 8px;border-radius: 10px;" href="./editproductinfo.php?id=<?php echo $p['product_id']; ?>">Edit Product Info</button><a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="editproductimage.php?id=<?php echo $p['product_id']; ?>">Change Product Image</a></div>
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                                            <div class="row">
+                                                <div id="business-info" class="col">
+                                                    <h5>Product Specification</h5>
+                                                    <p>
+                                                        <?php
+                                                        if ($p['product_specs'] == '') {
+                                                            $product_specs = "No specification.";
+                                                        } else {
+                                                            $product_specs = $p['product_specs'];
+                                                        }
+
+                                                        echo $product_specs;
+                                                        ?>
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body" style="background: var(--bs-secondary-bg);border-radius: 10px;">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5>Product Feedback</h5>
+                                                    <?php
+                                                    $feedback = 0;
+                                                    $user = 0;
+                                                    $get_feedback = mysqli_query($cxn, "SELECT * FROM user_product_feedback WHERE productID = '{$p['product_id']}'");
+
+                                                    if (mysqli_num_rows($get_feedback) > 0) {
+                                                        while ($f = mysqli_fetch_assoc($get_feedback)) {
+                                                            $userID = $f['userID'];
+                                                            $fback = $f['feedback'];
+
+                                                            $get_user = mysqli_query($cxn, "SELECT first_name, last_name,image FROM user WHERE user_id='$userID'");
+                                                            if (mysqli_num_rows($get_user) > 0) {
+                                                                $u = mysqli_fetch_assoc($get_user);
+                                                            }
+
+                                                    ?>
+                                                            <div class="row">
+                                                                <div class="col-3 col-sm-2 col-md-1 col-lg-1 col-xl-1 col-xxl-1 offset-xxl-0 d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center">
+                                                                    <img class="rounded-circle " width="65" height="65" src="../assets/img/user_img/<?php echo $u['image']; ?>" alt="user_image" />
+                                                                </div>
+                                                                <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 col-xxl-10 offset-xxl-0">
+                                                                    <div class="mt-3">
+                                                                        <h5><?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?></h5>
+                                                                        <p><?php echo $f['feedback']; ?></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                    <?php
+
+
+                                                        }
+                                                        $feedback++;
+                                                    } else {
+                                                        echo '
+                                                        <div class="row">
+                                                                <div class="col-9 col-sm-9 col-md-10 col-lg-10 col-xl-10 col-xxl-10 offset-xxl-0">
+                                                                    <div class="mt-3">
+                                                                        <h6>No feedback yet.</h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ';
+                                                    }
+
+
+                                                    ?>
                                                 </div>
 
                                             </div>

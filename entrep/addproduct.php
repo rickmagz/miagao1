@@ -119,6 +119,9 @@ include '../db.php';
                                     <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-12 align-self-center">
                                         <div class="form-floating mb-3"><textarea class="form-control" style="border-radius: 10px;min-height: 100px;" name="productdesc" placeholder="Product Description" spellcheck="true" required></textarea><label class="form-label">Product Description</label></div>
                                     </div>
+                                    <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-12 align-self-center">
+                                        <div class="form-floating mb-3"><textarea class="form-control" style="border-radius: 10px;min-height: 100px;" name="productspecs" placeholder="Product Specification" spellcheck="true" required></textarea><label class="form-label">Product Specification</label></div>
+                                    </div>
                                 </div>
                                 <div class="row" style="margin-bottom: 12px;">
                                     <div class="col-sm-11 col-md-10 col-lg-8 col-xl-8 col-xxl-12 align-self-center"><label class="form-label">Product Image</label>
@@ -150,6 +153,7 @@ include '../db.php';
         $product_name = $_POST['productname'];
         $product_type = $_POST['producttype'];
         $product_desc = $_POST['productdesc'];
+        $product_specs = $_POST['productspecs'];
 
         $image = basename($_FILES["image"]["name"]);
         $targetFileFolder = $upload_folder . $image;
@@ -158,7 +162,7 @@ include '../db.php';
 
         if (in_array($fileType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFileFolder)) {
-                $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,entrep_id,product_name,product_type,product_desc,product_image) VALUES('$product_id','$business_id','$entrep_id','$product_name','$product_type','$product_desc','$image')") or die("Error in query: $add_product." . mysqli_error($cxn));
+                $add_product = mysqli_query($cxn, "INSERT INTO product_list(product_id,business_id,entrep_id,product_name,product_type,product_desc,product_specs,product_image) VALUES('$product_id','$business_id','$entrep_id','$product_name','$product_type','$product_desc','$product_specs','$image')") or die("Error in query: $add_product." . mysqli_error($cxn));
 
                 echo "<script type='text/javascript'> alert('Product Added!'); location.href = 'addproduct.php'; </script>";
             } else {

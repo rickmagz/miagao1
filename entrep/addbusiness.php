@@ -64,6 +64,15 @@ include '../db.php';
                             <h3>Add Business Profile</h3>
                             <form id="addbusiness" action="addbusiness.php" method="post" name="addbusiness" enctype="multipart/form-data">
                                 <div class="row">
+                                    <div class="col-xxl-6 align-self-center">
+                                        <div class="w-100"></div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessname" /><label class="form-label">Business Name</label></div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center">
+
+                                    </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center">
                                         <div class="select-control mb-3">
                                             <select class="form-select" style="border-radius: 10px;" name="businesstype" autofocus required>
@@ -83,18 +92,137 @@ include '../db.php';
                                                 <option value="Healthcare">Healthcare</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-xxl-6 align-self-center">
-                                        <div class="w-100"></div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessname" /><label class="form-label">Business Name</label></div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 align-self-center">
-                                        <div class="form-floating mb-3"><input class="form-control" type="text" placeholder="Enter Business Name" required style="border-radius: 10px;" name="businessaddress" /><label class="form-label">Business Address</label></div>
+                                        <div class="select-control mb-3">
+                                            <select class="form-select" style="border-radius: 10px;" name="businessaddress" autofocus required>
+                                                <option disabled selected>Select Business Address</option>
+                                                <option value="Agdum">Agdum</option>
+                                                <option value="Aguiauan">Aguiauan</option>
+                                                <option value="Awang">Awang</option>
+                                                <option value="Alimodias">Alimodias</option>
+                                                <option value="Bacauan">Bacauan</option>
+                                                <option value="Bacolod">Bacolod</option>
+                                                <option value="Bagumbayan">Bagumbayan</option>
+                                                <option value="Banbanan">Banbanan</option>
+                                                <option value="Banga">Banga</option>
+                                                <option value="Bangladan">Bangladan</option>
+                                                <option value="Banuyao">Banuyao</option>
+                                                <option value="Baraclayan">Baraclayan</option>
+                                                <option value="Bariri">Bariri</option>
+                                                <option value="Baybay Norte">Baybay Norte</option>
+                                                <option value="Baybay Sur">Baybay Sur</option>
+                                                <option value="Belen">Belen</option>
+                                                <option value="Bolho">Bolho</option>
+                                                <option value="Bolocaue">Bolocaue</option>
+                                                <option value="Buenavista Norte">Buenavista Norte</option>
+                                                <option value="Buenavista Sur">Buenavista Sur</option>
+                                                <option value="Bugtong Lumangan">Bugtong Lumangan</option>
+                                                <option value="Bugtong Naulid">Bugtong Naulid</option>
+                                                <option value="Cabalaunan">Cabalaunan</option>
+                                                <option value="Cabangcalan">Cabangcalan</option>
+                                                <option value="Calampitao">Calampitao</option>
+                                                <option value="Cavite">Cavite</option>
+                                                <option value="Cawayanan">Cawayanan</option>
+                                                <option value="Cubay">Cubay</option>
+                                                <option value="Cubay Ubos">Cubay Ubos</option>
+                                                <option value="Dalije">Dalije</option>
+                                                <option value="Damilisan">Damilisan</option>
+                                                <option value="Dawog">Dawog</option>
+                                                <option value="Diday">Diday</option>
+                                                <option value="Dingle">Dingle</option>
+                                                <option value="Durog">Durog</option>
+                                                <option value="Frantilla">Frantilla</option>
+                                                <option value="Fundacion">Fundacion</option>
+                                                <option value="Gines">Gines</option>
+                                                <option value="Guibongan">Guibongan</option>
+                                                <option value="Igbita">Igbita</option>
+                                                <option value="Igbugo">Igbugo</option>
+                                                <option value="Igcabidio">Igcabidio</option>
+                                                <option value="Igcabito-on">Igcabito-on</option>
+                                                <option value="Igcatambor">Igcatambor</option>
+                                                <option value="Igdalaquit">Igdalaquit</option>
+                                                <option value="Igdulaca">Igdulaca</option>
+                                                <option value="Igpajo">Igpajo</option>
+                                                <option value="Igpandan">Igpandan</option>
+                                                <option value="Igpuro">Igpuro</option>
+                                                <option value="Igpuro-Bariri">Igpuro-Bariri</option>
+                                                <option value="Igsoligue">Igsoligue</option>
+                                                <option value="Igtuba">Igtuba</option>
+                                                <option value="Ilog-ilog">Ilog-ilog</option>
+                                                <option value="Indag-an">Indag-an</option>
+                                                <option value="Kirayan Norte">Kirayan Norte</option>
+                                                <option value="Kirayan Sur">Kirayan Sur</option>
+                                                <option value="Kirayan Tacas">Kirayan Tacas</option>
+                                                <option value="La Consolacion">La Consolacion</option>
+                                                <option value="Lacadon">Lacadon</option>
+                                                <option value="Lanutan">Lanutan</option>
+                                                <option value="Lumangan">Lumangan</option>
+                                                <option value="Mabayan">Mabayan</option>
+                                                <option value="Maduyo">Maduyo</option>
+                                                <option value="Malagyan">Malagyan</option>
+                                                <option value="Mambatad">Mambatad</option>
+                                                <option value="Maninila">Maninila</option>
+                                                <option value="Maricolcol">Maricolcol</option>
+                                                <option value="Maringyan">Maringyan</option>
+                                                <option value="Mat-y">Mat-y</option>
+                                                <option value="Matalngon">Matalngon</option>
+                                                <option value="Naclub">Naclub</option>
+                                                <option value="Nam-o Norte">Nam-o Norte</option>
+                                                <option value="Nam-o Sur">Nam-o Sur</option>
+                                                <option value="Narat-an">Narat-an</option>
+                                                <option value="Narorogan">Narorogan</option>
+                                                <option value="Naulid">Naulid</option>
+                                                <option value="Olango">Olango</option>
+                                                <option value="Ongyod">Ongyod</option>
+                                                <option value="Onop">Onop</option>
+                                                <option value="Oya-oy">Oya-oy</option>
+                                                <option value="Oyungan">Oyungan</option>
+                                                <option value="Palaca">Palaca</option>
+                                                <option value="Paro-on">Paro-on</option>
+                                                <option value="Potrido">Potrido</option>
+                                                <option value="Pudpud">Pudpud</option>
+                                                <option value="Pungtod Monteclaro">Pungtod Monteclaro</option>
+                                                <option value="Pungtod Naulid">Pungtod Naulid</option>
+                                                <option value="Sag-on">Sag-on</option>
+                                                <option value="San Fernando">San Fernando</option>
+                                                <option value="San Jose">San Jose</option>
+                                                <option value="San Rafael">San Rafael</option>
+                                                <option value="Sapa">Sapa</option>
+                                                <option value="Saring">Saring</option>
+                                                <option value="Sibucao">Sibucao</option>
+                                                <option value="Taal">Taal</option>
+                                                <option value="Tabunacan">Tabunacan</option>
+                                                <option value="Tacas">Tacas</option>
+                                                <option value="Tambong">Tambong</option>
+                                                <option value="Tan-agan">Tan-agan</option>
+                                                <option value="Tatoy">Tatoy</option>
+                                                <option value="Ticdalan">Ticdalan</option>
+                                                <option value="Tig-amaga">Tig-amaga</option>
+                                                <option value="Tig-apog-apog">Tig-apog-apog</option>
+                                                <option value="Tigbagacay">Tigbagacay</option>
+                                                <option value="Tiglawa">Tiglawa</option>
+                                                <option value="Tigmalapad">Tigmalapad</option>
+                                                <option value="Tigmarabo">Tigmarabo</option>
+                                                <option value="To-og">To-og</option>
+                                                <option value="Tumagboc">Tumagboc</option>
+                                                <option value="Tugura-ao">Tugura-ao</option>
+                                                <option value="Ubos Ilawod">Ubos Ilawod</option>
+                                                <option value="Ubos Ilaya">Ubos Ilaya</option>
+                                                <option value="Valencia">Valencia</option>
+                                                <option value="Wayang">Wayang</option>
+                                            </select>
+
+                                        </div>
+
+
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 offset-xxl-0 align-self-center">
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" type="text" placeholder="Business Contact Number" required style="border-radius: 10px;" name="businessnumber" />
+                                            <label class="form-label">Business Contact Number</label>
+                                        </div>
+                                    </div>
                                     <div class="col-xxl-12 align-self-center">
                                         <div class="form-floating mb-3">
                                             <textarea class="form-control" style="border-radius: 10px;min-height: 100px;" name="businessdesc" placeholder="Business Description" spellcheck="true" required></textarea>
@@ -130,6 +258,7 @@ include '../db.php';
         $business_type = $_POST['businesstype'];
         $business_name = $_POST['businessname'];
         $business_address = $_POST['businessaddress'];
+        $business_contactnum = $_POST['businessnumber'];
         $business_desc = $_POST['businessdesc'];
 
         $business_id = rand(00000000, 99999999);
@@ -142,7 +271,7 @@ include '../db.php';
 
         if (in_array($fileType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFileFolder)) {
-                $add_business = mysqli_query($cxn, "INSERT INTO business_list(business_id,entrep_id,business_name,business_type,business_address,business_desc,business_image) VALUES('$business_id','$entrep_id','$business_name','$business_type','$business_address','$business_desc','$image')") or die("Error in query: $add_business." . mysqli_error($cxn));
+                $add_business = mysqli_query($cxn, "INSERT INTO business_list(business_id,entrep_id,business_name,business_type,business_address,business_contactnum,business_desc,business_image) VALUES('$business_id','$entrep_id','$business_name','$business_type','$business_address','$business_contactnum','$business_desc','$image')") or die("Error in query: $add_business." . mysqli_error($cxn));
 
                 echo "<script type='text/javascript'> alert('Business Registered!'); location.href = 'addbusiness.php'; </script>";
             } else {

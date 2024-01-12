@@ -3,7 +3,6 @@ session_start();
 include '../db.php';
 
 $entrep_id = $_SESSION['entrep_id'];
-$bus_id = $_SESSION['bus_id'];
 $id = $_GET['id'];
 
 
@@ -118,9 +117,17 @@ $id = $_GET['id'];
                                                 </div>
                                             </div>
                                             <div class="row">
+                                                <div class="col-xxl-12 align-self-center">
+                                                    <div class="form-floating mb-3"><textarea class="form-control" name="product_specs" required style="min-height: 100px;border-radius: 10px;" placeholder="Product Specification"><?php echo $p['product_specs']; ?></textarea><label class="form-label">Product Specification</label></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-xxl-6 align-self-center">
                                                     <div class="text-start form-floating mb-3">
-                                                        <div class="btn-group btn-group-sm" role="group"><button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="modproduct">Save</button><a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="editproduct.php">Cancel</a></div>
+                                                        <div class="btn-group btn-group-sm" role="group"><button class="btn btn-primary" type="submit" style="margin-right: 8px;border-radius: 10px;" name="submit" form="modproduct">Save</button>
+                                                            <a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="editproductimage.php?id=<?php echo $p['product_id']; ?>">Change Product Image</a>&emsp14;&emsp14;
+                                                            <a class="btn btn-outline-primary" role="button" style="border-radius: 10px;" href="editproduct.php">Cancel</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
