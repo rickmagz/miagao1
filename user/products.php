@@ -52,6 +52,20 @@ if ($get_product_info->num_rows > 0) {
         </div>
     </nav>
 
+    <!-- search_bar -->
+    <section class="mt-4">
+        <div class="container" style="max-width: 50%;">
+            <h4 class="card-title text-center">Looking for something?</h4><br />
+            <form action="search.php" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search here..." name="search" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" name="search">Search</button>
+                    </span>
+            </form>
+        </div>
+    </section>
+
     <section>
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
@@ -63,7 +77,7 @@ if ($get_product_info->num_rows > 0) {
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <?php
                 $product_list = 0;
-                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 4");
+                $get_products = mysqli_query($cxn, "SELECT * FROM product_list ORDER BY rand() LIMIT 8");
 
                 if ($get_products->num_rows > 0) {
                     while ($p = mysqli_fetch_assoc($get_products)) {

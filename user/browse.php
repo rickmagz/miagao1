@@ -43,8 +43,22 @@ $user_id = $_SESSION['user_id'];
         </div>
     </nav>
 
+    <!-- search_bar -->
+    <section class="mt-4">
+        <div class="container" style="max-width: 50%;">
+            <h4 class="card-title text-center">Looking for something?</h4><br />
+            <form action="search.php" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search here..." name="search" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" name="search">Search</button>
+                    </span>
+            </form>
+        </div>
+    </section>
+
     <!-- featured businesses -->
-    <section data-aos="fade-up" style="margin-top: -40px;">
+    <section data-aos="fade-up">
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -131,33 +145,18 @@ $user_id = $_SESSION['user_id'];
     </section>
 
 
-    
-    <!-- <header>
-        <div class="container pt-4 pt-xl-5">
-            <div class="row" data-aos="zoom-out">
-                <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-5 col-xxl-6 offset-lg-1 offset-xxl-0 text-center text-md-start align-self-center">
-                    <div class="text-center">
-                        <h1 class="display-5 fw-bold text-start mb-5" id="masthead-heading">Linking and<br>promoting businesses <br>with ease.<br><span class="text-uppercase underline">together</span>.</h1>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-7 col-lg-6 col-xl-6 mx-auto">
-                    <div class="text-center position-relative"><img class="img-fluid" src="../assets/img/illustrations/meeting.svg" style="width: 800px;"></div>
-                </div>
+
+    <footer>
+        <div class="container py-4 py-lg-5">
+            <hr>
+            <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /></p>
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
+
+                </ul>
             </div>
         </div>
-    </header>
-
-    <footer> -->
-    <div class="container py-4 py-lg-5">
-        <hr>
-        <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-            <p class="mb-0">Copyright © 2023 One Negosyo Miagao<br /></p>
-            <ul class="list-inline mb-0">
-                <li class="list-inline-item"><img src="../assets/img/miagao_one.png" width="85" height="70" /></li>
-
-            </ul>
-        </div>
-    </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

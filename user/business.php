@@ -45,6 +45,20 @@ include '../db.php';
         </div>
     </nav>
 
+    <!-- search_bar -->
+    <section class="mt-4">
+        <div class="container" style="max-width: 50%;">
+            <h4 class="card-title text-center">Looking for something?</h4><br />
+            <form action="search.php" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search here..." name="search" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" name="search">Search</button>
+                    </span>
+            </form>
+        </div>
+    </section>
+
     <section>
         <div class=" container py-4 py-xl-5">
             <div class="row mb-5">
@@ -56,7 +70,7 @@ include '../db.php';
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top: -65px;">
                 <?php
                 $business_list = 0;
-                $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand() LIMIT 4");
+                $get_business = mysqli_query($cxn, "SELECT * FROM business_list ORDER BY rand() LIMIT 8");
 
                 if ($get_business->num_rows > 0) {
                     while ($b = mysqli_fetch_assoc($get_business)) {
